@@ -83,4 +83,4 @@
 |image|text||
 
 ### Association
-- belomgs_to :product
+- belongs_to :product
