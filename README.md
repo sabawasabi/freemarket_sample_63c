@@ -25,10 +25,10 @@
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true|
-|postal_code|integer||
-|prefectures|string||
-|city|string||
-|house_number|integer||
+|postal_code|integer|null: false|
+|prefectures|string|null: false|
+|city|string|null: false|
+|house_number|integer|null: false|
 |building|string||
 
 
@@ -37,11 +37,11 @@
 |------|----|------|
 |id|integer|null: false, unique: true|
 |user_id|references|null: false, foreign_key: true|
-|name|string||
-|card_number|integer||
-|exp_month|integer||
-|exp_year|integer||
-|security_code|integer||
+|name|string|null: false|
+|card_number|integer|null: false|
+|exp_month|integer|null: false|
+|exp_year|integer|null: false|
+|security_code|integer|null: false|
 
 ### Association
 - belongs_to :user
@@ -70,7 +70,7 @@
 |shipping _charges|string|null: false|
 |shipping_area|string|null: false|
 |days_to_delivery|string|null: false|
-|price|integer||
+|price|integer|null: false|
 
 ### Association
 - has_many :product_images
