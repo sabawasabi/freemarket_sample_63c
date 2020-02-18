@@ -65,7 +65,7 @@
 |name|string|null: false|
 |description|text|null: false|
 |category_id|references|null: false, foreign_key: true|
-|brand_id|references|null: false, foreign_key: true|
+|brand_id|references|foreign_key: true|
 |condition_id|references|null: false, foreign_key: true|
 |shipping _charges|string|null: false|
 |shipping_area|string|null: false|
