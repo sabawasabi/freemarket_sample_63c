@@ -18,7 +18,11 @@
 
 ### Association
 - has_many :credit_cards
-- belongs_to :transaction
+- has_many :transactions
+- belongs_to :address
+- has_many :likes
+- has_many :comments
+- has_many :products
 
 
 ## addressesテーブル
@@ -30,6 +34,9 @@
 |city|string|null: false|
 |house_number|integer|null: false|
 |building|string||
+
+### Association
+- belongs_to :user
 
 
 ## credit_cardsテーブル
@@ -55,6 +62,30 @@
 
 ### Association
 - belongs_to :user
+- belongs_to :product
+
+## likesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null: false, unique: true|
+|user_id|references|null: false, foreign_key: true|
+|product_id|references|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :product
+
+
+## commentsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|null: false, foreign_key: true|
+|product_id|references|null: false, foreign_key: true|
+|message|text||
+
+### Association
+- belongs_to :user
+- belongs_to :product
 
 
 ## productsテーブル
@@ -74,9 +105,15 @@
 
 ### Association
 - has_many :product_images
+- belongs_to :user
+- belongs_to :category
+- belongs_to :brand
+- belongs_to :condition
+- has_many :likes
+- has_many :comments
 
 
-# product_imagesテーブル
+## product_imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |product_id|references|null: false, foreign_key: true|
@@ -84,3 +121,32 @@
 
 ### Association
 - belongs_to :product
+
+
+## categoriesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null: false, unique: true|
+|path|string|null: false, unique: true|
+|category_name|string|null: false|
+
+### Association
+- has_many :products
+
+
+## brandsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null: false, unique: true|
+|brand_name|string|null: false, unique: true|
+|brand_group_id|intsger|null: false|
+
+### Association
+- has_many :products
+
+
+## conditionsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null: false, unique: true|
+|condition|string|null: false, unique: true|
