@@ -19,7 +19,7 @@
 ### Association
 - has_many :credit_cards
 - has_many :transactions
-- belongs_to :address
+- has_one :address
 - has_many :likes
 - has_many :comments
 - has_many :products
