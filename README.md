@@ -150,3 +150,6 @@
 |------|----|-------|
 |id|integer|null: false, unique: true|
 |condition|string|null: false, unique: true|
+
+### Asociation
+has_many :products
