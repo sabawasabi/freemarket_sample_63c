@@ -3,6 +3,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+
+group :production do
+  gem 'unicorn', '5.4.1'
+end
+
 gem 'rails', '~> 6.0.1'
 gem 'mysql2', '>= 0.3.18', '< 0.6.0'
 gem 'puma', '~> 4.1'
@@ -16,6 +21,11 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
 end
 
 group :development do
