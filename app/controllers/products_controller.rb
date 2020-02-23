@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   def registration
   end
 
-  def signup
+  def signin
   end
 
 end

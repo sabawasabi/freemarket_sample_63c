@@ -1,3 +1,107 @@
 * {
   box-sizing: border-box;
+  background-color: #f8f8f8;
+}
+
+.header {
+  height: 128px;
+  text-align: center;
+  background-color: #f8f8f8;
+  a {
+    list-style: none;
+    display: inline-block;
+    height: 50px;
+    width: 120px;
+    margin-top: 34px;
+  }
+  img {
+    height: 50px;
+    width: 120px;
+    background-color: #f8f8f8;
+  }
+}
+
+.container {
+  width: 100%;
+  background-color: #f8f8f8;
+  display: flex;
+  justify-content: center;
+  &__login-panel {
+    width: 456px;
+    &__registration {
+      padding: 40px 64px;
+      text-align: center;
+      background-color: #fff;
+      border-bottom: 1px solid lightgrey;
+      p {
+        font-size: 14px;
+      }
+      a {
+        display: block;
+        height: 40px;
+        width: 328px;
+        line-height: 40px;
+        background-color: #0099E8;
+        text-decoration: none;
+        color: #fff;
+        margin-top: 8px;
+      }
+    }
+    &__signin {
+      text-align: center;
+      background-color: #fff;
+      padding-top: 24px;
+      &__group {
+        width: 328px;
+        height: 48px;
+        margin: 0 auto 24px auto;
+        padding: 10px 16px 8px 16px;
+      }
+      input {
+        display: block;
+        background-color: #fff;
+      }
+      .signin-btn {
+        background-color: #3CCACE;
+        cursor: pointer;
+        font-size: 14px;
+        color: #fff;
+      }
+      a {
+        display: block;
+        text-decoration: none;
+        text-align: left;
+        padding: 0;
+        font-size: 14px;
+        color: #0099e8;
+        background-color: #fff;
+      }
+    }
+  }
+}
+
+.footer {
+  width: 456px;
+  height: 140px;
+  background-color: #f8f8f8;
+  margin: 0 auto;
+  text-align: center;
+  ul li {
+    display: inline;
+    font-size: 12px;
+    margin-left: 16px;
+  }
+  a {
+    text-decoration: none;
+    color: #333333;
+  }
+  img {
+    height: 50px;
+    width: 120px;
+    background-color: #3CCACE;
+  }
+  p {
+    font-size: 13px;
+    color: #333333;
+  }
 }
