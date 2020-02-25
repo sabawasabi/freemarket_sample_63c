@@ -1,48 +1,175 @@
-.header
-  headerspace
-.nav
-  navispace
-.mypage-container__side
-  %nav.mypage-nav
-    %ul.mypage-nav-list
-      %li< マイページ
-      %li< いいね！一覧
-      %li< 出品する
-      %li< 出品した商品−出品中
-      %li< 出品した商品−取引中
-      %li< 出品した商品−売却済み
-      %li< 購入した商品−取引中
-      %li< 購入した商品−過去の取引
-      %li< ニュース一覧
+%body
+  -# ヘッダーができたらコメントアウト解除
+  -# = render '？？？/header'
+  %nav#subNav
+    %ul.subNavUl
       %li
-        = link_to "#", class: "mypage-nav-list-item" do
-          評価一覧
-          %i.fa.fa-angle-right.icon
-      %li< ガイド
-      %li< お問い合わせ
+        %a
+          %span メルカリ
+      %li
+        %a
+          %span.active マイページ
 
-    %h3
-      メルペイ
-    %ul
-      %li< 売上・振込申請
-      %li< ポイント
+  %main
+    .mypage-container.clearfix
+      .mypage-container__content
+        %section.mypage-container__content-user-icon
+          %a{href: ""}
+            %figure
+              %img{alt: "",  src: "//static-mercari-jp-imgtr2.akamaized.net/images/member_photo_noimage_thumb.png"}
+            %h2.bold 田中将吾郎
+            .mypage-number
+              .mypage-number-detail
+                評価
+                %span.bold 56
+              .mypage-number-detail
+                出品数
+                %span.bold 56
+        %section.mypage-container-news-todo.clearfix
+        
 
-    %h3
-      設定
-    %ul
-      %li< プロフィール
-      %li< 発送元・お届け先住所変更
-      %li< 支払い方法
-      %li< メール／パスワード
-      %li< 本人情報
-      %li< 電話番号の確認
-      %li< ログアウト
 
-  .main__content
-    main__contentspace
+        %section.mypage-container__tradings
+          %h2.mypage-container__tradings-head 購入した商品
+          %ul.mypage-container__tradings-tabs
+            %li.trading-now.trading-tabs.active
+              %a.bold{href:""} 取引中
+            %li.trading-after.trading-tabs
+              %a.bold{href:""} 過去の取引
 
-.bannar
-  bannarspace
+          .mypage-container__tradings-contents
+            %ul#trading-tab-list-now.tab-pane.active
+              %li.mypage-item-not-found.bold.active  取引中の商品がありません
 
-.footer
-  footerspace
+            %ul#trading-tab-list-after.tab-pane
+              %li.list-contents
+                %a{href:""}
+                  %figure
+                    %img{src:""}
+                  .mypage-item-body
+                    .mypage-item-body__text
+                      「購入テスト１」 を購入しました。
+                      %span 取引が完了しました
+                    .mypage-item-body__status.bold.done 取引完了
+                  %i.fa.fa-angle-right.icon
+              %li.list-contents
+                %a{href:''}
+                  %figure
+                    %img{src:""}
+                  .mypage-item-body
+                    .mypage-item-body__text
+                      「購入テスト２」 を購入しました。
+                      %span 取引が完了しました
+                    .mypage-item-body__status.bold.done 取引完了
+                  %i.fa.fa-angle-right.icon
+              %li#gotoAllList
+                %a#gotoAllList-inner{href: ""} 一覧を見る
+
+      .mypage-container__side
+        %nav.mypage-nav
+          %ul.mypage-nav-list
+            %li
+              %a.mypage-nav-list-item.active{href: ""}
+                マイページ
+                %i.fa.fa-angle-right.icon.active
+            %li
+              %a.mypage-nav-list-item{href: ""}
+                お知らせ
+                %i.fa.fa-angle-right.icon
+            %li
+              %a.mypage-nav-list-item{href: ""}
+                やることリスト
+                %i.fa.fa-angle-right.icon
+            %li
+              %a.mypage-nav-list-item{href: ""}
+                いいね！一覧
+                %i.fa.fa-angle-right.icon
+            %li
+              %a.mypage-nav-list-item{href: ""}
+                出品する
+                %i.fa.fa-angle-right.icon
+            %li
+              %a.mypage-nav-list-item{href: ""}
+                出品した商品 - 出品中
+                %i.fa.fa-angle-right.icon
+            %li
+              %a.mypage-nav-list-item{href: ""}
+                出品した商品 - 取引中
+                %i.fa.fa-angle-right.icon
+            %li
+              %a.mypage-nav-list-item{href: ""}
+                出品した商品 - 売却済み
+                %i.fa.fa-angle-right.icon
+            %li
+              %a.mypage-nav-list-item{href: ""}
+                購入した商品 - 取引中
+                %i.fa.fa-angle-right.icon
+            %li
+              %a.mypage-nav-list-item{href: ""}
+                購入した商品 - 過去の取引
+                %i.fa.fa-angle-right.icon
+            %li
+              %a.mypage-nav-list-item{href: ""}
+                ニュース一覧
+                %i.fa.fa-angle-right.icon
+            %li
+              %a.mypage-nav-list-item{href: ""}
+                評価一覧
+                %i.fa.fa-angle-right.icon
+            %li
+              %a.mypage-nav-list-item{href: ""}
+                ガイド
+                %i.fa.fa-angle-right.icon
+            %li
+              %a.mypage-nav-list-item{href: ""}
+                お問い合わせ
+                %i.fa.fa-angle-right.icon
+          %h3.mypage-nav-head 売上・ポイント
+          %ul.mypage-nav-list
+            %li
+              %a.mypage-nav-list-item{href: ""}
+                売上・振込申請
+                %i.fa.fa-angle-right.icon
+            %li
+              %a.mypage-nav-list-item{href: ""}
+                ポイント
+                %i.fa.fa-angle-right.icon
+          %h3.mypage-nav-head 設定
+          %ul.mypage-nav-list
+            %li
+              %a.mypage-nav-list-item{href: ""}
+                プロフィール
+                %i.fa.fa-angle-right.icon
+            %li
+              %a.mypage-nav-list-item{href: ""}
+                住所変更
+                %i.fa.fa-angle-right.icon
+            %li
+              %a.mypage-nav-list-item{href: ""}
+                支払い方法
+                %i.fa.fa-angle-right.icon
+            %li
+              %a.mypage-nav-list-item{href: ""}
+                メール/パスワード
+                %i.fa.fa-angle-right.icon
+            %li
+              %a.mypage-nav-list-item{href: ""}
+                本人情報
+                %i.fa.fa-angle-right.icon
+            %li
+              %a.mypage-nav-list-item{href: ""}
+                電話番号の確認
+                %i.fa.fa-angle-right.icon
+            %li
+              %a.mypage-nav-list-item{href: ""}
+                ログアウト
+                %i.fa.fa-angle-right.icon
+
+  -# バナー
+  -# = render 'items/appbarner'
+
+  -# フッター
+  -# = render 'items/footer'
+
+  -# ヘッダーボトム
+  -# = render 'items/sellBtn'
