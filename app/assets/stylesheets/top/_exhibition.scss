@@ -1,6 +1,6 @@
 .exhibition{
   box-sizing: border-box;
-  .exhibition_btn{
+  &__btn{
     width: 90px;
     height: 80px;
     background: #3CCACE;
@@ -10,5 +10,8 @@
     right: 32px;
     position: fixed;
     padding: 15px;
+    &--text{
+      color: #ffffff;
+    }
   }
 }
