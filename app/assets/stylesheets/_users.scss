@@ -1,3 +1,56 @@
+* {
+  box-sizing: border-box;
+}
+
+
+ul {
+  display: block;
+  list-style-type: none;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+
+.nav__list__item{
+  position: relative;
+  display: block;
+  min-height: 48px;
+  padding: 16px;
+  background: #fff;
+  font-size: 14px;
+  color: #333;
+}
+
+i.fa.fa-angle-right.icon.active{
+  font-weight: 600;
+  color: #333;
+}
+
+i.fa.fa-angle-right.icon{
+  color: #333;
+  right: 10px;
+  top: 13px;
+  font-size: 22px;
+}
+
+
+.nav__list__item__icon{
+  background-color: #4169e1;
+}
+
+.nav__list__item.active {
+  background: #eee;
+  font-weight: 600;
+}
+
+
+a {
+  text-decoration: none;
+}
+
+
 .header{
   height: 100px;
   background-color: #333333;
@@ -16,15 +69,10 @@
   background-color: rgb(174, 174, 179);
 }
 
-.main__side{
+.mypage-container__side{
   width: 280px;
   float: left;
-  margin: 0;
-  padding: 0;
-  
-  border-style: solid;
-  border-width: 0;
-  background-color: red;
+  margin-right: 40px;
 }
 
 .main__content{
@@ -46,4 +94,52 @@
 .footer{
   height: 421px;
   background-color: greenyellow;
+}
+.mypage-nav{
+  &-list{
+    li{
+      border-top: 1px solid #eee;
+      a.mypage-nav-list-item{
+        box-sizing: border-box;
+        position: relative;
+        display: block;
+        min-height: 48px;
+        padding: 16px;
+        background-color: #fff;
+        color: #333;
+        font-size: 14px;
+        i{
+          position: absolute;
+          top: 16px;
+          right: 16px;
+          color: #ccc;
+          font-size: 19px;
+        }
+      }
+      a.mypage-nav-list-item.active{
+        background-color: #eee;
+        font-weight: 600;
+        i.fa.fa-angle-right.icon.active{
+          font-weight: 600;
+          color: #333;
+        }
+      }
+    }
+    li:hover{
+      a.mypage-nav-list-item{
+        opacity: 0.7;
+        background-color: #eee;
+        i.fa.fa-angle-right.icon{
+          color: #333;
+          right: 10px;
+          top: 13px;
+          font-size: 22px;
+        }
+      }
+    }
+  }
+  &-head{
+    margin-top: 40px;
+    font-size: 16px;
+  }
 }
