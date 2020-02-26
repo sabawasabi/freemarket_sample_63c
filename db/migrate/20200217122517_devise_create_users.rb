@@ -14,6 +14,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.integer :birth_month,       null: false
       t.integer :birth_day,         null: false
       t.integer :phone_number
+      t.text :profile
+      t.text :icon
       t.string :reset_password_token
       t.datetime :reset_password_sent_at
       t.datetime :remember_created_at      
