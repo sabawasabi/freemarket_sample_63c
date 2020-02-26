@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  get 'products/create'
-  root "products#create"
+  get 'products/new'
+  root "products#new"
 end
