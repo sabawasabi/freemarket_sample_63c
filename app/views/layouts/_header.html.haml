@@ -3,10 +3,11 @@
     .mainheader
       %h1.mainheader__icon
         = image_tag 'logo.png', class: 'header_log',size: '140x44'
-      .mainheader__searchbox
-      %from 
-      %ul.mainheader__resultbtn
-        = image_tag 'icon-search_1.png', class: 'search_log',size: '19x19'
+      .mainheader__search
+        %input.mainheader__search--box{ placeholder: 'キーワードを検索してください'}
+
+        %ul.mainheader__search--btn
+          = image_tag 'icon-search_1.png', class: 'search_log',size: '19x19'
       
     %ul.navigation
       .navigation__left
