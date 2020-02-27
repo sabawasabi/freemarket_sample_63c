@@ -1,6 +1,14 @@
 * {
   box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
   background-color: #f8f8f8;
+  height: 100%;
 }
 
 .header {
@@ -97,6 +105,7 @@
         background-color: #fff;
         &__item {
           background-color: #fff;
+          margin-top: 32px;
           p {
             display: inline;
             font-size: 14px;
@@ -133,6 +142,9 @@
             width: 76px;
           }
         }
+        &__item:first-of-type {
+          margin-top: 0;
+        }
         &__btn {
           background-color: #fff;
           p {
@@ -162,9 +174,9 @@
 }
 
 .footer {
-  width: 456px;
-  height: 140px;
+  width: 100%;
   background-color: #f8f8f8;
+  padding: 40px 0;
   margin: 0 auto;
   text-align: center;
   ul li {
@@ -174,12 +186,12 @@
   }
   a {
     text-decoration: none;
-    color: #333333;
   }
   img {
     height: 50px;
     width: 120px;
     background-color: #3CCACE;
+    margin-top: 40px;
   }
   p {
     font-size: 13px;
