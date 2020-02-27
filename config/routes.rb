@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'products/index'
-  get 'products/registration'
-  get 'products/signin'
-  root "products#index"
+  get 'users/index'
+  get 'users/registration'
+  get 'users/signin'
+  root "users#index"
 end
