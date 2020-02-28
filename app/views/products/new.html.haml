@@ -27,14 +27,13 @@
             商品名
             .products-contents__main-overview__name__title-required
               必須
-          %input.products-contents__main-overview__name__text{:placeholder => "40文字まで", :type => "text"}/
+          %input.products-contents__main-overview__name__text{placeholder: "40文字まで", type: "text"}
 
         .products-contents__main-overview__description
           .products-contents__main-overview__description__title
             商品の説明
             .products-contents__main-overview__description__title-required
               必須
-          -# %input.products-contents__main-overview__description__text{:placeholder => "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", :type => "text"}/
           %textarea{placeholder: "商品の説明（必須 1,000文字以内）\n（色、素材、重さ、定価、注意点など）\n\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", name: "text", rows: "7", class: "products-contents__main-overview__description__text"}
           .products-contents__main-overview__description__count
             0/1000
@@ -56,7 +55,7 @@
             ブランド
             .products-contents__main-details__brand__title-required
               任意
-          %input.products-contents__main-details__brand-box{:placeholder => "例) シャネル", :type => "text"}/
+          %input.products-contents__main-details__brand-box{placeholder: "例) シャネル", type: "text"}
         .products-contents__main-details__status
           .products-contents__main-details__status__title
             商品の状態
@@ -103,7 +102,7 @@
           .products-contents__main-sale__box-price
             .products-contents__main-sale__box-price__mark
               ¥
-            %input.products-contents__main-sale__box-price__input{:placeholder => "0", :type => "text"}/
+            %input.products-contents__main-sale__box-price__input{placeholder: "0", type: "text"}
         .products-contents__main-sale__comission
           .products-contents__main-sale__comission__box
             .products-contents__main-sale__comission__box-title
@@ -119,8 +118,8 @@
             .products-contents__main-sale__profit__box-price
               —
         .products-contents__main-sale__button
-          %input.products-contents__main-sale__button-exhibition{:name => "出品する", :placeholder => "出品する", :type => "button", :value => "出品する"}/
-          %input.products-contents__main-sale__button-back{:name => "もどる", :placeholder => "もどる", :type => "button", :value => "もどる"}/
+          %input.products-contents__main-sale__button-exhibition{name: "出品する", placeholder: "出品する", type: "button", value: "出品する"}
+          %input.products-contents__main-sale__button-back{name: "もどる", placeholder: "もどる", type: "button", value: "もどる"}
         .products-contents__main-sale__foot
           禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
 
