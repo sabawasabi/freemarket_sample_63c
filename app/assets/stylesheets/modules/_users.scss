@@ -2,16 +2,7 @@
   box-sizing: border-box;
 }
 
-html {
-  height: 100%;
-}
-
-body {
-  background-color: #f8f8f8;
-  height: 100%;
-}
-
-.header {
+.registration-header {
   height: 128px;
   text-align: center;
   background-color: #f8f8f8;
@@ -173,7 +164,7 @@ body {
   }
 }
 
-.footer {
+.registration-footer {
   width: 100%;
   background-color: #f8f8f8;
   padding: 40px 0;
