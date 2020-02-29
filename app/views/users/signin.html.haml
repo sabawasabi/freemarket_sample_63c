@@ -1,0 +1,12 @@
+= render partial: 'layouts/signin_registration_header.html'
+.container
+  .container__login-panel
+    .container__login-panel__registration
+      %p アカウントをお持ちでない方はこちら
+      = link_to "新規会員登録", users_registration_path, class: "registaration__btn"
+    .container__login-panel__signin
+      %input(type="email" name="email" value="" placeholder="メールアドレス" class="container__login-panel__signin__group input-text")
+      %input(type="password" name="password" value="" placeholder="パスワード" class="container__login-panel__signin__group input-text")
+      = button_tag "ログイン", type: "submit", class: "container__login-panel__signin__group submit-btn"
+      = link_to 'パスワードをお忘れの方', '#', class: "container__login-panel__signin__group"
+= render partial: 'layouts/signin_registration_footer.html'
