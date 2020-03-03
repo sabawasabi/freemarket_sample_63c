@@ -3,10 +3,9 @@
 }
 
 .products-wall {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
+  overflow: scroll;
   background-color: rgb(245, 245, 245);
 
   .products-header {
@@ -16,9 +15,6 @@
     justify-content: center;
     text-align: center;
     align-items: center;
-    &__logo {
-
-    }
   }
 
   .products-contents {
