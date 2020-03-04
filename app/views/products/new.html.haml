@@ -119,7 +119,7 @@
               —
         .products-contents__main-sale__button
           %input.products-contents__main-sale__button-exhibition{name: "出品する", placeholder: "出品する", type: "button", value: "出品する"}
-          %input.products-contents__main-sale__button-back{name: "もどる", placeholder: "もどる", type: "button", value: "もどる"}
+          =link_to "もどる", '/' , class: 'products-contents__main-sale__button-back'
         .products-contents__main-sale__foot
           禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
 
