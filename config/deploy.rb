@@ -7,7 +7,7 @@ set :repo_url,  'git@github.com:sabawasabi/freemarket_sample_63c.git'
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 
 set :rbenv_type, :user
-set :rbenv_ruby, ‘2.5.1’
+set :rbenv_ruby, '2.5.1'
 
 set :ssh_options, auth_methods: ['publickey'],
                   keys: ['~/.ssh/ASO_20200120.pem'] 
