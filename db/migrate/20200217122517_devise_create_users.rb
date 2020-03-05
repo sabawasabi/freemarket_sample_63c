@@ -5,7 +5,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
     create_table :users do |t|
       t.string :nickname,           null: false, comment: "ニックネーム"
       t.string :email,              null: false, comment: "メールアドレス"
-      t.string :encrypted_password, null: false, comment: "パスワード(暗号化)"
+      t.string :password,           null: false, comment: "パスワード"
       t.string :last_name,          null: false, comment: "ラストネーム"
       t.string :first_name,         null: false, comment: "ファーストネーム"
       t.string :last_name_jp,       null: false, comment: "苗字(姓)"
