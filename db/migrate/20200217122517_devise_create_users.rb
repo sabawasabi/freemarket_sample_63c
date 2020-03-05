@@ -6,19 +6,16 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.string :nickname,           null: false, comment: "ニックネーム"
       t.string :email,              null: false, comment: "メールアドレス"
       t.string :encrypted_password, null: false, comment: "パスワード(暗号化)"
-      t.string :last_name,          null: false
-      t.string :first_name,         null: false
-      t.string :last_name_jp,       null: false
-      t.string :first_name_jp,      null: false
-      t.integer :birth_year,        null: false
-      t.integer :birth_month,       null: false
-      t.integer :birth_day,         null: false
-      t.integer :phone_number
-      t.text :profile
-      t.text :icon
-      t.string :reset_password_token
-      t.datetime :reset_password_sent_at
-      t.datetime :remember_created_at      
+      t.string :last_name,          null: false, comment: "ラストネーム"
+      t.string :first_name,         null: false, comment: "ファーストネーム"
+      t.string :last_name_jp,       null: false, comment: "苗字(姓)"
+      t.string :first_name_jp,      null: false, comment: "名前(名)"
+      t.integer :birth_year,        null: false, comment: "誕生年"
+      t.integer :birth_month,       null: false, comment: "誕生月"
+      t.integer :birth_day,         null: false, comment: "誕生日"
+      t.integer :phone_number                  , comment: "電話番号"
+      t.text :profile                          , comment: "自己紹介文"
+      t.text :icon                             , comment: "アイコン"   
       t.timestamps null: false
     end
 
