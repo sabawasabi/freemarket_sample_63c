@@ -15,6 +15,8 @@
 |birth_month|integer|null: false|
 |birth_day|integer|null: false|
 |phone_number|integer||
+|profile|text||
+|icon|text||
 
 ### Association
 - has_many :credit_cards
@@ -95,9 +97,9 @@
 |user_id|references|null: false, foreign_key: true|
 |name|string|null: false|
 |description|text|null: false|
-|category_id|references|null: false, foreign_key: true|
+|category_path|references|null: false, foreign_key: true|
 |brand_id|references|foreign_key: true|
-|condition_id|references|null: false, foreign_key: true|
+|condition|string|null: false|
 |shipping _charges|string|null: false|
 |shipping_area|string|null: false|
 |days_to_delivery|string|null: false|
@@ -108,7 +110,7 @@
 - belongs_to :user
 - belongs_to :category
 - belongs_to :brand
-- belongs_to :condition
+- has_many :transactions
 - has_many :likes
 - has_many :comments
 
@@ -143,13 +145,3 @@
 
 ### Association
 - has_many :products
-
-
-## conditionsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|id|integer|null: false, unique: true|
-|condition|string|null: false, unique: true|
-
-### Asociation
-has_many :products
