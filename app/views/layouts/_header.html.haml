@@ -1,0 +1,22 @@
+.header
+  .header__inner
+    .mainheader
+      %h1.mainheader__icon
+        = image_tag 'logo.png', class: 'header_log',size: '140x44'
+      .mainheader__search
+        %input.mainheader__search--box{ placeholder: 'キーワードを検索してください'}
+
+        %ul.mainheader__search--btn
+          = image_tag 'icon-search_1.png', class: 'search_log',size: '19x19'
+      
+    %ul.navigation
+      .navigation__left
+        %li.navigation__left__category
+          カテゴリー
+        %li.navigation__left--brand
+          ブランド
+      .navigation__right
+        %li.navigation__right--login
+          = link_to "ログイン", new_user_session_path
+        %li.navigation__right--new
+          = link_to "新規会員登録", new_user_registration_path
