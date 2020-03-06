@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   # end
 
-  before_action :basic_auth, if: :production?
+  # before_action :basic_auth, if: :production?
 
   private
 
