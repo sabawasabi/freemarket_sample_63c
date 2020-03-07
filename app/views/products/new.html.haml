@@ -3,132 +3,119 @@
     = image_tag 'logo.png', class: '.products-header__logo', size: '185x49'
   .products-contents
     .products-contents__main
-
-      .products-contents__main-image
-        .products-contents__main-image__title
-          出品画像
-          .products-contents__main-image__title-required
-            必須
-        .products-contents__main-image__text
-          最大10枚までアップロードできます
-        .products-contents__main-image__box
-          .products-contents__main-image__box-input
-            = icon('fas', 'camera', class: 'products-contents__main-image__box-input__icon')
-            .products-contents__main-image__box-input__text
-              ドラックアンドドロップ
-              %br/
-              またはクリックしてファイルをアップロード
-    
-      .products-contents__main-border
-    
-      .products-contents__main-overview
-        .products-contents__main-overview__name
-          .products-contents__main-overview__name__title
-            商品名
-            .products-contents__main-overview__name__title-required
+      = form_for @product do |f|
+        .products-contents__main-image
+          .products-contents__main-image__title
+            出品画像
+            .products-contents__main-image__title-required
               必須
-          %input.products-contents__main-overview__name__text{placeholder: "40文字まで", type: "text"}
+          .products-contents__main-image__text
+            最大10枚までアップロードできます
+            .products-contents__main-image__box
+              .products-contents__main-image__box-input
+                = icon('fas', 'camera', class: 'products-contents__main-image__box-input__icon')
+                .products-contents__main-image__box-input__text
+                  ドラックアンドドロップ
+                  %br/
+                  またはクリックしてファイルをアップロード
 
-        .products-contents__main-overview__description
+        .products-contents__main-border
+
+        .products-contents__main-overview
+          .products-contents__main-overview__name
+            .products-contents__main-overview__name__title
+              商品名
+              .products-contents__main-overview__name__title-required
+                必須
+            = f.text_field :name, class: "products-contents__main-overview__name__text", placeholder: "40文字まで"
+          .products-contents__main-overview__description
           .products-contents__main-overview__description__title
             商品の説明
             .products-contents__main-overview__description__title-required
               必須
-          %textarea{placeholder: "商品の説明（必須 1,000文字以内）\n（色、素材、重さ、定価、注意点など）\n\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", name: "text", rows: "7", class: "products-contents__main-overview__description__text"}
+          = f.text_area :description, class: "products-contents__main-overview__description__text", placeholder: "商品の説明（必須 1,000文字以内）\n（色、素材、重さ、定価、注意点など）\n\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "7"
           .products-contents__main-overview__description__count
             0/1000
 
-      .products-contents__main-border
+        .products-contents__main-border
 
-      .products-contents__main-details
-        .products-contents__main-details-title
-          商品の詳細
-        .products-contents__main-details__category
-          .products-contents__main-details__category__title
-            カテゴリー
-            .products-contents__main-details__category__title-required
-              必須
-          .products-contents__main-details__category-box
-            選択してください
-        .products-contents__main-details__brand
-          .products-contents__main-details__brand__title
-            ブランド
-            .products-contents__main-details__brand__title-required
-              任意
-          %input.products-contents__main-details__brand-box{placeholder: "例) シャネル", type: "text"}
-        .products-contents__main-details__status
-          .products-contents__main-details__status__title
-            商品の状態
-            .products-contents__main-details__status__title-required
-              必須
-          .products-contents__main-details__status-box
-            選択してください
+        .products-contents__main-details
+          .products-contents__main-details-title
+            商品の詳細
+          .products-contents__main-details__category
+            .products-contents__main-details__category__title
+              カテゴリー
+              .products-contents__main-details__category__title-required
+                必須
+            .products-contents__main-details__category-box
+              選択してください
+          .products-contents__main-details__brand
+            .products-contents__main-details__brand__title
+              ブランド
+              .products-contents__main-details__brand__title-required
+                任意
+            %input.products-contents__main-details__brand-box{placeholder: "例) シャネル", type: "text"}
+          .products-contents__main-details__status
+            .products-contents__main-details__status__title
+              商品の状態
+              .products-contents__main-details__status__title-required
+                必須
+            .products-contents__main-details__status-box
+              選択してください
 
-      .products-contents__main-border
+        .products-contents__main-border
 
-      .products-contents__main-delivery
-        .products-contents__main-delivery__charge
-          .products-contents__main-delivery__charge__title
-            配送料の負担
-            .products-contents__main-delivery__charge__title-required
-              必須
-          .products-contents__main-delivery__charge-box
-            選択してください
-        .products-contents__main-delivery__area
-          .products-contents__main-delivery__area__title
-            発送元の地域
-            .products-contents__main-delivery__area__title-required
-              必須
-          .products-contents__main-delivery__area-box
-            選択してください
-        .products-contents__main-delivery__date
-          .products-contents__main-delivery__date__title
-            発送までの日数
-            .products-contents__main-delivery__date__title-required
-              必須
-          .products-contents__main-delivery__date-box
-            選択してください
+        .products-contents__main-delivery
+          .products-contents__main-delivery__charge
+            .products-contents__main-delivery__charge__title
+              配送料の負担
+              .products-contents__main-delivery__charge__title-required
+                必須
+            .products-contents__main-delivery__charge-box
+              選択してください
+          .products-contents__main-delivery__area
+            .products-contents__main-delivery__area__title
+              発送元の地域
+              .products-contents__main-delivery__area__title-required
+                必須
+            .products-contents__main-delivery__area-box
+              選択してください
+          .products-contents__main-delivery__date
+            .products-contents__main-delivery__date__title
+              発送までの日数
+              .products-contents__main-delivery__date__title-required
+                必須
+            .products-contents__main-delivery__date-box
+              選択してください
 
-      .products-contents__main-border
+        .products-contents__main-border
 
-      .products-contents__main-sale
-        .products-contents__main-sale__title
-          価格 (¥300〜9,999,999)
-        .products-contents__main-sale__box
-          .products-contents__main-sale__box__title
-            販売価格
-            .products-contents__main-sale__box__title-required
-              必須
-          .products-contents__main-sale__box-price
-            .products-contents__main-sale__box-price__mark
-              ¥
-            %input.products-contents__main-sale__box-price__input{placeholder: "0", type: "text"}
-        .products-contents__main-sale__comission
-          .products-contents__main-sale__comission__box
-            .products-contents__main-sale__comission__box-title
-              販売手数料 (10%)
-            .products-contents__main-sale__comission__box-price
-              —
-        .products-contents__main-sale__border
-        
-        .products-contents__main-sale__profit
-          .products-contents__main-sale__profit__box
-            .products-contents__main-sale__profit__box-title
-              販売利益
-            .products-contents__main-sale__profit__box-price
-              —
-        .products-contents__main-sale__button
-          %input.products-contents__main-sale__button-exhibition{name: "出品する", placeholder: "出品する", type: "button", value: "出品する"}
-          =link_to "もどる", '/' , class: 'products-contents__main-sale__button-back'
-        .products-contents__main-sale__foot
-          禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+        .products-contents__main-sale
+          .products-contents__main-sale__title
+            価格 (¥300〜9,999,999)
+          .products-contents__main-sale__box
+            .products-contents__main-sale__box__title
+              販売価格
+              .products-contents__main-sale__box__title-required
+                必須
+            .products-contents__main-sale__box-price
+              .products-contents__main-sale__box-price__mark
+                ¥
+              %input.products-contents__main-sale__box-price__input{placeholder: "0", type: "text"}
+          .products-contents__main-sale__comission
+            .products-contents__main-sale__comission__box
+              .products-contents__main-sale__comission__box-title
+                販売手数料 (10%)
+              .products-contents__main-sale__comission__box-price
+                —
+          .products-contents__main-sale__border
+            
+          .products-contents__main-sale__profit
+            .products-contents__main-sale__profit__box
+              .products-contents__main-sale__profit__box-title
+                販売利益
+              .products-contents__main-sale__profit__box-price
+                —
 
-  .products-footer
-    .products-footer__box
-      =link_to "プライバシーポリシー", '#' , class: 'products-footer__box-text'
-      =link_to "FURIMA利用規約", '#' , class: 'products-footer__box-text'
-      =link_to "特定商取引に関する表記", '#' , class: 'products-footer__box-text'
-    .products-footer__image
-      = image_tag 'logo.png', class: 'header_log', size: '185x49'
-    .products-footer__chara
-      © FURIMA, Inc.
+        .products-contents__main-button
+        = f.submit "出品する", class: "products-contents__main-button-exhibition"

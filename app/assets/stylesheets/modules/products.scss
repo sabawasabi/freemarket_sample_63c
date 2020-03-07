@@ -460,41 +460,42 @@
             line-height: 48px;
           }
         }
-        &__button {
-          margin: 0 120px 32px 120px;
-          width: 360px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          &-exhibition {
-            background-color: #3CCACE;
-            color: #fff;
-            margin-bottom: 24px;
-            width: 100%;
-            font-size: 17px;
-            min-height: 48px;
-            padding: 0 24px;
-            border: 1px solid transparent;
-            font-weight: 600;
-            line-height: 48px;
-            overflow: hidden;
-            text-align: center;
-            text-decoration: none;
-          }
-          &-back {
-            background-color: #ccc;
-            color: #222;
-            width: 100%;
-            font-size: 17px;
-            min-height: 48px;
-            padding: 0 24px;
-            border: 1px solid transparent;
-            font-weight: 600;
-            line-height: 48px;
-            overflow: hidden;
-            text-align: center;
-            text-decoration: none;
-          }
+      }
+
+      &-button {
+        margin: 0 120px 32px 120px;
+        width: 360px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &-exhibition {
+          background-color: #3CCACE;
+          color: #fff;
+          margin-bottom: 24px;
+          width: 100%;
+          font-size: 17px;
+          min-height: 48px;
+          padding: 0 24px;
+          border: 1px solid transparent;
+          font-weight: 600;
+          line-height: 48px;
+          overflow: hidden;
+          text-align: center;
+          text-decoration: none;
+        }
+        &-back {
+          background-color: #ccc;
+          color: #222;
+          width: 100%;
+          font-size: 17px;
+          min-height: 48px;
+          padding: 0 24px;
+          border: 1px solid transparent;
+          font-weight: 600;
+          line-height: 48px;
+          overflow: hidden;
+          text-align: center;
+          text-decoration: none;
         }
       }
     }
