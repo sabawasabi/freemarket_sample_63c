@@ -463,8 +463,7 @@
       }
 
       &-button {
-        margin: 0 120px 32px 120px;
-        width: 360px;
+        padding: 40px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -496,6 +495,10 @@
           overflow: hidden;
           text-align: center;
           text-decoration: none;
+        }
+        &__foot {
+          width: 620px;
+          height: 32px;
         }
       }
     }

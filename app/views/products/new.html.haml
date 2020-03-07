@@ -59,9 +59,8 @@
             .products-contents__main-details__status__title
               商品の状態
               .products-contents__main-details__status__title-required
-                必須
-            .products-contents__main-details__status-box
-              選択してください
+                必須            
+            = f.text_field :condition, class: "products-contents__main-details__status-box", placeholder: "選択して下さい"
 
         .products-contents__main-border
 
@@ -71,22 +70,19 @@
               配送料の負担
               .products-contents__main-delivery__charge__title-required
                 必須
-            .products-contents__main-delivery__charge-box
-              選択してください
+            = f.text_field :shipping_charges, class: "products-contents__main-delivery__charge-box", placeholder: "選択して下さい"
           .products-contents__main-delivery__area
             .products-contents__main-delivery__area__title
               発送元の地域
               .products-contents__main-delivery__area__title-required
                 必須
-            .products-contents__main-delivery__area-box
-              選択してください
+            = f.text_field :shipping_area, class: "products-contents__main-delivery__area-box", placeholder: "選択して下さい"
           .products-contents__main-delivery__date
             .products-contents__main-delivery__date__title
               発送までの日数
               .products-contents__main-delivery__date__title-required
                 必須
-            .products-contents__main-delivery__date-box
-              選択してください
+            = f.text_field :days_to_delivery, class: "products-contents__main-delivery__date-box", placeholder: "選択して下さい"
 
         .products-contents__main-border
 
@@ -101,7 +97,7 @@
             .products-contents__main-sale__box-price
               .products-contents__main-sale__box-price__mark
                 ¥
-              %input.products-contents__main-sale__box-price__input{placeholder: "0", type: "text"}
+              = f.text_field :price, class: "products-contents__main-sale__box-price__input", placeholder: "0"
           .products-contents__main-sale__comission
             .products-contents__main-sale__comission__box
               .products-contents__main-sale__comission__box-title
@@ -116,6 +112,18 @@
                 販売利益
               .products-contents__main-sale__profit__box-price
                 —
-
         .products-contents__main-button
-        = f.submit "出品する", class: "products-contents__main-button-exhibition"
+          = f.submit "出品する", class: "products-contents__main-button-exhibition"
+          =link_to "もどる", '/' , class: 'products-contents__main-button-back'
+        .products-contents__main-button__foot
+          禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+
+  .products-footer
+    .products-footer__box
+      =link_to "プライバシーポリシー", '#' , class: 'products-footer__box-text'
+      =link_to "FURIMA利用規約", '#' , class: 'products-footer__box-text'
+      =link_to "特定商取引に関する表記", '#' , class: 'products-footer__box-text'
+    .products-footer__image
+      = image_tag 'logo.png', class: 'header_log', size: '185x49'
+    .products-footer__chara
+      © FURIMA, Inc.
