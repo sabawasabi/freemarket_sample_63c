@@ -16,7 +16,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.integer :phone_number                  , comment: "電話番号"
       t.text :profile                          , comment: "自己紹介文"
       t.text :icon                             , comment: "アイコン"   
-      t.timestamps null: false
+      t.timestamps                  null: false
     end
 
     add_index :users, :email,       unique: true
