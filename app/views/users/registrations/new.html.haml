@@ -1,21 +1,53 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "users/shared/links"
+= render partial: 'layouts/signin_registration_header.html'
+.container
+  .container__signup-panel
+    .container__signup-panel__header
+      %h2 会員情報入力
+    = form_for(@user, url: registration_path(resource_name), html: {class: "container__signup-panel__main"}) do |f|
+      = devise_error_messages!
+      .container__signup-panel__main__form
+        .container__signup-panel__main__form__item
+          %p ニックネーム
+          %span.form-require 必須
+          .form-block
+            = f.text_field :nickname, class: "input-form", autocomplete: "nickname", placeholder: "例）FURIMA太郎"
+        .container__signup-panel__main__form__item
+          %p メールアドレス
+          %span.form-require 必須
+          .form-block
+            = f.email_field :email, class: "input-form", autocomplete: "email", placeholder: "PC・携帯どちらでも可"
+        .container__signup-panel__main__form__item
+          %p パスワード
+          %span.form-require 必須
+          .form-block
+            = f.password_field :password, class: "input-form", autocomplete: "password", placeholder: "パスワード"
+        .container__signup-panel__main__form__item
+          %p お名前（全角）
+          %span.form-require 必須
+          .form-block.name-forms
+            = f.text_field :last_name, class: "input-form name-form", autocomplete: "last_name", placeholder: "例）山田"
+            = f.text_field :first_name, class: "input-form name-form", autocomplete: "first_name", placeholder: "例）太郎"
+        .container__signup-panel__main__form__item
+          %p お名前カナ（全角）
+          %span.form-require 必須
+          .form-block.name-forms
+            = f.text_field :last_name_jp, class: "input-form name-form", autocomplete: "last_name_jp", placeholder: "例）ヤマダ"
+            = f.text_field :first_name_jp, class: "input-form name-form", autocomplete: "first_name_jp", placeholder: "例）タロウ"
+        .container__signup-panel__main__form__item
+          %p 生年月日
+          %span.form-require 必須
+          .form-block
+            = f.text_field :birth_year, class: "input-form birth-form", autocomplete: "birth_year", placeholder: "1900"
+            %span 年
+            = f.text_field :birth_month, class: "input-form birth-form", autocomplete: "birth_month", placeholder: "01"
+            %span 月
+            = f.text_field :birth_day, class: "input-form birth-form", autocomplete: "birth_day", placeholder: "01"
+            %span 日
+        .container__signup-panel__main__form__item
+          %p 電話番号
+          .form-block
+            = f.text_field :phone_number, class: "input-form", autocomplete: "phone_number", placeholder: ""
+        .container__signup-panel__main__form__btn
+          %p 「会員登録」のボタンを押すことにより<a href="#">利用規約</a>に同意したものとみなします
+          = button_tag "会員登録", type: "submit", class: "submit-btn"
+= render partial: 'layouts/signin_registration_footer.html'

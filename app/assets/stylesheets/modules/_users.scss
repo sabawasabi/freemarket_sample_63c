@@ -133,6 +133,9 @@ html {
             border: 1px solid #ccc;
             height: 48px;
           }
+          .name-forms{
+            display: flex;
+          }
           .name-form {
             width: calc(50% - 4px);
           }
@@ -144,6 +147,7 @@ html {
           }
           .birth-form {
             width: 76px;
+            text-align: center;
           }
         }
         &__item:first-of-type {
