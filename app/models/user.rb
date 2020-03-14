@@ -6,7 +6,6 @@ class User < ApplicationRecord
   with_options presence: true do
     validates :nickname
     validates :email
-    validates :password
     validates :last_name
     validates :first_name
     validates :last_name_jp
@@ -14,7 +13,7 @@ class User < ApplicationRecord
     validates :birth_date
   end
 
-  # validates :email, format: { with: /\A[a-zA-Z]+\z/}, uniqueness: true
+  validates :email, format: { with: /\A[a-zA-Z]+\z/}, uniqueness: true
   # validates :password, length: { minimum: 7 }, confirmation: true
   validates :phone_number, uniqueness: true, allow_nil: true
 
