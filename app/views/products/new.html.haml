@@ -10,6 +10,7 @@
             .products-contents__main-image__title-required
               必須
           .products-contents__main-image__text
+          = f.fields_for :product_image do |m|
             最大10枚までアップロードできます
             .products-contents__main-image__box
               .products-contents__main-image__box-input
