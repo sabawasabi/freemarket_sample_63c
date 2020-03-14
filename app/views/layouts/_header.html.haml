@@ -16,7 +16,13 @@
         %li.navigation__left--brand
           ブランド
       .navigation__right
-        %li.navigation__right--login
-          = link_to "ログイン", new_user_session_path
-        %li.navigation__right--new
-          = link_to "新規会員登録", new_user_registration_path
+        -if user_signed_in?
+          %li.navigation__right--login
+            = link_to "ログアウト", destroy_user_session_path, method: :delete
+          %li.navigation__right--new
+            = link_to "マイページ", "#"
+        -else
+          %li.navigation__right--login
+            = link_to "ログイン", new_user_session_path
+          %li.navigation__right--new
+            = link_to "新規会員登録", new_user_registration_path
