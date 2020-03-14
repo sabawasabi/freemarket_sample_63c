@@ -33,8 +33,8 @@
       = @product.price
 %br/
 -if user_signed_in? && current_user.id == @product.user_id
-  %a(href="#") 商品の編集画面に進む
-  %a(href="#") 出品商品を取り下げる
+  = link_to "商品の編集画面に進む"
+  = link_to "出品商品を取り下げる"
 -else
-  %a(href="#") 購入画面に進む
+  = link_to "購入画面に進む"
 = render "layouts/footer"
