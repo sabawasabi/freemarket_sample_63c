@@ -3,4 +3,12 @@ Rails.application.routes.draw do
   root "users#show"
   # root "top#index"
   resources :products, only: [:new, :create]
+
+  # ユーザー
+  resources 'users', except: [:edit] do
+    collection do
+      get 'logout'
+    end
+  end
+
 end
