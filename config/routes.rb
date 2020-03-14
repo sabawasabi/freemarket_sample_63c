@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root "users#show"
+  root "top#index"
 
 # TODO usersのルーティング修正
   resources 'users', except: [:edit] do
@@ -9,7 +9,5 @@ Rails.application.routes.draw do
     end
   end
   
-  
-  # root "top#index"
   resources :products, only: [:new, :create, :show]
 end
