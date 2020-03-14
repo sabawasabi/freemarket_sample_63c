@@ -110,6 +110,10 @@ html {
         &__item {
           background-color: #fff;
           margin-top: 32px;
+          label {
+            font-size: 14px;
+            font-weight: 600;
+          }
           p {
             display: inline;
             font-size: 14px;
@@ -160,16 +164,14 @@ html {
               color: #0099E8;
             }
           }
-          button {
-            margin-top: 24px;
-            width: 100%;
-            height: 48px;
-          }
         }
       }
     }
   }
   .submit-btn {
+    margin-top: 24px;
+    width: 100%;
+    height: 48px;
     background-color: #3CCACE;
     cursor: pointer;
     font-size: 14px;
