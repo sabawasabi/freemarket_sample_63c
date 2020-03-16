@@ -6,7 +6,7 @@
     .mypage-container.clearfix
       .mypage-container__content
         %section.mypage-container__content-user-icon
-          %a{href: ""}
+          = link_to "" do
             %figure
               = image_tag "member_photo_noimage_thumb.png", "alt width":"60", height:"60"
             %h2.bold 田中将吾郎
@@ -25,9 +25,11 @@
           %h2.mypage-container__tradings-head 購入した商品
           %ul.mypage-container__tradings-tabs
             %li.trading-now.trading-tabs.active
-              %a.bold{href:""} 取引中
+              = link_to logout_users_path,class:"bold" do
+                取引中
             %li.trading-after.trading-tabs
-              %a.bold{href:""} 過去の取引
+              = link_to logout_users_path,class:"bold" do
+                過去の取引
 
           .mypage-container__tradings-contents
             %ul#trading-tab-list-now.tab-pane.active
@@ -35,7 +37,7 @@
 
             %ul#trading-tab-list-after.tab-pane
               %li.list-contents
-                %a{href:""}
+                = link_to "" do
                   %figure
                     %img{src:""}
                   .mypage-item-body
@@ -45,7 +47,7 @@
                     .mypage-item-body__status.bold.done 取引完了
                   %i.fa.fa-angle-right.icon
               %li.list-contents
-                %a{href:''}
+                = link_to "" do
                   %figure
                     %img{src:""}
                   .mypage-item-body
@@ -55,7 +57,8 @@
                     .mypage-item-body__status.bold.done 取引完了
                   %i.fa.fa-angle-right.icon
               %li#gotoAllList
-                %a#gotoAllList-inner{href: ""} 一覧を見る
+                = link_to logout_users_path,class:"gotoAllList-inne" do
+                  一覧を見る
       -# サイドバー
       = render "layouts/sideber"
 
