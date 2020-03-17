@@ -1,0 +1,40 @@
+= render "layouts/header"
+%h1 プロダクト#{@product.id}のページです
+%h2 Userid:#{@product.user_id}の商品です
+%br/
+%table
+  %tr
+    %th 商品名
+    %td 
+      = @product.name
+  %tr
+    %th 商品説明
+    %td
+      = @product.description
+  %tr
+    %th 商品の状態
+    %td
+      = @product.condition
+  %tr
+    %th 配送料の負担
+    %td
+      = @product.shipping_charges
+  %tr
+    %th 配送元地域
+    %td
+      = @product.shipping_area
+  %tr
+    %th 発送日の目安
+    %td
+      = @product.days_to_delivery
+  %tr
+    %th 価格
+    %td
+      = @product.price
+%br/
+-if user_signed_in? && current_user.id == @product.user_id
+  = link_to "商品の編集画面に進む"
+  = link_to "出品商品を取り下げる"
+-else
+  = link_to "購入画面に進む"
+= render "layouts/footer"

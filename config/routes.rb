@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   root "tops#index"
 
   resources :users, only: [:new, :destroy]
-  resources :products, only: [:new, :create]
+  resources :products, only: [:new, :create, :show]
 
   # ログアウト用のルーティング
   devise_scope :user do
