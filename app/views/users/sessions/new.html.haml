@@ -8,7 +8,7 @@
     // 入力フォーム
     = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "container__login-panel__signin"}) do |f|
       = f.email_field :email, class: "container__login-panel__signin__group input-text", autocomplete: "email", placeholder: "メールアドレス"
-      = f.password_field :password, class: "container__login-panel__signin__group input-text", autocomplete: "password", placeholder: "パスワード"
+      = f.password_field :password, class: "container__login-panel__signin__group input-text", autocomplete: "current_password", placeholder: "パスワード"
 
       = button_tag "ログイン", type: "submit", class: "container__login-panel__signin__group submit-btn"
       
