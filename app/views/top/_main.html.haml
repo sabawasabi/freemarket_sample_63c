@@ -103,45 +103,21 @@
     .subtitle
       新規投稿商品
     .products
-      .products__list
-        .products__list--pic
-          = image_tag 'curry.png', class: 'productpic_left',size: '220x150'
-        .products__list__discription
-          .products__list__discription--name
-            prodeuct52
-          .products__list__discription__core
-            .products__list__discription__core--price
-              20000円
-            .products__list__discription__core--good
-              ★１
-          .products__list__discription--tax
-            (税込)
-      .products__list
-        .products__list--pic
-          = image_tag 'curry.png', class: 'productpic_center',size: '220x150'
-        .products__list__discription
-          .products__list__discription--name
-            prodeuct51
-          .products__list__discription__core
-            .products__list__discription__core--price
-              20000円
-            .products__list__discription__core--good
-              ★１
-          .products__list__discription--tax
-            (税込)
-      .products__list
-        .products__list--pic
-          = image_tag 'curry.png', class: 'productpic_right',size: '220x150'
-        .products__list__discription
-          .products__list__discription--name
-            prodeuct66
-          .products__list__discription__core
-            .products__list__discription__core--price
-              20000円
-            .products__list__discription__core--good
-              ★１
-          .products__list__discription--tax
-            (税込)
+      - @product.each do |product|
+        .products__list
+          .products__list--pic
+            = image_tag 'curry.png', class: 'productpic_left',size: '220x150'
+          .products__list__discription
+            .products__list__discription--name
+              = product.name
+            .products__list__discription__core
+              .products__list__discription__core--price
+                = product.price
+                円
+              .products__list__discription__core--good
+                ★１
+            .products__list__discription--tax
+              (税込)
   .pickupcontainer
     .header
       ピックピックアップブランド
