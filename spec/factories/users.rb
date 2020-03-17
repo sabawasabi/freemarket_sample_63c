@@ -7,9 +7,7 @@ FactoryBot.define do
     first_name    {"first-name"}
     last_name_jp  {"苗字"}
     first_name_jp {"名前"}
-    birth_year    {"2020"}
-    birth_month   {"3"}
-    birth_day     {"1"}
+    birth_date    {"2020-01-01"}
     phone_number  {"00000000000"}
     profile       {"プロフィール文"}
     icon          {"アイコン"}
