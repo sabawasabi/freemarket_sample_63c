@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
   }
 
-  root "tops#index"
+  root "top#index"
 
   resources :users, only: [:new, :destroy]
   resources :products, only: [:new, :create, :show]
