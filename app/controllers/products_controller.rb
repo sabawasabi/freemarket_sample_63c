@@ -7,24 +7,20 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @product_image = Product_image.new(product_image_params)
+    binding.pry
     if @product.save!
-      if @product_image.save!
-        redirect_to root_path, notice: '商品を出品しました'
-      else
-        render :new
+      params.require(:product_image).permit(:image).each do |image|
+        @image = @product.product_image.create!(image: image)
       end
-    else
-      render :new
+      redirect_to root_path, notice: '商品を出品しました'
+      else
+        @product.product_image.build
+        render :new
     end
   end
 
   private
   def product_params
-    params.require(:product).permit(:name, :description, :condition, :shipping_charges, :shipping_area, :days_to_delivery, :price)
-  end
-
-  def product_image_params
-    params.require(:product_image).permit(:image)
+    params.require(:product).permit(:name, :description, :condition, :shipping_charges, :shipping_area, :days_to_delivery, :price, product_image_attributes: :image)
   end
 end

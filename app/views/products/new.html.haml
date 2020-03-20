@@ -11,14 +11,19 @@
               必須
           .products-contents__main-image__text
           = f.fields_for :product_image do |m|
-            最大10枚までアップロードできます
+            最大3枚までアップロードできます
             .products-contents__main-image__box
               .products-contents__main-image__box-input
-                = icon('fas', 'camera', class: 'products-contents__main-image__box-input__icon')
+                -# = icon('fas', 'camera', class: 'products-contents__main-image__box-input__icon')
                 .products-contents__main-image__box-input__text
-                  ドラックアンドドロップ
-                  %br/
-                  またはクリックしてファイルをアップロード
+                  -# ドラックアンドドロップ
+                  -# %br/
+                  -# またはクリックしてファイルをアップロード
+                  = m.file_field :image
+                  = m.file_field :image
+                  = m.file_field :image
+                  = m.file_field :image
+                  = m.file_field :image
 
         .products-contents__main-border
 
