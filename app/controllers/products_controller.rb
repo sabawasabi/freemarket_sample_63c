@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :move_to_index, except: [:index, :show]
+  # before_action :move_to_index, except: [:index, :show]
   
   def new
     @product = Product.new
@@ -23,7 +23,7 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:name, :description, :condition, :shipping_charges, :shipping_area, :days_to_delivery, :price)
   end
 
-  def move_to_index
-    redirect_to action: :index unless user_signed_in?
-  end
+  # def move_to_index
+  #   redirect_to action: :index unless user_signed_in?
+  # end
 end
