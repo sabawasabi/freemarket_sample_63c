@@ -1,6 +1,6 @@
 = render "layouts/header"
 .right__container
-  = form_for @address, url: new_address_path do |f|
+  = form_for @address do |f|
     %h3 発送元・お届け先住所変更
     .field
       = f.label :name, "お名前"
