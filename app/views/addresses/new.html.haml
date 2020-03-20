@@ -1,0 +1,7 @@
+= render "layouts/header"
+.right__container
+  = form_for @address, url: new_address_path do |f|
+    %h3 発送元・お届け先住所変更
+    = f.text_field :postal_code, placeholder: "例) 123-4567"
+    = f.submit
+= render "layouts/footer"
