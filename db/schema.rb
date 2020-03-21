@@ -25,15 +25,21 @@ ActiveRecord::Schema.define(version: 20200303120845) do
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.string   "nickname",                                       null: false, comment: "ニックネーム"
+    t.string   "email",                                          null: false, comment: "メールアドレス"
+    t.string   "encrypted_password",                default: "", null: false, comment: "パスワード（暗号化）"
+    t.string   "last_name",                                      null: false, comment: "姓"
+    t.string   "first_name",                                     null: false, comment: "名"
+    t.string   "last_name_jp",                                   null: false, comment: "姓カナ"
+    t.string   "first_name_jp",                                  null: false, comment: "名カナ"
+    t.date     "birth_date",                                     null: false, comment: "生年月日"
+    t.integer  "phone_number",                                                comment: "電話番号"
+    t.text     "profile",             limit: 65535,                           comment: "自己紹介文"
+    t.text     "icon",                limit: 65535,                           comment: "アイコン"
+    t.datetime "remember_created_at",                                         comment: "ログイン情報の保持用"
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
 end
