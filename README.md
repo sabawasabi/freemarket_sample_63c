@@ -1,5 +1,5 @@
 # DB設計
-aaaaa
+
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
