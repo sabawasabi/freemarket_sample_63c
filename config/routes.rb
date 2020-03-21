@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    passwords: 'users/passwords',
+    registrations: 'users/registrations',
+    sessions: 'users/sessions',
+  }
+
   root "top#index"
 
-# TODO usersのルーティング修正
-  resources 'users', except: [:edit] do
-    collection do
-      get 'logout'
-    end
-  end
-  
+  resources :users, only: [:new, :destroy]
   resources :products, only: [:new, :create, :show]
+
+  # ログアウト用のルーティング
+  devise_scope :user do
+    get '/users/sign_out' => 'users/sessions#destroy'
+  end
 end

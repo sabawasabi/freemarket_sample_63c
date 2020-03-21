@@ -1,5 +1,6 @@
 = render "layouts/header"
 %h1 プロダクト#{@product.id}のページです
+%h2 Userid:#{@product.user_id}の商品です
 %br/
 %table
   %tr
@@ -31,4 +32,9 @@
     %td
       = @product.price
 %br/
+-if user_signed_in? && current_user.id == @product.user_id
+  = link_to "商品の編集画面に進む"
+  = link_to "出品商品を取り下げる"
+-else
+  = link_to "購入画面に進む"
 = render "layouts/footer"
