@@ -1,0 +1,9 @@
+// エラーメッセージを表示する（renderで呼び出してください）
+- if user.errors.any?
+  - unless user.valid?
+    - if errors = user.errors.full_messages_for(column.to_sym)
+      %ul.error_messages
+        - errors.each do |error|
+          %li.error_message= error
+// 呼び出し例
+-# = render partial: 'error_messages', locals: {user: @user, column: "nickname"}
