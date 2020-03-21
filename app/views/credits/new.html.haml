@@ -1,0 +1,38 @@
+.chapter-container
+  .chapter-head
+    クレジットカード情報入力
+    
+  .chapter-inner
+    %label.chapter-inner__creditcard-number
+      カード番号
+      %span.chapter-inner__creditcard-number__repuired
+        必須
+      %input.chapter-inner__creditcard-number__box{placeholder: "半角数字のみ", type: "text"}
+    .chapter-inner__creditcard-number__images
+      = image_tag 'credit-image/visa.svg', class: 'creditcard-pic1' ,size: '32x20'
+      = image_tag 'credit-image/master-card.svg', class: 'creditcard-pic2' ,size: '32x20'
+      = image_tag 'credit-image/saison-card.svg', class: 'creditcard-pic3' ,size: '32x20'
+      = image_tag 'credit-image/jcb.svg', class: 'creditcard-pic4' ,size: '32x20'
+      = image_tag 'credit-image/american_express.svg', class: 'creditcard-pic5' ,size: '32x20'
+      = image_tag 'credit-image/dinersclubbb.svg', class: 'creditcard-pic6' ,size: '32x20'
+      = image_tag 'credit-image/discover.svg', class: 'creditcard-pic7' ,size: '32x20'
+    %label.chapter-inner__expiration-date
+      有効期限
+      %span.chapter-inner__expiration-date__required
+        必須
+      %input.chapter-inner__expiration-date__box{placeholder: "01", type: "text"} 月
+      %input.chapter-inner__expiration-date__box{placeholder: "20", type: "text"} 年
+    %label.chapter-inner__security-card
+      セキュリティーコード
+      %span.chapter-inner__security-card__repuired
+        必須  
+      %input.chapter-inner__security-card__box{placeholder: "カード背面４桁もしくは３桁の番号", type: "text"}
+    //.chapter-inner__enter-btn
+    //=link_to "追加する", class: "credit-add-btn" 
+    //.chapter-inner__pay-method
+    //  = link_to "支払い方法について ＞" class: "pay-method"
+    
+
+-# = render 'credit'
+-# = render 'plan'
+
