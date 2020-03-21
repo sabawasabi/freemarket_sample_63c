@@ -1,4 +1,5 @@
 # DB設計
+あああ
 
 ## usersテーブル
 |Column|Type|Options|
