@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
 
   resources :users, only: [:new, :destroy]
-  resources :products, only: [:new, :create, :show]
+  resources :products, only: [:new, :create, :show, :edit, :update]
   resources :credits, only: [:index, :new, :create]
 
   # ログアウト用のルーティング

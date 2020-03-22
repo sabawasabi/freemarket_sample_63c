@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   # before_action :move_to_index, except: [:index, :show]
-  
+  # before_action :get_product, only: [:show, :destroy, :edit, :update]
+
   def new
     @product = Product.new
   end
@@ -11,6 +12,18 @@ class ProductsController < ApplicationController
       redirect_to root_path, notice: '商品を出品しました'
     else
       render :new
+    end
+  end
+
+  def edit
+    @product = Product.find(params[:id])
+  end
+
+  def update
+    if @product.user_id == current_user.id && @product.update(product_params)
+      redirect_to root_path
+    else
+      render 'products/edit'
     end
   end
 
