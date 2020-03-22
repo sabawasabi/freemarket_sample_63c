@@ -31,10 +31,10 @@
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true|
-|postal_code|integer|null: false|
+|postal_code|string|null: false|
 |prefectures|string|null: false|
 |city|string|null: false|
-|house_number|integer|null: false|
+|house_number|string|null: false|
 |building|string||
 
 ### Association
