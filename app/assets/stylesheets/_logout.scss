@@ -1,0 +1,32 @@
+.mypage-container{
+
+  &__main{
+    background-color: white;
+    float: right;
+    width: 700px;
+    &__box{
+      &__title{        
+        &__inner{
+          padding: 64px;
+          &__content{
+            max-width: 320px;
+            margin: 0 auto;
+            &__btn{
+              background: red;
+              border: 1px solid red;
+              color: white;
+              display: block;
+              width: 100%;
+              line-height: 48px;
+              font-size: 14px;
+              transition: all ease-out .3s;
+              cursor: pointer;
+              text-align: center;
+              overflow: visible;
+            }
+          }
+        }
+      }
+    }
+  }
+}
