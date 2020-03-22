@@ -1,13 +1,17 @@
-.signin-wrapper
-  = render partial: 'layouts/signin_registration_header.html'
-  .container
-    .container__login-panel
-      .container__login-panel__registration
-        %p アカウントをお持ちでない方はこちら
-        = link_to "新規会員登録", new_user_registration_path, class: "registaration__btn"
-      .container__login-panel__signin
-        %input(type="email" name="email" value="" placeholder="メールアドレス" class="container__login-panel__signin__group input-text")
-        %input(type="password" name="password" value="" placeholder="パスワード" class="container__login-panel__signin__group input-text")
-        = button_tag "ログイン", type: "submit", class: "container__login-panel__signin__group submit-btn"
-        = link_to 'パスワードをお忘れの方', '#', class: "container__login-panel__signin__group"
-  = render partial: 'layouts/signin_registration_footer.html'
+%h2 Log in
+= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  .field
+    = f.label :email
+    %br/
+    = f.email_field :email, autofocus: true, autocomplete: "email"
+  .field
+    = f.label :password
+    %br/
+    = f.password_field :password, autocomplete: "current-password"
+  - if devise_mapping.rememberable?
+    .field
+      = f.check_box :remember_me
+      = f.label :remember_me
+  .actions
+    = f.submit "Log in"
+= render "devise/shared/links"
