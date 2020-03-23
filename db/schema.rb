@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20200324000000) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -18,6 +19,16 @@ ActiveRecord::Schema.define(version: 20200324000000) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.index ["ancestry"], name: "index_categories_on_ancestry", using: :btree
+=======
+ActiveRecord::Schema.define(version: 20200310135628) do
+
+  create_table "product_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "product_id"
+    t.text     "image",      limit: 65535, null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["product_id"], name: "index_product_images_on_product_id", using: :btree
+>>>>>>> master
   end
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -56,4 +67,5 @@ ActiveRecord::Schema.define(version: 20200324000000) do
 
   add_foreign_key "products", "categories"
   add_foreign_key "products", "users"
+  add_foreign_key "product_images", "products"
 end
