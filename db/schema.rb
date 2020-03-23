@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20200324000000) do
+ActiveRecord::Schema.define(version: 20200324000001) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "ancestry",                   comment: "カテゴリーパス"
@@ -19,8 +18,7 @@ ActiveRecord::Schema.define(version: 20200324000000) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.index ["ancestry"], name: "index_categories_on_ancestry", using: :btree
-=======
-ActiveRecord::Schema.define(version: 20200310135628) do
+  end
 
   create_table "product_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "product_id"
@@ -28,7 +26,6 @@ ActiveRecord::Schema.define(version: 20200310135628) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.index ["product_id"], name: "index_product_images_on_product_id", using: :btree
->>>>>>> master
   end
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -65,7 +62,7 @@ ActiveRecord::Schema.define(version: 20200310135628) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
+  add_foreign_key "product_images", "products"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "users"
-  add_foreign_key "product_images", "products"
 end
