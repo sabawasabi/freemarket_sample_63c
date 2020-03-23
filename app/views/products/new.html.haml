@@ -10,14 +10,17 @@
             .products-contents__main-image__title-required
               必須
           .products-contents__main-image__text
-            最大10枚までアップロードできます
+            最大3枚までアップロードできます
+          .products-contents__main-image__box
             .products-contents__main-image__box
               .products-contents__main-image__box-input
-                = icon('fas', 'camera', class: 'products-contents__main-image__box-input__icon')
-                .products-contents__main-image__box-input__text
-                  ドラックアンドドロップ
-                  %br/
-                  またはクリックしてファイルをアップロード
+                .products-contents__main-image__box-input__image
+                  = f.fields_for :product_images do |i|
+                    = i.file_field :image, id: "product_images_attributes_0_image"
+                  = f.fields_for :product_images do |i|
+                    = i.file_field :image, id: "product_images_attributes_1_image"
+                  = f.fields_for :product_images do |i|
+                    = i.file_field :image, id: "product_images_attributes_2_image"
 
         .products-contents__main-border
 
