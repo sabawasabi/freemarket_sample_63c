@@ -24,7 +24,7 @@
       = f.label :prefectures, "都道府県"
       %span.form-require 必須
       %br/
-      = f.text_field :prefectures, placeholder: "北海道", class: "input-form"
+      = f.collection_select :prefectures, JpPrefecture::Prefecture.all, :code, :name
     = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "prefectures"}
     .field
       = f.label :city, "市区町村"
