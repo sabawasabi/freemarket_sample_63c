@@ -7,6 +7,8 @@ class Product < ApplicationRecord
   validates :days_to_delivery, presence: true
   validates :price, presence: true
 
+  # Associations
+  belongs_to :user
   has_many :product_images, dependent: :destroy
   accepts_nested_attributes_for :product_images, allow_destroy: true
 end
