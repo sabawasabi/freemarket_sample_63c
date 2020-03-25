@@ -10,7 +10,12 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :destroy]
   resources :products, only: [:new, :create, :show]
-  resources :credits, only: [:index, :new, :create]
+  resources :credits, only: [:index, :new, :create, :destroy] do
+    collection do
+      post 'pay_show', to: 'credits#pay_show'
+      post 'pay', to: 'credits#pay'
+    end
+  end
 
   # ログアウト用のルーティング
   devise_scope :user do

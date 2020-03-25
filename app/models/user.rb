@@ -2,7 +2,7 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
+  has_many :credits
   # バリデーション
   # TODO ユーザー名を全角で入力させるためのバリデーション追加
   EMAIL_REGEXP = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/
