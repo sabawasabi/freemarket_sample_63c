@@ -19,16 +19,14 @@
                 %span.bold 56
         %section.mypage-container-news-todo.clearfix
         
-
-
         %section.mypage-container__tradings
           %h2.mypage-container__tradings-head 購入した商品
           %ul.mypage-container__tradings-tabs
             %li.trading-now.trading-tabs.active
-              = link_to logout_users_path,class:"bold" do
+              = link_to '#', class:"bold" do
                 取引中
             %li.trading-after.trading-tabs
-              = link_to logout_users_path,class:"bold" do
+              = link_to '#', class:"bold" do
                 過去の取引
 
           .mypage-container__tradings-contents
@@ -57,7 +55,7 @@
                     .mypage-item-body__status.bold.done 取引完了
                   %i.fa.fa-angle-right.icon
               %li#gotoAllList
-                = link_to logout_users_path,class:"gotoAllList-inne" do
+                = link_to '#', class:"gotoAllList-inne" do
                   一覧を見る
       -# サイドバー
       = render "layouts/sideber"

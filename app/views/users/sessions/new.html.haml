@@ -9,10 +9,9 @@
     = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "container__login-panel__signin"}) do |f|
       = f.email_field :email, class: "container__login-panel__signin__group input-text", autocomplete: "email", placeholder: "メールアドレス"
       = f.password_field :password, class: "container__login-panel__signin__group input-text", autocomplete: "current_password", placeholder: "パスワード"
-
-      = button_tag "ログイン", type: "submit", class: "container__login-panel__signin__group submit-btn"
+      = f.submit "ログイン", class: "container__login-panel__signin__group submit-btn"
       
       // TODO パスワード再設定の処理を作成
-      = link_to 'パスワードをお忘れの方', '#', class: "container__login-panel__signin__group"
+      = link_to 'パスワードをお忘れの方', '#'
 
 = render partial: 'layouts/signin_registration_footer.html'
