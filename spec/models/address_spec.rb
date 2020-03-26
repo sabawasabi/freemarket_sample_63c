@@ -10,8 +10,110 @@ describe Address do
       end
     end
 
+    describe 'cityが空では登録できないこと' do
+      it "is invalid without a city" do
+        address = build(:address, city: "")
+        address.valid?
+        expect(address.errors[:city]).to include("を入力してください")
+      end
+    end
+
+    describe 'house_numberが空では登録できないこと' do
+      it "is invalid without a house_number" do
+        address = build(:address, house_number: "")
+        address.valid?
+        expect(address.errors[:house_number]).to include("を入力してください")
+      end
+    end
+
+    describe 'postal_codeが8文字では登録できないこと' do
+      it "is invalid with a postal_code that has more than 8 characters" do
+        address = build(:address, postal_code: "11111111")
+        address.valid?
+        expect(address.errors[:postal_code]).to include("は7文字で入力してください")
+      end
+    end
+
+    describe 'postal_codeが6文字では登録できないこと' do
+      it "is invalid with a postal_code that has less than 6 characters" do
+        address = build(:address, postal_code: "111111")
+        address.valid?
+        expect(address.errors[:postal_code]).to include("は7文字で入力してください")
+      end
+    end
+
+    describe 'postal_codeが6文字では登録できないこと' do
+      it "is invalid with a postal_code that has in English" do
+        address = build(:address, postal_code: "aaaaaaa")
+        address.valid?
+        expect(address.errors[:postal_code]).to include("は不正な値です")
+      end
+    end
+
+    describe 'postal_codeが英字では登録できないこと' do
+      it "is invalid with a postal_code that has less than 6 characters" do
+        address = build(:address, postal_code: "111111")
+        address.valid?
+        expect(address.errors[:postal_code]).to include("は7文字で入力してください")
+      end
+    end
+
+    describe 'cityが空では登録できないこと' do
+      it "is invalid without a city" do
+        address = build(:address, city: "")
+        address.valid?
+        expect(address.errors[:city]).to include("を入力してください")
+      end
+    end
+
+    describe 'house_numberが空では登録できないこと' do
+      it "is invalid without a house_number" do
+        address = build(:address, house_number: "")
+        address.valid?
+        expect(address.errors[:house_number]).to include("を入力してください")
+      end
+    end
+
+    describe 'phone_numberが0以外で始まる時は登録できないこと' do
+      it "is invalid with a phone_number that leading character is not 0" do
+        address = build(:address, phone_number: "19011112222")
+        address.valid?
+        expect(address.errors[:phone_number]).to include("は不正な値です")
+      end
+    end
+
+    describe 'phone_numberが0から始まり12文字以上では登録できないこと' do
+      it "is invalid with a phone_number that has more than 12 characters" do
+        address = build(:address, phone_number: "090111122223")
+        address.valid?
+        expect(address.errors[:phone_number]).to include("は不正な値です")
+      end
+    end
+
+    describe 'phone_numberが0から始まり9文字以下では登録できないこと' do
+      it "is invalid with a phone_number that has less than 9 characters" do
+        address = build(:address, phone_number: "090111122")
+        address.valid?
+        expect(address.errors[:phone_number]).to include("は不正な値です")
+      end
+    end
+
+    describe 'phone_numberが0から始まり10文字では登録できること' do
+      it "is valid with a phone_number that leading character is 0 and has 10 characters" do
+        address = build(:address, phone_number: "0901111222")
+        expect(address).to be_valid
+      end
+    end
+
+    describe 'phone_numberが0から始まり11文字では登録できること' do
+      it "is valid with a phone_number that leading character is 0 and has 11 characters" do
+        address = build(:address, phone_number: "09011112222")
+        expect(address).to be_valid
+      end
+    end
+
     describe 'saveできる時のテスト' do
-      it "is invalid without a postal_code, prefectures, city, house_number" do
+      it "is valid with a postal_code, prefectures, city, house_number" do
         address = build(:address)
         expect(address).to be_valid
       end

@@ -8,7 +8,7 @@ class Address < ApplicationRecord
     validates :house_number
   end
 
-  validates :postal_code, format: { with: /\A[0-9]+\z/ }, length: { maximum: 7 }
+  validates :postal_code, format: { with: /\A[0-9]+\z/ }, length: { is: 7 }
   validates :phone_number, format: { with: /\A0[0-9]{9,10}\z/ }
 
   private
