@@ -28,6 +28,7 @@
       .contents__content--part
         =link_to "お知らせ", '#' , class: 'contents__content--part'
   .footer__log
-    = image_tag 'logo-white.png', class: 'footer_log',size: '140x44'
+    = link_to root_path do
+      = image_tag 'logo-white.png', class: 'footer_log',size: '140x44'
     .footer__log--footer
       ©️FURIMA
