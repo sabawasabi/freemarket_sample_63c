@@ -49,12 +49,12 @@ describe User do
         user.valid?
         expect(user.errors[:birth_date]).to include("を入力してください")
       end
-
-      describe "can save" do
-        it "is valid with all columns" do
-          user = build(:user)
-          expect(user).to be_valid
-        end
+    end
+    
+    describe "can save" do
+      it "is valid with all columns" do
+        user = build(:user)
+        expect(user).to be_valid
       end
     end
   end

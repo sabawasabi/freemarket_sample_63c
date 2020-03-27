@@ -11,9 +11,7 @@
 |first_name|string|null: false|
 |last_name_jp|string|null: false|
 |first_name_jp|string|null: false|
-|birth_year|integer|null: false|
-|birth_month|integer|null: false|
-|birth_day|integer|null: false|
+|birth_date|integer|null: false|
 |phone_number|integer||
 |profile|text||
 |icon|text||
@@ -21,7 +19,7 @@
 ### Association
 - has_many :credit_cards
 - has_many :transactions
-- has_one :address
+- has_one  :address
 - has_many :likes
 - has_many :comments
 - has_many :products
@@ -31,10 +29,10 @@
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true|
-|postal_code|integer|null: false|
+|postal_code|string|null: false|
 |prefectures|string|null: false|
 |city|string|null: false|
-|house_number|integer|null: false|
+|house_number|string|null: false|
 |building|string||
 
 ### Association
@@ -65,6 +63,7 @@
 ### Association
 - belongs_to :user
 - belongs_to :product
+
 
 ## likesテーブル
 |Column|Type|Options|
@@ -97,7 +96,7 @@
 |user_id|references|null: false, foreign_key: true|
 |name|string|null: false|
 |description|text|null: false|
-|category_path|references|null: false, foreign_key: true|
+|category_id|references|null: false, foreign_key: true|
 |brand_id|references|foreign_key: true|
 |condition|string|null: false|
 |shipping _charges|string|null: false|
@@ -106,13 +105,13 @@
 |price|integer|null: false|
 
 ### Association
-- has_many :product_images
+- has_many   :product_images
 - belongs_to :user
 - belongs_to :category
 - belongs_to :brand
-- has_many :transactions
-- has_many :likes
-- has_many :comments
+- has_many   :transactions
+- has_many   :likes
+- has_many   :comments
 
 
 ## product_imagesテーブル
@@ -129,7 +128,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |id|integer|null: false, unique: true|
-|path|string|null: false, unique: true|
+|ancestry|string|null: false, unique: true|
 |category_name|string|null: false|
 
 ### Association

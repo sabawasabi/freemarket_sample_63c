@@ -3,13 +3,11 @@ class ApplicationController < ActionController::Base
   before_action :basic_auth, if: :production?
 
   protected
-
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :last_name, :first_name, :last_name_jp, :first_name_jp, :birth_date, :phone_number, :profile, :icon])
   end
 
   private
-
   def production?
     Rails.env.production?
   end
@@ -19,5 +17,4 @@ class ApplicationController < ActionController::Base
       username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
     end
   end
-
 end
