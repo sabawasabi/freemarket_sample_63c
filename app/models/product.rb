@@ -7,6 +7,7 @@ class Product < ApplicationRecord
   validates :shipping_area, presence: true
   validates :days_to_delivery, presence: true
   validates :price, presence: true
+  validates :status, presence: true
 
   # Associations
   belongs_to :user

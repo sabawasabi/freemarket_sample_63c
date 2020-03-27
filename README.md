@@ -103,6 +103,7 @@
 |shipping_area|string|null: false|
 |days_to_delivery|string|null: false|
 |price|integer|null: false|
+|status|string|null: false|
 
 ### Association
 - has_many   :product_images
