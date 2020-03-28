@@ -39,13 +39,13 @@ class CreditsController < ApplicationController
   end
 
   def show #Cardのデータpayjpに送り情報を取り出す
-    @credit = @set_card.first
-    if @credit.blank?
+    @card = @set_card.first
+    if @card.blank?
       redirect_to action: "new" 
     else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      customer = Payjp::Customer.retrieve(@credit.customer_id)
-      @default_card_information = customer.cards.retrieve(@card.card_id)
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      @default_card_information = customer.cards.retrieve(@card.ard_id)
     end
   end
 

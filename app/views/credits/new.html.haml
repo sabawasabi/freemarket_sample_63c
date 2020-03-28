@@ -3,27 +3,29 @@
     クレジットカード情報入力
     
   .chapter-inner
-    %label.chapter-inner__creditcard-number
-      カード番号
-      %span.chapter-inner__creditcard-number__repuired
+    .chapter-inner__creditcard-number
+      %label.chapter-inner__creditcard-number__text
+        カード番号
+      %span.chapter-inner__creditcard-number__required
         必須
       .chapter-inner__creditcard-number__box
-      = form_tag(pay_credts_path, method: :post, id: 'charge-form',  name: "inputForm") do
-        = text_field_tag "number", "", class: "number", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "credits_number"
+        = form_tag(pay_credits_path, method: :post, id: 'charge-form',  name: "inputForm") do
+          = text_field_tag "number", "", class: "number", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
       %br
-    .chapter-inner__creditcard-number__images
-      = image_tag 'credit-image/visa.svg', class: 'creditcard-pic1' ,size: '32x20'
-      = image_tag 'credit-image/master-card.svg', class: 'creditcard-pic2' ,size: '32x20'
-      = image_tag 'credit-image/saison-card.svg', class: 'creditcard-pic3' ,size: '32x20'
-      = image_tag 'credit-image/jcb.svg', class: 'creditcard-pic4' ,size: '32x20'
-      = image_tag 'credit-image/american_express.svg', class: 'creditcard-pic5' ,size: '32x20'
-      = image_tag 'credit-image/dinersclubbb.svg', class: 'creditcard-pic6' ,size: '32x20'
-      = image_tag 'credit-image/discover.svg', class: 'creditcard-pic7' ,size: '32x20'
-    %label.chapter-inner__expiration-date
-      有効期限
+      .chapter-inner__creditcard-number__images
+        = image_tag 'credit-image/visa.svg', class: 'creditcard-pic1' ,size: '32x20'
+        = image_tag 'credit-image/master-card.svg', class: 'creditcard-pic2' ,size: '32x20'
+        = image_tag 'credit-image/saison-card.svg', class: 'creditcard-pic3' ,size: '32x20'
+        = image_tag 'credit-image/jcb.svg', class: 'creditcard-pic4' ,size: '32x20'
+        = image_tag 'credit-image/american_express.svg', class: 'creditcard-pic5' ,size: '32x20'
+        = image_tag 'credit-image/dinersclubbb.svg', class: 'creditcard-pic6' ,size: '32x20'
+        = image_tag 'credit-image/discover.svg', class: 'creditcard-pic7' ,size: '32x20'
+    .chapter-inner__expiration-date
+      %label.chapter-inner__expiration-date__text
+        有効期限
       %span.chapter-inner__expiration-date__required
         必須
-    %select.chapter-inner__expiration-date__box#exp_month{name: "exp_month", type: "text"}
+    %select#exp_month{name: "exp_month", type: "text"}
       %option{value: ""} --
       %option{value: "1"}01
       %option{value: "2"}02
@@ -38,7 +40,7 @@
       %option{value: "11"}11
       %option{value: "12"}12
     %span 月/
-    %select.chapter-inner__expiration-date__box#exp_year{name: "exp_year", type: "text"}
+    %select#exp_year{name: "exp_year", type: "text"}
       %option{value: ""} --
       %option{value: "2020"}20
       %option{value: "2021"}21
@@ -52,16 +54,18 @@
       %option{value: "2029"}29
       %option{value: "2030"}30
     %span 年
-    %br
-    %label.chapter-inner__security-card
-      セキュリティーコード
-      %span.chapter-inner__security-card__repuired
+    //%br
+    .chapter-inner__security-card
+      %label.chapter-inner__security-card__text
+        セキュリティーコード
+      %span.chapter-inner__security-card__required
         必須
-      %input.chapter-inner__security-card__box
-    = text_field_tag "cvc", "", class: "cvc", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc" 
+      .chapter-inner__security-card__box
+        = text_field_tag "cvc", "", class: "cvc", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc" 
     #card_token
-    = submit_tag "追加する", id: "token_submit"
+    .chapter-inner__enter-btn
+      = submit_tag "追加する", id: "token_submit"
     //.chapter-inner__enter-btn
-    //=link_to "追加する", class: "credit-add-btn" 
+    // "追加する", class: "credit-add-btn" 
     //.chapter-inner__pay-method
-    //  = link_to "支払い方法について ＞" class: "pay-method"
+    //  "支払い方法について ＞" class: "pay-method"
