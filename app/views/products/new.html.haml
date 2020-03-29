@@ -50,7 +50,7 @@
               カテゴリー
               .products-contents__main-details__category__title-required
                 必須
-            = f.collection_select :category_id, @parents, :id, :category_name,{prompt: "---"}, class: "products-contents__main-details__category-box", id: "parent-form", name: 'product[category_id][]'
+            = f.collection_select :category_id, @parents, :id, :category_name,{prompt: "---"}, class: "products-contents__main-details__category-box", id: "parent-form", name: 'product[category_ids][]'
           .products-contents__main-details__brand
             .products-contents__main-details__brand__title
               ブランド

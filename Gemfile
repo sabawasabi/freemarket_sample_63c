@@ -31,7 +31,7 @@ group :development, :test do
   gem 'factory_bot_rails'
 end
 
-gem 'turbolinks', '~> 5'
+# gem 'turbolinks', '~> 5'
   git_source(:github) do |repo_name|
     repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
     "https://github.com/#{repo_name}.git"
