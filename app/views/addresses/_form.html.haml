@@ -11,14 +11,18 @@
       = f.label :name, "お名前"
       %span.form-require 必須
       %br/
-      %input(type="last_name" name="last_name" value="" placeholder="例）山田" class="input-form")
-      %input(type="first_name" name="first_name" value="" placeholder="例）太郎" class="input-form")
+      = f.text_field :last_name, placeholder: "例）山田", class: "input-form"
+      = f.text_field :first_name, placeholder: "例）太郎", class: "input-form"
+    = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "last_name"}
+    = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "first_name"}
     .field
       = f.label :name, "お名前カナ"
       %span.form-require 必須
       %br/
-      %input(type="last_name_jp" name="last_name_jp" value="" placeholder="例）ヤマダ" class="input-form")
-      %input(type="first_name_jp" name="first_name_jp" value="" placeholder="例）タロウ" class="input-form")
+      = f.text_field :last_name_jp, placeholder: "例）ヤマダ", class: "input-form"
+      = f.text_field :first_name_jp, placeholder: "例）タロウ", class: "input-form"
+    = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "last_name_jp"}
+    = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "first_name_jp"}
     .field
       = f.label :postal_code, "郵便番号"
       %span.form-require 必須

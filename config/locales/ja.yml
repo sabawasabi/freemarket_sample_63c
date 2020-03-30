@@ -11,6 +11,10 @@ ja:
       address: 住所
     attributes:
       address:
+        last_name: 苗字
+        first_name: 名前
+        last_name_jp: 苗字(カナ)
+        first_name_jp: 名前(カナ)
         postal_code: 郵便番号
         prefectures: 都道府県
         city: 市区町村
