@@ -13,6 +13,11 @@ Rails.application.routes.draw do
   root "top#index"
 
   resources :users
-  resources :products,  only: [:new, :create, :show, :search]
+  resources :products,  only: [:new, :create,  :show] do
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
+  end
   resources :credits,   only: [:index, :new, :create]
 end
