@@ -1,7 +1,7 @@
 $(function() {
   // カテゴリーセレクトボックスのオプションを作成
   function appendOption(category){
-    var html = `<option value="${category.name}" data-category="${category.id}">${category.category_name}</option>`;
+    var html = `<option value="${category.id}" data-category="${category.id}">${category.category_name}</option>`;
     return html;
   }
   // 子カテゴリーの表示作成
@@ -40,14 +40,12 @@ $(function() {
       $.ajax({
         url: 'get_category_children',
         type: 'GET',
-        data: { parent_name: parentValue },
+        data: { parent_id: parentValue },
         dataType: 'json'
       })
       .done(function(children){
         $('#children-wrapper').remove(); //親が変更された時、子以下を削除するする
         $('#grandchildren-wrapper').remove();
-        // $('#size-wrapper').remove();
-        // $('#brand-wrapper').remove();
         var insertHTML = '';
         children.forEach(function(child){
           insertHTML += appendOption(child);
@@ -60,8 +58,6 @@ $(function() {
     }else{
       $('#children-wrapper').remove(); //親カテゴリーが初期値になった時、子以下を削除するする
       $('#grandchildren-wrapper').remove();
-      // $('#size-wrapper').remove();
-      // $('#brand-wrapper').remove();
     }
   })
   // 子カテゴリー選択後のイベント
@@ -78,8 +74,6 @@ $(function() {
       .done(function(grandchildren){
         if (grandchildren.length != 0) {
           $('#grandchildren-wrapper').remove(); //子が変更された時、孫以下を削除するする
-          // $('#size-wrapper').remove();
-          // $('#brand-wrapper').remove();
           var insertHTML = '';
           grandchildren.forEach(function(grandchild){
             insertHTML += appendOption(grandchild);
@@ -92,8 +86,6 @@ $(function() {
       })
     }else{
       $('#grandchildren-wrapper').remove(); //子カテゴリーが初期値になった時、孫以下を削除する
-      // $('#size-wrapper').remove();
-      // $('#brand-wrapper').remove();
     }
   })
 })

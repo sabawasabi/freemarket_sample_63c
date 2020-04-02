@@ -52,7 +52,8 @@
                 必須
             .products-contents__main-details__category-wrapper
               .products-contents__main-details__category-wrapper__box
-                = f.select :category_id, @parents, {}, {class: "products-contents__main-details__category-box", id: "parent-form"}
+                = f.collection_select :category_id, @parents, :id, :category_name,{prompt: "---"}, class: "products-contents__main-details__category-box", id: "parent-form"
+                -# = f.select :category_id, @parents, {}, {class: "products-contents__main-details__category-box", id: "parent-form"}
           .products-contents__main-details__brand
             .products-contents__main-details__brand__title
               ブランド

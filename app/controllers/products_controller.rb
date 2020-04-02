@@ -5,12 +5,7 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product_images = @product.product_images.build
-    #セレクトボックスの初期値設定
-    @parents = ["---"]
-    #データベースから、親カテゴリーのみ抽出し、配列化
-    Category.where(ancestry: nil).each do |parent|
-      @parents << parent.category_name
-    end
+    @parents = Category.all.order("id ASC").limit(13)
   end
 
   def create
@@ -28,16 +23,13 @@ class ProductsController < ApplicationController
    # 親カテゴリーが選択された後に動くアクション
   def get_category_children
     #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
-    @category_children = Category.find_by(category_name: "#{params[:parent_name]}", ancestry: nil).children
-    # @category_children = Category.find(params[:parentValue]).children
+    @category_children = Category.find("#{params[:parent_id]}").children
  end
 
   # 子カテゴリーが選択された後に動くアクション
   def get_category_grandchildren
     #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
     @category_grandchildren = Category.find("#{params[:child_id]}").children
-    # @category_grandchildren = Category.find(params[:childValue]).children
-    
   end
 
   def show
@@ -46,7 +38,7 @@ class ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:name, :description, :condition, :shipping_charges, :shipping_area, :days_to_delivery, :price, :category_id, [product_images_attributes: [:image]]).merge(user_id: current_user.id)
+    params.require(:product).permit(:name, :description, :condition, :shipping_charges, :shipping_area, :category_id, :days_to_delivery, :price, [product_images_attributes: [:image]]).merge(user_id: current_user.id)
   end
 end
 
