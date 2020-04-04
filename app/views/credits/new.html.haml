@@ -1,7 +1,8 @@
+= render "layouts/header"
+
 .chapter-container
   .chapter-head
     クレジットカード情報入力
-    
   .chapter-inner
     .chapter-inner__creditcard-number
       %label.chapter-inner__creditcard-number__text
@@ -54,7 +55,7 @@
       %option{value: "2029"}29
       %option{value: "2030"}30
     %span 年
-    //%br
+    %br
     .chapter-inner__security-card
       %label.chapter-inner__security-card__text
         セキュリティーコード
@@ -63,9 +64,4 @@
       .chapter-inner__security-card__box
         = text_field_tag "cvc", "", class: "cvc", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc" 
     #card_token
-    .chapter-inner__enter-btn
-      = submit_tag "追加する", id: "token_submit"
-    //.chapter-inner__enter-btn
-    // "追加する", class: "credit-add-btn" 
-    //.chapter-inner__pay-method
-    //  "支払い方法について ＞" class: "pay-method"
+    = submit_tag "追加する", id: "token_submit"
