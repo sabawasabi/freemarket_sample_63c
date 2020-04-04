@@ -1,0 +1,25 @@
+@mixin dBlock {
+  > ul {
+    > li {
+      display: block;
+      line-height: 32px;
+    }
+  }
+}
+@mixin subtitle {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  position: relative;
+  &:after {
+    content: "";
+    width: 70px;
+    height: 4px;
+    background-color: $main_color;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

@@ -40,7 +40,7 @@
           height: 36px;
           border: 1px solid lightgrey;
           cursor: pointer;
-          background-color: #3CCACE;
+          background-color: $main_color;
           padding: 8px;
           img {
             height: 20px;
@@ -58,7 +58,7 @@
       justify-content: space-between;
       vertical-align: top;
       a {
-        color: $font_gray;
+        color: $font_color;
         display: block;
         font-size: 14px;
         text-decoration: none;
@@ -79,14 +79,9 @@
           }
           &:hover {
             > a {
-              color: $main_blue;
+              color: $main_color;
             }
-            > ul {
-              > li {
-                display: block;
-                line-height: 32px;
-              }
-            }
+            @include dBlock;
           }
           &__parents {
             position: absolute;
@@ -96,14 +91,9 @@
               display: none;
               &:hover {
                 > a {
-                  color: $main_blue;
+                  color: $main_color;
                 }
-                > ul {
-                  > li {
-                    display: block;
-                    line-height: 32px;
-                  }
-                }
+                @include dBlock;
               }
             }
           }
@@ -116,14 +106,9 @@
               display: none;
               &:hover {
                 > a {
-                  color: $main_blue;
+                  color: $main_color;
                 }
-                > ul {
-                  > li {
-                    display: block;
-                    line-height: 32px;
-                  }
-                }
+                @include dBlock;
               }
             }
           }
@@ -136,7 +121,7 @@
               display: none;
               &:hover {
                 > a {
-                  color: $main_blue;
+                  color: $main_color;
                 }
               }
             }
@@ -146,7 +131,7 @@
         &--brand {
           padding: 0 0 0 16px;
           a {
-            color: $font_gray;
+            color: $font_color;
             text-decoration: none;
           }
         }
@@ -157,7 +142,7 @@
         a {
           text-decoration: none;
           font-size: 14px;
-          color: $font_gray;
+          color: $font_color;
         }
         &--login {
           padding: 0 0 0 16px;
