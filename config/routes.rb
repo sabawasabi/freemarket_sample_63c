@@ -5,16 +5,15 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
   }
 
-  root "top#index"
-
-
-  resources :users, only: [:new, :destroy]
-  resources :products, only: [:new, :create, :show]
-  resources :addresses, only: [:new, :create, :edit, :update]
-  resources :credits, only: [:index, :new, :create]
-
   # ログアウト用のルーティング
   devise_scope :user do
     get '/users/sign_out', to: 'users/sessions#destroy'
   end
+
+  root "top#index"
+
+  resources :users
+  resources :products,  only: [:new, :create, :show]
+  resources :credits,   only: [:index, :new, :create]
+  resources :addresses, only: [:new, :create, :edit, :update]
 end
