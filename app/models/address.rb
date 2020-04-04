@@ -12,6 +12,11 @@ class Address < ApplicationRecord
     validates :house_number
   end
 
+  with_options format: { with: /\A[ァ-ヶー－]+\z/ } do
+    validates :last_name_jp
+    validates :first_name_jp
+  end
+
   validates :postal_code, format: { with: /\A[0-9]+\z/ }, length: { is: 7 }
   validates :phone_number, format: { with: /\A0[0-9]{9,10}\z/ }
 

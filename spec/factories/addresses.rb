@@ -1,6 +1,10 @@
 FactoryBot.define do
 
   factory :address do
+    last_name                {"山田"}
+    first_name               {"太郎"}
+    last_name_jp             {"ヤマダ"}
+    first_name_jp            {"タロウ"}
     postal_code              {"1234567"}
     prefectures              {"13"}
     city                     {"江戸川区"}
