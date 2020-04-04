@@ -192,10 +192,12 @@
     }
     .subtitle {
       text-align: center;
-      font-size: 24px;
-      font-weight: bold;
-      color: $main_color;
-      text-decoration: none;
+      a {
+        font-size: 24px;
+        font-weight: bold;
+        color: $main_color;
+        text-decoration: none;
+      }
     }
     .products{
       width: 780px;

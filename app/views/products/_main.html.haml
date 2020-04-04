@@ -103,8 +103,7 @@
     .header
       ピックアップカテゴリー
     .subtitle
-    
-      新規投稿商品
+      = link_to "新規投稿商品", '#'
     .products
       - @product.each do |product|
         .products__list
@@ -126,7 +125,7 @@
     .header
       ピックピックアップブランド
     .subtitle
-      アーカイブ
+      = link_to "アーカイブ", '#'
     .products
       .products__list
         .products__list--pic
