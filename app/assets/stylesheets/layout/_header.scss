@@ -6,6 +6,7 @@
     margin: 0 auto;
     padding: 15px 0 0;
     background-color: #fff;
+    
     .mainheader {
       position: relative;
       display: flex;
@@ -67,9 +68,14 @@
       &__left{
         display: flex;
         &--category {
+          cursor: pointer;
           position: relative;
           padding-right: 30px;
           line-height: 38px;
+          ul {
+            background-color: white;
+            box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+          }
           li {
             align-items: center;
             background-color: white;
@@ -98,8 +104,9 @@
             }
           }
           &__children {
-            position: absolute;
+            bottom: 0;
             left: 240px;
+            position: absolute;
             top: 0;
             z-index: 10;
             &--child {
@@ -113,8 +120,9 @@
             }
           }
           &__grand-children {
-            position: absolute;
+            bottom: 0;
             left: 240px;
+            position: absolute;
             top: 0;
             z-index: 10;
             &--grand-child {
