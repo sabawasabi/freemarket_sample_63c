@@ -4,7 +4,7 @@ class CreditsController < ApplicationController
 
   def new
     gon.payjp_key = ENV['PAYJP_KEY']
-    redirect_to action: "show" if @set_card.exists?
+    redirect_to action: "pay_show" if @set_card.exists?
   end
 
   def pay #payjpとCardのデータベース作成を実施
@@ -20,7 +20,7 @@ class CreditsController < ApplicationController
       ) #metadataにuser_idを入れたがなくてもOK
       @card = Credit.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
-        redirect_to action: "par_show"
+        redirect_to action: "pay_show"
       else
         redirect_to action: "pay"
       end

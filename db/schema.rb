@@ -33,8 +33,12 @@ ActiveRecord::Schema.define(version: 20200401084310) do
   end
 
   create_table "transactions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "product_id", null: false
+    t.integer  "user_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_transactions_on_product_id", using: :btree
+    t.index ["user_id"], name: "index_transactions_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -55,4 +59,6 @@ ActiveRecord::Schema.define(version: 20200401084310) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
+  add_foreign_key "transactions", "products"
+  add_foreign_key "transactions", "users"
 end
