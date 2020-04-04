@@ -1,7 +1,10 @@
 class ProductsController < ApplicationController
-
   before_action :move_to_index, except: [:index, :show]
   
+  def index
+    @product = Product.order("created_at DESC").limit 3
+  end
+
   def new
     @product = Product.new
     @product_images = @product.product_images.build
