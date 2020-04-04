@@ -176,7 +176,7 @@ html {
   }
   .submit-btn {
     height: 48px;
-    background-color: #3CCACE;
+    background-color: $main_blue;
     cursor: pointer;
     color: #fff;
   }
@@ -195,16 +195,16 @@ html {
   }
   a {
     text-decoration: none;
-    color: #333333;
+    color: $font_gray;
   }
   img {
     height: 22px;
     width: 75px;
-    background-color: #3CCACE;
+    background-color: $main_blue;
     margin-top: 40px;
   }
   p {
     font-size: 13px;
-    color: #333333;
+    color: $font_gray;
   }
 }

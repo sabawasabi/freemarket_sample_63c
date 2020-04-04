@@ -3,20 +3,40 @@
     .mainheader
       %h1.mainheader__icon
         = link_to root_path do
-          = image_tag 'logo.png', class: 'header_log', size: '140x44'
+          = image_tag 'logo.png', class: 'header_log'
       .mainheader__search
-        %input.mainheader__search--box{ placeholder: 'キーワードを検索してください'}
-
+        %input.mainheader__search--box{ placeholder: 'キーワードから探す' }
         %ul.mainheader__search--btn
-          = image_tag 'icon-search_1.png', class: 'search_log',size: '19x19'
+          = image_tag 'icon-search_1.png', class: 'search_log'
       
-    %ul.navigation
-      .navigation__left
-        %li.navigation__left__category
-          カテゴリー
+    .navigation
+      %ul.navigation__left
+        %li.navigation__left--category
+          = link_to "カテゴリー", '#'
+          // 親カテゴリー
+          %ul.navigation__left--category__parents
+            %li.navigation__left--category__parents--parent
+              = link_to "レディース", category_path(id: 1)
+              // 子カテゴリー
+              %ul.navigation__left--category__children
+                = render partial: 'layouts/header_category_child', collection: @category_children1, as: "category"
+            %li.navigation__left--category__parents--parent
+              = link_to "メンズ", category_path(id: 2)
+              // 子カテゴリー
+              %ul.navigation__left--category__children
+                = render partial: 'layouts/header_category_child', collection: @category_children2, as: "category"
+            %li.navigation__left--category__parents--parent
+              = link_to "ベビー・キッズ", category_path(id: 3)
+              // 子カテゴリー
+              %ul.navigation__left--category__children
+                = render partial: 'layouts/header_category_child', collection: @category_children3, as: "category"
+            
+
+
         %li.navigation__left--brand
-          ブランド
-      .navigation__right
+          = link_to "ブランド", '#'
+
+      %ul.navigation__right
         -if user_signed_in?
           %li.navigation__right--login
             = link_to "ログアウト", users_sign_out_path, method: :delete

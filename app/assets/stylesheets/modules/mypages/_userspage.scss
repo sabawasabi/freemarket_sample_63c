@@ -97,7 +97,7 @@ body{
               font-size: 16px;
               line-height: 72px;
               display: block;
-              color: #333;
+              color: $font_gray;
               text-align: center;
               background-color: #f8f8f8;
               height: 74px;
@@ -188,7 +188,7 @@ body{
                 height: 56px;
                 margin: 0 auto;
                 background: #eee;
-                color: #333;
+                color: $font_gray;
                 line-height: 56px;
                 text-align: center;
               }
@@ -216,7 +216,7 @@ body{
                 min-height: 48px;
                 padding: 16px;
                 background-color: #fff;
-                color: #333;
+                color: $font_gray;
                 font-size: 14px;
                 i{
                   position: absolute;
@@ -231,7 +231,7 @@ body{
                 font-weight: 600;
                 i.fa.fa-angle-right.icon.active{
                   font-weight: 600;
-                  color: #333;
+                  color: $font_gray;
                 }
               }
             }
@@ -240,7 +240,7 @@ body{
                 opacity: 0.7;
                 background-color: #eee;
                 i.fa.fa-angle-right.icon{
-                  color: #333;
+                  color: $font_gray;
                   right: 10px;
                   top: 13px;
                   font-size: 22px;
