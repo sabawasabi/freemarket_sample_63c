@@ -81,7 +81,7 @@
             text-align: center;
             margin: 0 5px 0 0;
             padding: 10px 20px;
-            background-color: #3CCACE;
+            background-color: $main_blue;
             color: #ffffff;
           }
           position: relative;
@@ -97,7 +97,7 @@
             margin: 0 0 0 2px;
           }
           &--key{
-            color: #3CCACE;
+            color: $main_blue;
             font-size: 23px;
             font-weight: bold;
             line-height: 50px;
@@ -201,7 +201,7 @@
       text-align: center;
       font-size: 24px;
       font-weight: bold;
-      color: #3CCACE;
+      color: $main_blue;
       text-decoration: none;
     }
     .products{
@@ -214,7 +214,7 @@
         display: inline-block;
         background-color: #fff;
         &__discription{
-          color: #333;
+          color: $font_gray;
           padding: 16px;
           position: relative;
           &__core{

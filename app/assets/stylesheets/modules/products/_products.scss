@@ -31,7 +31,7 @@
           display: flex;
           align-items: center;
           &-required {
-            background-color: #3CCACE;
+            background-color: $main_blue;
             color: #fff;
             font-size: 12px;
             margin-left: 8px;
@@ -91,7 +91,7 @@
             display: flex;
             align-items: center;
             &-required {
-              background-color: #3CCACE;
+              background-color: $main_blue;
               color: #fff;
               font-size: 12px;
               margin-left: 8px;
@@ -127,7 +127,7 @@
             display: flex;
             align-items: center;
             &-required {
-              background-color: #3CCACE;
+              background-color: $main_blue;
               color: #fff;
               font-size: 12px;
               margin-left: 8px;
@@ -173,7 +173,7 @@
             display: flex;
             align-items: center;
             &-required {
-              background-color: #3CCACE;
+              background-color: $main_blue;
               color: #fff;
               font-size: 12px;
               margin-left: 8px;
@@ -243,7 +243,7 @@
             display: flex;
             align-items: center;
             &-required {
-              background-color: #3CCACE;
+              background-color: $main_blue;
               color: #fff;
               font-size: 12px;
               margin-left: 8px;
@@ -280,7 +280,7 @@
             display: flex;
             align-items: center;
             &-required {
-              background-color: #3CCACE;
+              background-color: $main_blue;
               color: #fff;
               font-size: 12px;
               margin-left: 8px;
@@ -315,7 +315,7 @@
             display: flex;
             align-items: center;
             &-required {
-              background-color: #3CCACE;
+              background-color: $main_blue;
               color: #fff;
               font-size: 12px;
               margin-left: 8px;
@@ -350,7 +350,7 @@
             display: flex;
             align-items: center;
             &-required {
-              background-color: #3CCACE;
+              background-color: $main_blue;
               color: #fff;
               font-size: 12px;
               margin-left: 8px;
@@ -393,7 +393,7 @@
             display: flex;
             align-items: center;
             &-required {
-              background-color: #3CCACE;
+              background-color: $main_blue;
               color: #fff;
               font-size: 12px;
               margin-left: 8px;
@@ -468,7 +468,7 @@
         flex-direction: column;
         align-items: center;
         &-exhibition {
-          background-color: #3CCACE;
+          background-color: $main_blue;
           color: #fff;
           margin-bottom: 24px;
           width: 100%;
