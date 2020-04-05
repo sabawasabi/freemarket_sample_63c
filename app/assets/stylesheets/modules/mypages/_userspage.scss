@@ -31,6 +31,8 @@ body{
           box-sizing: border-box;
           position: relative;
           a{
+            color: $font_color;
+            text-decoration: none;
             position: absolute;
             width: 700px;
             top: 50px;
@@ -88,6 +90,7 @@ body{
           height: 72px;
           width:700px;
           box-sizing: border-box;
+          display: flex;
           li{
             width: 50%;
             background-color: rgb(238, 238, 238);
@@ -102,7 +105,7 @@ body{
               height: 74px;
             }
           }
-          li.trading-tabs.active{
+          .trading-tabs.active{
             border-top: 2px solid #ea352d;
             background-color: #fff;
             box-sizing: border-box;
