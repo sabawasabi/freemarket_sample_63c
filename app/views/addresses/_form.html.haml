@@ -1,0 +1,62 @@
+.address-container
+  -if @address.new_record?
+    -shaped_postal_code = ""
+  -elsif @address.postal_code == ""
+    -shaped_postal_code = ""
+  - else
+    -shaped_postal_code = @address.postal_code.insert(3, "-")
+  = form_for @address do |f|
+    %h3 発送元・お届け先住所変更
+    .field
+      = f.label :name, "お名前"
+      %span.form-require 必須
+      %br/
+      = f.text_field :last_name, placeholder: "例）山田", class: "input-form"
+      = f.text_field :first_name, placeholder: "例）太郎", class: "input-form"
+    = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "last_name"}
+    = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "first_name"}
+    .field
+      = f.label :name, "お名前カナ"
+      %span.form-require 必須
+      %br/
+      = f.text_field :last_name_jp, placeholder: "例）ヤマダ", class: "input-form"
+      = f.text_field :first_name_jp, placeholder: "例）タロウ", class: "input-form"
+    = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "last_name_jp"}
+    = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "first_name_jp"}
+    .field
+      = f.label :postal_code, "郵便番号"
+      %span.form-require 必須
+      %br/
+      = f.text_field :postal_code, placeholder: "例) 123-4567", value: "#{shaped_postal_code}", class: "input-form"
+    = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "postal_code"}
+    .field
+      = f.label :prefectures, "都道府県"
+      %span.form-require 必須
+      %br/
+      = f.collection_select :prefectures, JpPrefecture::Prefecture.all, :code, :name
+    = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "prefectures"}
+    .field
+      = f.label :city, "市区町村"
+      %span.form-require 必須
+      %br/
+      = f.text_field :city, placeholder: "横浜市緑区", class: "input-form"
+    = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "city"}
+    .field
+      = f.label :house_number, "番地"
+      %span.form-require 必須
+      %br/
+      = f.text_field :house_number, placeholder: "青山1-1-1", class: "input-form"
+    = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "house_number"}
+    .field
+      = f.label :building, "建物名"
+      %span.form-require 任意
+      %br/
+      = f.text_field :building, placeholder: "柳ビル103", class: "input-form"
+    .field
+      = f.label :phone_number, "電話番号"
+      %span.form-require 任意
+      %br/
+      = f.text_field :phone_number, placeholder: "090-1234-5678", class: "input-form"
+    = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "phone_number"}
+    .field
+      = f.submit "変更する"

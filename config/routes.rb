@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   # ログアウト用のルーティング
   devise_scope :user do
-    get '/users/sign_out' => 'users/sessions#destroy'
+    get '/users/sign_out', to: 'users/sessions#destroy'
   end
 
   root 'products#index'
@@ -21,4 +21,5 @@ Rails.application.routes.draw do
     end
   end
   resources :credits,   only: [:index, :new, :create]
+  resources :addresses, only: [:new, :create, :edit, :update]
 end

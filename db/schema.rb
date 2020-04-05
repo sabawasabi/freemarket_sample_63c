@@ -12,6 +12,17 @@
 
 ActiveRecord::Schema.define(version: 20200324000001) do
 
+  create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "postal_code",  null: false
+    t.string   "prefectures",  null: false
+    t.string   "city",         null: false
+    t.integer  "house_number", null: false
+    t.string   "building"
+    t.string   "phone_number"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "ancestry",                   comment: "カテゴリーパス"
     t.string   "category_name", null: false, comment: "カテゴリー名"

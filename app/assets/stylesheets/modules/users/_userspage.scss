@@ -7,7 +7,7 @@ body {
 .mypage-item-not-found{
   list-style: none;
   width: 700px;
-  background-image: url("logo-white(icon).png");
+  background-image: image-url("logo-white-icon.png");
   background-size: 78px 85px;
   background-repeat: no-repeat;
   background-position: center 40px;
@@ -27,6 +27,7 @@ body {
     width: 700px;
     &-user-icon{
       background-image: url("https://www.mercari.com/jp/assets/img/mypage/user-bg.jpg?52408201");
+      box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
       height: 200px;
       padding: 20px;
       box-sizing: border-box;
@@ -78,6 +79,7 @@ body {
   }
   
   &__tradings{
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
     margin-top: 40px;
     &-head{
       width: 700px;
