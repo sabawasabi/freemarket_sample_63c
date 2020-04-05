@@ -1,0 +1,6 @@
+// 子カテゴリーの中身
+%li.navigation__left--category__children--child
+  = link_to "#{category.category_name}", category_path(id: category.id)
+  // 孫カテゴリー
+  %ul.navigation__left--category__grand-children
+    = render partial: "layouts/header_category_grand-child", collection: category.children, as: "children"
