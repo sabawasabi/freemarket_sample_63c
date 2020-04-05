@@ -7,6 +7,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top center;
+    padding: 0 60px;
     position: relative;
     align-items: center;
     &__content{
@@ -40,7 +41,7 @@
         display: flex;
         margin: 20px 0 0 0;
         &--icon{
-          margin: 0 20px 0 0;
+          margin-right: 10px;
         }
       }
     }
@@ -49,13 +50,9 @@
     padding: 60px 20px;
     background-color: #f8f8f8;
     .subtitle{
-      text-align: center;
       font-size: 26px;
       line-height: 1.4;
-      font-weight: bold;
-      margin-bottom: 25px;
-      padding-bottom: 15px;
-      position: relative;
+      @include subtitle;
     }
     .lists{
       text-align: center;
@@ -81,7 +78,7 @@
             text-align: center;
             margin: 0 5px 0 0;
             padding: 10px 20px;
-            background-color: #3CCACE;
+            background-color: $main_color;
             color: #ffffff;
           }
           position: relative;
@@ -97,7 +94,7 @@
             margin: 0 0 0 2px;
           }
           &--key{
-            color: #3CCACE;
+            color: $main_color;
             font-size: 23px;
             font-weight: bold;
             line-height: 50px;
@@ -150,12 +147,8 @@
     background-color: #fff;
     .subtitle{
       font-size: 27px;
-      text-align: center;
       margin: 0 0 40px;
-      font-weight: bold;
-      margin-bottom: 25px;
-      padding-bottom: 15px;
-      position: relative;
+      @include subtitle;
     }
     .items{
       max-width: calc(1040px + 20px);
@@ -199,10 +192,12 @@
     }
     .subtitle {
       text-align: center;
-      font-size: 24px;
-      font-weight: bold;
-      color: #3CCACE;
-      text-decoration: none;
+      a {
+        font-size: 24px;
+        font-weight: bold;
+        color: $main_color;
+        text-decoration: none;
+      }
     }
     .products{
       width: 780px;
@@ -214,7 +209,7 @@
         display: inline-block;
         background-color: #fff;
         &__discription{
-          color: #333;
+          color: $font_color;
           padding: 16px;
           position: relative;
           &__core{

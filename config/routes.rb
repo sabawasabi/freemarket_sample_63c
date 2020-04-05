@@ -10,9 +10,10 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'users/sessions#destroy'
   end
 
-  root "top#index"
+  root 'products#index'
 
   resources :users
+  resources :categories, only: [:index, :show]
   resources :products,  only: [:new, :create, :show]
   resources :credits,   only: [:index, :new, :create]
 end
