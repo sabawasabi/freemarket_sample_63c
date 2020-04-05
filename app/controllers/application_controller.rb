@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
+  include CategoryActions
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :basic_auth, if: :production?
+  before_action :set_categories
 
   protected
   def configure_permitted_parameters

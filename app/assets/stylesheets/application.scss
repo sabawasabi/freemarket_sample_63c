@@ -1,15 +1,24 @@
-@import "foundation/reset";
+// base
+@import "base/reset";
+@import "base/mixins";
+@import "base/variables";
+
+// layout
 @import "layout/header";
 @import "layout/footer";
+
+// modules
 @import "modules/mypages/userspage";
 @import "modules/mypages/logout";
-@import "modules/top/banner";
-@import "modules/top/main";
-@import "modules/top/exhibition";
+@import "modules/products/banner";
+@import "modules/products/main";
+@import "modules/products/exhibition";
+@import "modules/products/products";
 @import "modules/users/registrations";
 @import "modules/credits";
 @import "modules/products";
 @import "modules/addresses";
+
 // font
 @import "font-awesome-sprockets";
 @import "font-awesome";
