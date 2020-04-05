@@ -63,8 +63,8 @@
             .products-contents__main-details__status__title
               商品の状態
               .products-contents__main-details__status__title-required
-                必須            
-            = f.text_field :condition, class: "products-contents__main-details__status-box", placeholder: "選択して下さい"
+                必須
+            = f.collection_select :condition, Conditiontag.all, :id, :name,{prompt: "選択して下さい"}, class: "products-contents__main-details__status-box"
 
         .products-contents__main-border
 
@@ -74,19 +74,19 @@
               配送料の負担
               .products-contents__main-delivery__charge__title-required
                 必須
-            = f.text_field :shipping_charges, class: "products-contents__main-delivery__charge-box", placeholder: "選択して下さい"
+            = f.collection_select :shipping_charges, Chargetag.all, :id, :name,{prompt: "選択して下さい"}, class: "products-contents__main-delivery__charge-box"
           .products-contents__main-delivery__area
             .products-contents__main-delivery__area__title
               発送元の地域
               .products-contents__main-delivery__area__title-required
                 必須
-            = f.text_field :shipping_area, class: "products-contents__main-delivery__area-box", placeholder: "選択して下さい"
+            = f.collection_select :shipping_area, Areatag.all, :id, :name,{prompt: "選択して下さい"}, class: "products-contents__main-delivery__area-box"
           .products-contents__main-delivery__date
             .products-contents__main-delivery__date__title
               発送までの日数
               .products-contents__main-delivery__date__title-required
                 必須
-            = f.text_field :days_to_delivery, class: "products-contents__main-delivery__date-box", placeholder: "選択して下さい"
+            = f.collection_select :days_to_delivery, Daystag.all, :id, :name,{prompt: "選択して下さい"}, class: "products-contents__main-delivery__date-box"
 
         .products-contents__main-border
 

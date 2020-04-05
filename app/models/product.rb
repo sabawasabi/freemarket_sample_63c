@@ -19,4 +19,11 @@ class Product < ApplicationRecord
 
   has_many :product_images, dependent: :destroy
   accepts_nested_attributes_for :product_images, allow_destroy: true
+
+  # Active_hash
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :conditiontag
+  belongs_to_active_hash :chargetag
+  belongs_to_active_hash :areatag
+  belongs_to_active_hash :daystag
 end
