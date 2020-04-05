@@ -1,71 +1,72 @@
-%body
-  = render 'layouts/header'
+= render 'layouts/header'
 
+.mypage-container.clearfix
+  -# サイドバー
+  = render "layouts/sidebar"
+  
   -# メイン
-  %main
-    .mypage-container.clearfix
-      .mypage-container__content
-        %section.mypage-container__content-user-icon
-          = link_to "" do
-            %figure
-              = image_tag "member_photo_noimage_thumb.png", "alt width":"60", height:"60"
-            %h2.bold
-              = @user.nickname
-            .mypage-number
-              .mypage-number-detail
-                評価
-                %span.bold 0
-              .mypage-number-detail
-                出品数
-                %span.bold 0
-        %section.mypage-container-news-todo.clearfix
-        
-        %section.mypage-container__tradings
-          %h2.mypage-container__tradings-head 購入した商品
-          %ul.mypage-container__tradings-tabs
-            %li.trading-now.trading-tabs.active
-              = link_to '#', class:"bold" do
-                取引中
-            %li.trading-after.trading-tabs
-              = link_to '#', class:"bold" do
-                過去の取引
+  .mypage-container__content
+    %section.mypage-container__content-user-icon
+      = link_to "" do
+        %figure
+          = image_tag "member_photo_noimage_thumb.png", "alt width":"60", height:"60"
+        %h2.bold
+          = @user.nickname
+        .mypage-number
+          .mypage-number-detail
+            評価
+            %span.bold 0
+          .mypage-number-detail
+            出品数
+            %span.bold 0
+    %section.mypage-container-news-todo.clearfix
+    
+    %section.mypage-container__tradings
+      %h2.mypage-container__tradings-head
+        購入した商品
+      %ul.mypage-container__tradings-tabs
+        %li.trading-now.trading-tabs.active
+          = link_to '#', class:"bold" do
+            取引中
+        %li.trading-after.trading-tabs
+          = link_to '#', class:"bold" do
+            過去の取引
 
-          .mypage-container__tradings-contents
-            %ul#trading-tab-list-now.tab-pane.active
-              %li.mypage-item-not-found.bold.active  取引中の商品がありません
+      .mypage-container__tradings-contents
+        %ul#trading-tab-list-now.tab-pane.active
+          %li.mypage-item-not-found.bold.active
+            取引中の商品がありません
 
-            %ul#trading-tab-list-after.tab-pane
-              %li.list-contents
-                = link_to "" do
-                  %figure
-                    %img{src:""}
-                  .mypage-item-body
-                    .mypage-item-body__text
-                      「購入テスト１」 を購入しました。
-                      %span 取引が完了しました
-                    .mypage-item-body__status.bold.done 取引完了
-                  %i.fa.fa-angle-right.icon
-              %li.list-contents
-                = link_to "" do
-                  %figure
-                    %img{src:""}
-                  .mypage-item-body
-                    .mypage-item-body__text
-                      「購入テスト２」 を購入しました。
-                      %span 取引が完了しました
-                    .mypage-item-body__status.bold.done 取引完了
-                  %i.fa.fa-angle-right.icon
-              %li#gotoAllList
-                = link_to '#', class:"gotoAllList-inne" do
-                  一覧を見る
-      -# サイドバー
-      = render "layouts/sidebar"
+        %ul#trading-tab-list-after.tab-pane
+          %li.list-contents
+            = link_to "" do
+              %figure
+                %img{src:""}
+              .mypage-item-body
+                .mypage-item-body__text
+                  「購入テスト１」 を購入しました。
+                  %span 取引が完了しました
+                .mypage-item-body__status.bold.done 取引完了
+              %i.fa.fa-angle-right.icon
+          %li.list-contents
+            = link_to "" do
+              %figure
+                %img{src:""}
+              .mypage-item-body
+                .mypage-item-body__text
+                  「購入テスト２」 を購入しました。
+                  %span 取引が完了しました
+                .mypage-item-body__status.bold.done 取引完了
+              %i.fa.fa-angle-right.icon
+          %li#gotoAllList
+            = link_to '#', class:"gotoAllList-inne" do
+              一覧を見る
 
-  -# バナー
-  = render "products/banner"
+-# バナー
+= render "products/banner"
 
-  -# エキシビジョン
-  = render "products/exhibition"
+-# エキシビジョン
+= render "products/exhibition"
 
-  -# フッター
-  = render "layouts/footer"
+-# フッター
+= render "layouts/footer"

@@ -1,20 +1,14 @@
-* {
-  box-sizing: border-box;
-}
-
 html {
   height: 100%;
-}
-
-.signin-wrapper {
-  background-color: #f8f8f8;
-  height: 100%;
+  body {
+    height: 100%;
+  }
 }
 
 .registration-header {
   height: 128px;
   text-align: center;
-  background-color: #f8f8f8;
+  background-color: $bg_color;
   a {
     list-style: none;
     display: inline-block;
@@ -25,13 +19,12 @@ html {
   img {
     height: 49px;
     width: 185px;
-    background-color: #f8f8f8;
   }
 }
 
 .container {
   width: 100%;
-  background-color: #f8f8f8;
+  background-color: $bg_color;
   display: flex;
   justify-content: center;
   font-size: 14px;
@@ -184,7 +177,7 @@ html {
 
 .registration-footer {
   width: 100%;
-  background-color: #f8f8f8;
+  background-color: $bg_color;
   padding: 40px 0;
   margin: 0 auto;
   text-align: center;
