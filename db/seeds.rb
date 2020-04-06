@@ -1,3 +1,4 @@
+# カテゴリの親カテゴリ
 ladies = Category.create(category_name: "レディース")
 mens = Category.create(category_name: "メンズ")
 baby = Category.create(category_name: "ベビー・キッズ")
@@ -166,3 +167,86 @@ other_matome.children.create([{category_name: "ペットフード"}, {category_n
 other_food.children.create([{category_name: "菓子"}, {category_name: "米"}, {category_name: "野菜"}, {category_name: "果物"}, {category_name: "調味料"}, {category_name: "魚介類(加工食品)"}, {category_name: "肉類(加工食品)"}, {category_name: "その他 加工食品"}, {category_name: "その他"}])
 other_drink.children.create([{category_name: "コーヒー"}, {category_name: "ソフトドリンク"}, {category_name: "ミネラルウォーター"}, {category_name: "茶"}, {category_name: "ウイスキー"}, {category_name: "ワイン"}, {category_name: "ブランデー"}, {category_name: "焼酎"}, {category_name: "日本酒"}, {category_name: "ビール、発泡酒"}, {category_name: "その他"}])
 other_other.children.create([{category_name: "オフィス用品一般"}, {category_name: "オフィス家具"}, {category_name: "店舗用品"}, {category_name: "OA機器"}, {category_name: "ラッピング/包装"}, {category_name: "その他"}])
+
+# サイズの親サイズ
+clothes = ProductsSize.create(size_name: "洋服のサイズ")
+shoes = ProductsSize.create(size_name: "靴のサイズ")
+
+# 洋服のサイズの子サイズ
+clothes_xxs = clothes.children.create(size_name: "XXS以下")
+clothes_xs = clothes.children.create(size_name: "XS(SS)")
+clothes_s = clothes.children.create(size_name: "S")
+clothes_m = clothes.children.create(size_name: "M")
+clothes_l = clothes.children.create(size_name: "L")
+clothes_xl = clothes.children.create(size_name: "XL")
+clothes_2xl = clothes.children.create(size_name: "2XL(3L)")
+clothes_3xl = clothes.children.create(size_name: "3XL(4L)")
+clothes_4xl = clothes.children.create(size_name: "4XL(5L)以上")
+clothes_free = clothes.children.create(size_name: "FREE SIZE")
+
+# 靴のサイズの子サイズ
+shoes_20 = shoes.children.create(size_name: "20cm以下")
+shoes_205 = shoes.children.create(size_name: "20.5cm")
+shoes_21 = shoes.children.create(size_name: "21cm")
+shoes_215 = shoes.children.create(size_name: "21.5cm")
+shoes_22 = shoes.children.create(size_name: "22cm")
+shoes_225 = shoes.children.create(size_name: "22.5cm")
+shoes_23 = shoes.children.create(size_name: "23cm")
+shoes_235 = shoes.children.create(size_name: "23.5cm")
+shoes_24 = shoes.children.create(size_name: "24cm")
+shoes_245 = shoes.children.create(size_name: "24.5cm")
+shoes_25 = shoes.children.create(size_name: "25cm")
+shoes_255 = shoes.children.create(size_name: "25.5cm")
+shoes_26 = shoes.children.create(size_name: "26cm")
+shoes_265 = shoes.children.create(size_name: "26.5cm")
+shoes_27 = shoes.children.create(size_name: "27cm")
+shoes_275 = shoes.children.create(size_name: "27.5cm")
+shoes_28 = shoes.children.create(size_name: "28cm")
+shoes_285 = shoes.children.create(size_name: "28.5cm")
+shoes_29 = shoes.children.create(size_name: "29cm")
+shoes_295 = shoes.children.create(size_name: "29.5cm")
+shoes_30 = shoes.children.create(size_name: "30cm")
+shoes_305 = shoes.children.create(size_name: "30.5cm")
+shoes_31 = shoes.children.create(size_name: "31cm以上")
+
+# レディースの子カテゴリと服サイズの関連づけ
+6.times do |n|
+  CategorySize.create!(
+    category_id: "#{13 + n + 1}",products_size_id: '1',
+  )
+end
+
+# レディースの孫カテゴリと服サイズの関連づけ
+66.times do |n|
+  CategorySize.create!(
+    category_id: "#{19 + n + 1}",products_size_id: '1',
+  )
+end
+
+# メンズの子カテゴリと服サイズの関連づけ
+5.times do |n|
+  CategorySize.create!(
+    category_id: "#{85 + n + 1}",products_size_id: '1',
+  )
+end
+
+# メンズの孫カテゴリと服サイズの関連づけ
+54.times do |n|
+  CategorySize.create!(
+    category_id: "#{90 + n + 1}",products_size_id: '1',
+  )
+end
+
+# ベビー・キッズの子カテゴリと服サイズの関連づけ
+5.times do |n|
+  CategorySize.create!(
+    category_id: "#{144 + n + 1}",products_size_id: '1',
+  )
+end
+
+# メンズの孫カテゴリと服サイズの関連づけ
+34.times do |n|
+  CategorySize.create!(
+    category_id: "#{149 + n + 1}",products_size_id: '1',
+  )
+end

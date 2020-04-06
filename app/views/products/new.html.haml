@@ -52,13 +52,13 @@
                 必須
             .products-contents__main-details__category-wrapper
               .products-contents__main-details__category-wrapper__box
-                = f.collection_select :category_id, @parents, :id, :category_name,{prompt: "---"}, class: "products-contents__main-details__category-box", id: "parent-form"
+                = f.select :category_id, @parents, {}, {class: "products-contents__main-details__category-box", id: "parent-form"}
           .products-contents__main-details__brand
             .products-contents__main-details__brand__title
               ブランド
               .products-contents__main-details__brand__title-required
                 任意
-            %input.products-contents__main-details__brand-box{placeholder: "例) シャネル", type: "text"}
+            = f.text_field :brand, class: "products-contents__main-details__brand-box", placeholder: "例) シャネル"
           .products-contents__main-details__status
             .products-contents__main-details__status__title
               商品の状態
