@@ -62,7 +62,7 @@ $(function() {
       $.ajax({
         url: 'get_category_children',
         type: 'GET',
-        data: { parent_name: parentValue },
+        data: { parent_id: parentValue },
         dataType: 'json'
       })
       .done(function(children){
