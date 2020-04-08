@@ -1,6 +1,7 @@
 class Address < ApplicationRecord
   before_validation :shaping_data
 
+  # Validations
   with_options presence: true do
     validates :last_name
     validates :first_name
@@ -18,7 +19,10 @@ class Address < ApplicationRecord
   end
 
   validates :postal_code, format: { with: /\A[0-9]+\z/ }, length: { is: 7 }
-  validates :phone_number, format: { with: /\A0[0-9]{9,10}\z/ }
+  validates :phone_number, format: { with: /\A(|0[0-9]{9,10})\z/ }
+
+  # Association
+  belongs_to :user
 
   private
    def shaping_data

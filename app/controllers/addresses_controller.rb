@@ -1,5 +1,6 @@
 class AddressesController < ApplicationController
   before_action :set_address, only: [:edit, :update]
+  before_action :set_user_id, only: [:new, :create, :edit, :update]
   
   def new
     @address = Address.new
@@ -8,7 +9,7 @@ class AddressesController < ApplicationController
   def create
     @address = Address.new(address_params)
     if @address.save
-      redirect_to edit_address_path(@address.id)
+      redirect_to "/users/#{@address.user_id}/addresses/#{@address.id}/edit"
     else
       render :new
     end
@@ -19,7 +20,7 @@ class AddressesController < ApplicationController
 
   def update
     if @address.update(address_params)
-      redirect_to edit_address_path(@address.id)
+      redirect_to "/users/#{@address.user_id}/addresses/#{@address.id}/edit"
     else
       render :edit
     end
@@ -27,11 +28,15 @@ class AddressesController < ApplicationController
 
   private
   def address_params
-    params.require(:address).permit(:last_name, :first_name, :last_name_jp, :first_name_jp, :postal_code, :prefectures, :city, :house_number, :building, :phone_number)
+    params.require(:address).permit(:last_name, :first_name, :last_name_jp, :first_name_jp, :postal_code, :prefectures, :city, :house_number, :building, :phone_number).merge(user_id: current_user.id)
   end
 
   def set_address
     @address = Address.find(params[:id])
+  end
+
+  def set_user_id
+    @user = User.find(params[:user_id])
   end
 
 end

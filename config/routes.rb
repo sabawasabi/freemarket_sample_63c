@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 
   root 'products#index'
 
-  resources :users
+  resources :users do
+    resources :addresses, only: [:new, :create, :edit, :update]
+  end
   resources :categories, only: [:index, :show]
   resources :products,  only: [:new, :create,  :show] do
     collection do
@@ -22,5 +24,4 @@ Rails.application.routes.draw do
     end
   end
   resources :credits,   only: [:index, :new, :create]
-  resources :addresses, only: [:new, :create, :edit, :update]
 end
