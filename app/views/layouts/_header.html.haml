@@ -2,27 +2,87 @@
   .header__inner
     .mainheader
       %h1.mainheader__icon
-        = image_tag 'logo.png', class: 'header_log',size: '140x44'
+        = link_to root_path do
+          = image_tag 'logo.png', class: 'header_log'
       .mainheader__search
-        %input.mainheader__search--box{ placeholder: 'キーワードを検索してください'}
-
+        %input.mainheader__search--box{ placeholder: 'キーワードから探す' }
         %ul.mainheader__search--btn
-          = image_tag 'icon-search_1.png', class: 'search_log',size: '19x19'
+          = image_tag 'icon-search_1.png', class: 'search_log'
       
-    %ul.navigation
-      .navigation__left
-        %li.navigation__left__category
-          カテゴリー
+    .navigation
+      %ul.navigation__left
+        %li.navigation__left--category
+          = link_to "カテゴリー", '#'
+          // 親カテゴリー
+          %ul.navigation__left--category__parents
+            %li.navigation__left--category__parents--parent
+              = link_to "レディース", category_path(id: 1)
+              // 子カテゴリー
+              %ul.navigation__left--category__children
+                = render partial: 'layouts/header_category_child', collection: @category_children1, as: "category"
+            
+            // TODO 親カテゴリーコードのリファクタをしたい
+            %li.navigation__left--category__parents--parent
+              = link_to "メンズ", category_path(id: 2)
+              %ul.navigation__left--category__children
+                = render partial: 'layouts/header_category_child', collection: @category_children2, as: "category"
+            %li.navigation__left--category__parents--parent
+              = link_to "ベビー・キッズ", category_path(id: 3)
+              %ul.navigation__left--category__children
+                = render partial: 'layouts/header_category_child', collection: @category_children3, as: "category"
+            %li.navigation__left--category__parents--parent
+              = link_to "インテリア・住まい・小物", category_path(id: 4)
+              %ul.navigation__left--category__children
+                = render partial: 'layouts/header_category_child', collection: @category_children4, as: "category"
+            %li.navigation__left--category__parents--parent
+              = link_to "本・音楽・ゲーム", category_path(id: 5)
+              %ul.navigation__left--category__children
+                = render partial: 'layouts/header_category_child', collection: @category_children5, as: "category"
+            %li.navigation__left--category__parents--parent
+              = link_to "おもちゃ・ホビー・グッズ", category_path(id: 6)
+              %ul.navigation__left--category__children
+                = render partial: 'layouts/header_category_child', collection: @category_children6, as: "category"
+            %li.navigation__left--category__parents--parent
+              = link_to "コスメ・香水・美容", category_path(id: 7)
+              %ul.navigation__left--category__children
+                = render partial: 'layouts/header_category_child', collection: @category_children7, as: "category"
+            %li.navigation__left--category__parents--parent
+              = link_to "家電・スマホ・カメラ", category_path(id: 8)
+              %ul.navigation__left--category__children
+                = render partial: 'layouts/header_category_child', collection: @category_children8, as: "category"
+            %li.navigation__left--category__parents--parent
+              = link_to "スポーツ・レジャー", category_path(id: 9)
+              %ul.navigation__left--category__children
+                = render partial: 'layouts/header_category_child', collection: @category_children9, as: "category"
+            %li.navigation__left--category__parents--parent
+              = link_to "ハンドメイド", category_path(id: 10)
+              %ul.navigation__left--category__children
+                = render partial: 'layouts/header_category_child', collection: @category_children10, as: "category"
+            %li.navigation__left--category__parents--parent
+              = link_to "チケット", category_path(id: 11)
+              %ul.navigation__left--category__children
+                = render partial: 'layouts/header_category_child', collection: @category_children11, as: "category"
+            %li.navigation__left--category__parents--parent
+              = link_to "自動車・オートバイ", category_path(id: 12)
+              %ul.navigation__left--category__children
+                = render partial: 'layouts/header_category_child', collection: @category_children12, as: "category"
+            %li.navigation__left--category__parents--parent
+              = link_to "その他", category_path(id: 13)
+              %ul.navigation__left--category__children
+                = render partial: 'layouts/header_category_child', collection: @category_children13, as: "category"
+
+
         %li.navigation__left--brand
-          ブランド
-      .navigation__right
+          = link_to "ブランド", '#'
+
+      %ul.navigation__right
         -if user_signed_in?
           %li.navigation__right--login
-            = link_to "ログアウト", destroy_user_session_path, method: :delete
+            = link_to "ログアウト", users_sign_out_path, method: :delete
           %li.navigation__right--new
-            = link_to "マイページ", "#"
+            = link_to "マイページ", user_path(current_user.id), method: :get
         -else
           %li.navigation__right--login
             = link_to "ログイン", new_user_session_path
           %li.navigation__right--new
-            = link_to "新規会員登録", new_user_registration_path 
+            = link_to "新規会員登録", new_user_registration_path

@@ -1,0 +1,200 @@
+html {
+  background-color: $bg_color;
+}
+
+.registration-header {
+  height: 128px;
+  text-align: center;
+  background-color: $bg_color;
+  a {
+    list-style: none;
+    display: inline-block;
+    height: 49px;
+    width: 185px;
+    margin: 40px 20px 0px 0px;
+  }
+  img {
+    height: 49px;
+    width: 185px;
+  }
+}
+
+.container {
+  background-color: $bg_color;
+  font-size: 14px;
+  &__login-panel {
+    margin: 0 auto;
+    width: 456px;
+    &__registration {
+      padding: 40px 64px;
+      text-align: center;
+      background-color: #fff;
+      border-bottom: 1px solid lightgray;
+      p {
+        background-color: #fff;
+      }
+      a {
+        display: block;
+        height: 40px;
+        width: 328px;
+        line-height: 40px;
+        background-color: #0099E8;
+        text-decoration: none;
+        color: #fff;
+        margin-top: 8px;
+      }
+    }
+    &__signin {
+      text-align: center;
+      background-color: #fff;
+      padding: 24px 64px 32px;
+      &__group {
+        width: 328px;
+        height: 48px;
+        margin-bottom: 24px;
+        padding: 10px 16px 8px 16px;
+      }
+      input {
+        display: block;
+        background-color: #fff;
+      }
+      .input-text {
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+      a {
+        display: block;
+        text-decoration: none;
+        text-align: left;
+        padding: 0;
+        color: #0099e8;
+        margin-top: 40px;
+      }
+    }
+  }
+  &__signup-panel {
+    width: 700px;
+    background-color: #fff;
+    margin: 0 auto;
+    &__header {
+      text-align: center;
+      font-size: 22px;
+      padding: 32px;
+      border-bottom: 1px solid lightgray;
+      background-color: #fff;
+      h2 {
+        background-color: #fff;
+      }
+    }
+    &__main {
+      width: 100%;
+      padding: 24px 16px 40px 16px;
+      background-color: #fff;
+      &__form {
+        width: 343px;
+        margin: 0 auto;
+        background-color: #fff;
+        &__item {
+          background-color: #fff;
+          margin-top: 32px;
+          label {
+            font-weight: 600;
+          }
+          p {
+            display: inline;
+            font-weight: 600;
+          }
+          .form-require {
+            background-color: red;
+            font-size: 12px;
+            color: #fff;
+            padding: 3px 4px;
+            margin-left: 8px;
+            border-radius: 2px;
+          }
+          .input-form {
+            width: 100%;
+            background-color: #fff;
+            padding: 10px 16px 8px 16px;
+            margin-top: 8px;
+            border-radius: 4px;
+            box-shadow: none;
+            outline: none;
+            border: 1px solid #ccc;
+            height: 48px;
+          }
+          .name-forms{
+            display: flex;
+          }
+          .name-form {
+            width: calc(50% - 4px);
+          }
+          .name-form:first-of-type {
+            margin-right: 8px;
+          }
+          .form-block {
+            background-color: #fff;
+          }
+          .birth-form {
+            width: 76px;
+            text-align: center;
+          }
+          .error_message{
+            color:red;
+            margin: 8px 0 0;
+          }
+        }
+        &__item:first-of-type {
+          margin-top: 0;
+        }
+        &__btn {
+          background-color: #fff;
+          width: 100%;
+          p {
+            background-color: #fff;
+            margin: 24px 0px;
+            a {
+              text-decoration: none;
+              color: #0099E8;
+            }
+          }
+        }
+      }
+    }
+  }
+  .submit-btn {
+    height: 48px;
+    background-color: $main_color;
+    cursor: pointer;
+    color: #fff;
+  }
+}
+
+.registration-footer {
+  width: 100%;
+  background-color: $bg_color;
+  padding: 40px 0;
+  margin: 0 auto;
+  text-align: center;
+  ul li {
+    display: inline;
+    font-size: 12px;
+    margin-left: 16px;
+  }
+  a {
+    text-decoration: none;
+    color: $font_color;
+  }
+  img {
+    height: 22px;
+    width: 75px;
+    background-color: $main_color;
+    margin-top: 40px;
+  }
+  p {
+    font-size: 13px;
+    color: $font_color;
+  }
+}

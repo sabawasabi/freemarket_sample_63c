@@ -10,14 +10,17 @@
             .products-contents__main-image__title-required
               必須
           .products-contents__main-image__text
-            最大10枚までアップロードできます
+            最大3枚までアップロードできます
+          .products-contents__main-image__box
             .products-contents__main-image__box
               .products-contents__main-image__box-input
-                = icon('fas', 'camera', class: 'products-contents__main-image__box-input__icon')
-                .products-contents__main-image__box-input__text
-                  ドラックアンドドロップ
-                  %br/
-                  またはクリックしてファイルをアップロード
+                .products-contents__main-image__box-input__image
+                  = f.fields_for :product_images do |i|
+                    = i.file_field :image, id: "product_images_attributes_0_image"
+                  = f.fields_for :product_images do |i|
+                    = i.file_field :image, id: "product_images_attributes_1_image"
+                  = f.fields_for :product_images do |i|
+                    = i.file_field :image, id: "product_images_attributes_2_image"
 
         .products-contents__main-border
 
@@ -47,20 +50,21 @@
               カテゴリー
               .products-contents__main-details__category__title-required
                 必須
-            .products-contents__main-details__category-box
-              選択してください
+            .products-contents__main-details__category-wrapper
+              .products-contents__main-details__category-wrapper__box
+                = f.collection_select :category_id, Category.all.order("id ASC").limit(13), :id, :category_name,{prompt: "---"}, class: "products-contents__main-details__category-box", id: "parent-form"
           .products-contents__main-details__brand
             .products-contents__main-details__brand__title
               ブランド
               .products-contents__main-details__brand__title-required
                 任意
-            %input.products-contents__main-details__brand-box{placeholder: "例) シャネル", type: "text"}
+            = f.text_field :brand, class: "products-contents__main-details__brand-box", placeholder: "例) シャネル"
           .products-contents__main-details__status
             .products-contents__main-details__status__title
               商品の状態
               .products-contents__main-details__status__title-required
-                必須            
-            = f.text_field :condition, class: "products-contents__main-details__status-box", placeholder: "選択して下さい"
+                必須
+            = f.collection_select :condition, Conditiontag.all, :id, :name,{prompt: "選択して下さい"}, class: "products-contents__main-details__status-box"
 
         .products-contents__main-border
 
@@ -70,19 +74,19 @@
               配送料の負担
               .products-contents__main-delivery__charge__title-required
                 必須
-            = f.text_field :shipping_charges, class: "products-contents__main-delivery__charge-box", placeholder: "選択して下さい"
+            = f.collection_select :shipping_charges, Chargetag.all, :id, :name,{prompt: "選択して下さい"}, class: "products-contents__main-delivery__charge-box"
           .products-contents__main-delivery__area
             .products-contents__main-delivery__area__title
               発送元の地域
               .products-contents__main-delivery__area__title-required
                 必須
-            = f.text_field :shipping_area, class: "products-contents__main-delivery__area-box", placeholder: "選択して下さい"
+            = f.collection_select :shipping_area, Areatag.all, :id, :name,{prompt: "選択して下さい"}, class: "products-contents__main-delivery__area-box"
           .products-contents__main-delivery__date
             .products-contents__main-delivery__date__title
               発送までの日数
               .products-contents__main-delivery__date__title-required
                 必須
-            = f.text_field :days_to_delivery, class: "products-contents__main-delivery__date-box", placeholder: "選択して下さい"
+            = f.collection_select :days_to_delivery, Daystag.all, :id, :name,{prompt: "選択して下さい"}, class: "products-contents__main-delivery__date-box"
 
         .products-contents__main-border
 

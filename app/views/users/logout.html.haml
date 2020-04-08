@@ -10,15 +10,15 @@
             %form.mypage-container__main__box__title__inner
               .mypage-container__main__box__title__inner__content
                 -# あとでcurrent_user_destroy_path? に変更する
-                = link_to 'ログアウト',user_session_path,method: :delete,class: "mypage-container__main__box__title__inner__content__btn submit-btn submit-btn-red"
+                = link_to 'ログアウト', user_session_path, method: :delete, class: "mypage-container__main__box__title__inner__content__btn submit-btn submit-btn-red"
       -# サイドバー
       = render "layouts/sideber"
 
   -# バナー
-  = render "top/banner"
+  = render "products/banner"
 
   -# エキシビジョン
-  = render "top/exhibition"
+  = render "products/exhibition"
 
   -# フッター
   = render "layouts/footer"

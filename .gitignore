@@ -41,3 +41,5 @@ public/uploads/*
 config/secrets.yml
 
 /.env
+gem 'carrierwave'
+gem 'mini_magick'

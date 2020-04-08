@@ -7,7 +7,6 @@ Rails.application.routes.draw do
 
   root "top#index"
 
-
   resources :users, only: [:new, :destroy]
   resources :products, only: [:new, :create, :show]
   resources :credits, only: [:new, :show, :destroy] do
@@ -27,6 +26,20 @@ Rails.application.routes.draw do
 
   # ログアウト用のルーティング
   devise_scope :user do
-    get '/users/sign_out' => 'users/sessions#destroy'
+    get '/users/sign_out', to: 'users/sessions#destroy'
   end
+
+  root 'products#index'
+
+  resources :users
+  resources :categories, only: [:index, :show]
+  resources :products,  only: [:new, :create,  :show] do
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+      get 'get_size', defaults: { format: 'json' }
+    end
+  end
+  resources :credits,   only: [:index, :new, :create]
+  resources :addresses, only: [:new, :create, :edit, :update]
 end
