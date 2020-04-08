@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
       redirect_to root_path, notice: '商品を出品しました'
     else
       @product.product_images.build
-      render :new
+      redirect_to new_product_path
     end
   end
 

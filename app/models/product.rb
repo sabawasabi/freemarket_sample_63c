@@ -17,7 +17,7 @@ class Product < ApplicationRecord
   # has_many :likes
   # has_many :comments
 
-  has_many :product_images, dependent: :destroy
+  has_many :product_images, inverse_of: :product ,dependent: :destroy
   accepts_nested_attributes_for :product_images, allow_destroy: true
 
   # Active_hash
