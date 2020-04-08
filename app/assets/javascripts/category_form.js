@@ -60,7 +60,7 @@ $(function() {
     //　("parent-form")は親ボックスのid属性
     if (parentValue != "---"){ //親カテゴリーが初期値でないことを確認
       $.ajax({
-        url: 'get_category_children',
+        url: '/products/get_category_children',
         type: 'GET',
         data: { parent_id: parentValue },
         dataType: 'json'
@@ -89,7 +89,7 @@ $(function() {
     var childValue = $('#child-form option:selected').data('category'); //選択された子カテゴリーのidを取得
     if (childValue != "---"){ //子カテゴリーが初期値でないことを確認
       $.ajax({
-        url: 'get_category_grandchildren',
+        url: '/products/get_category_grandchildren',
         type: 'GET',
         data: { child_id: childValue },
         dataType: 'json'
@@ -116,7 +116,7 @@ $(function() {
     var grandValue = $('#grandchild-form option:selected').data('category'); //選択された孫カテゴリーのidを取得
     if (grandValue != "---"){ //孫カテゴリーが初期値でないことを確認
       $.ajax({
-        url: 'get_size',
+        url: '/products/get_size',
         type: 'GET',
         data: { grandchild_id: grandValue },
         dataType: 'json'
