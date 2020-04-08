@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    @product_images = @product.product_images.build
+    @product.product_images.new
   end
 
   def create
@@ -16,7 +16,6 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to root_path, notice: '商品を出品しました'
     else
-      @product.product_images.build
       render :new
     end
   end
@@ -35,6 +34,14 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+  end
+
+  def edit
+    @product = Product.find(params[:id])
+  end
+
+  def update
+    Product.update(product_params)
   end
 
   # 孫カテゴリーが選択された後に動くアクション
