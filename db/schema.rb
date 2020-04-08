@@ -10,15 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200401084310) do
-
-  create_table "credits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id",     null: false
-    t.string   "customer_id", null: false
-    t.string   "card_id",     null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    
 ActiveRecord::Schema.define(version: 20200405133454) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -46,6 +37,14 @@ ActiveRecord::Schema.define(version: 20200405133454) do
     t.datetime "updated_at",       null: false
     t.index ["category_id"], name: "index_category_sizes_on_category_id", using: :btree
     t.index ["products_size_id"], name: "index_category_sizes_on_products_size_id", using: :btree
+  end
+
+  create_table "credits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id",     null: false
+    t.string   "customer_id", null: false
+    t.string   "card_id",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "product_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -111,12 +110,12 @@ ActiveRecord::Schema.define(version: 20200405133454) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
-  add_foreign_key "transactions", "products"
-  add_foreign_key "transactions", "users"
   add_foreign_key "category_sizes", "categories"
   add_foreign_key "category_sizes", "products_sizes"
   add_foreign_key "product_images", "products"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "products_sizes"
   add_foreign_key "products", "users"
+  add_foreign_key "transactions", "products"
+  add_foreign_key "transactions", "users"
 end
