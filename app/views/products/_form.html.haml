@@ -14,11 +14,11 @@
           .products-contents__main-image__box
             .products-contents__main-image__box
               .products-contents__main-image__box-input
-                #products-contents__main-image__box-input__image
-                  = f.fields_for :product_images do |i|
-                    = i.file_field :image, id: "product_images_attributes_0_image"
-                    %span.js-remove 削除
-
+                #image-box
+                  = f.fields_for :product_images do |image|
+                    %div{ data: {index: image.index}, class:"js-file_group" }
+                      = image.file_field :image, class: 'js-file'
+                      %span.js-remove  削除
         .products-contents__main-border
 
         .products-contents__main-overview
