@@ -31,11 +31,11 @@ group :development, :test do
   gem 'factory_bot_rails'
 end
 
-gem 'turbolinks', '~> 5'
-  git_source(:github) do |repo_name|
-    repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-    "https://github.com/#{repo_name}.git"
-end
+# gem 'turbolinks', '~> 5'
+  # git_source(:github) do |repo_name|
+  #   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  #   "https://github.com/#{repo_name}.git"
+# end
 gem 'rails', '~> 5.0.7', '>= 5.0.7.2'
 gem 'mysql2', '>= 0.3.18', '< 0.6.0'
 gem 'puma', '~> 3.0'
@@ -53,3 +53,4 @@ gem 'mini_magick'
 gem 'fog-aws'
 gem 'jp_prefecture'
 gem 'ancestry'
+gem 'active_hash'

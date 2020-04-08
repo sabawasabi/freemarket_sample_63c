@@ -14,7 +14,13 @@ Rails.application.routes.draw do
 
   resources :users
   resources :categories, only: [:index, :show]
-  resources :products,  only: [:new, :create, :show]
+  resources :products,  only: [:new, :create,  :show] do
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+      get 'get_size', defaults: { format: 'json' }
+    end
+  end
   resources :credits,   only: [:index, :new, :create]
   resources :addresses, only: [:new, :create, :edit, :update]
 end
