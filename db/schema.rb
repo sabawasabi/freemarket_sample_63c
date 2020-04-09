@@ -39,6 +39,14 @@ ActiveRecord::Schema.define(version: 20200405133454) do
     t.index ["products_size_id"], name: "index_category_sizes_on_products_size_id", using: :btree
   end
 
+  create_table "credits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id",     null: false
+    t.string   "customer_id", null: false
+    t.string   "card_id",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "product_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "product_id"
     t.text     "image",      limit: 65535, null: false
@@ -75,6 +83,15 @@ ActiveRecord::Schema.define(version: 20200405133454) do
     t.index ["ancestry"], name: "index_products_sizes_on_ancestry", using: :btree
   end
 
+  create_table "transactions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "product_id", null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_transactions_on_product_id", using: :btree
+    t.index ["user_id"], name: "index_transactions_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "nickname",                                       null: false, comment: "ニックネーム"
     t.string   "email",                                          null: false, comment: "メールアドレス"
@@ -99,4 +116,6 @@ ActiveRecord::Schema.define(version: 20200405133454) do
   add_foreign_key "products", "categories"
   add_foreign_key "products", "products_sizes"
   add_foreign_key "products", "users"
+  add_foreign_key "transactions", "products"
+  add_foreign_key "transactions", "users"
 end

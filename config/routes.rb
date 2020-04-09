@@ -23,4 +23,20 @@ Rails.application.routes.draw do
   end
   resources :credits,   only: [:index, :new, :create]
   resources :addresses, only: [:new, :create, :edit, :update]
+  resources :credits, only: [:new, :show, :destroy] do
+    collection do
+      post 'pay_show', to: 'credits#pay_show'
+      post 'pay', to: 'credits#pay'
+    end
+  end
+  resources :transactions, only: [:index] do
+    collection do
+      get 'pay_index', to: 'transactions#pay_index'
+      post 'pay', to: 'transactions#pay'
+      get 'done', to: 'transactions#done'
+    end
+  end
 end
+
+
+
