@@ -39,3 +39,7 @@ public/uploads/*
 .DS_Store
 
 config/secrets.yml
+
+/.env
+gem 'carrierwave'
+gem 'mini_magick'

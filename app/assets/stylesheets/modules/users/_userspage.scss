@@ -1,0 +1,264 @@
+body {
+  background-color: $bg_color;
+}
+.bold{
+  font-weight: 600;
+}
+.mypage-item-not-found{
+  list-style: none;
+  width: 700px;
+  background-image: image-url("logo-white-icon.png");
+  background-size: 78px 85px;
+  background-repeat: no-repeat;
+  background-position: center 40px;
+  background-color: #fff;
+  color: #ccc;
+  padding: 160px 0 60px;
+  text-align: center;
+  font-size: 16px;
+}
+.mypage-container{
+  margin: 0 auto;
+  height: 1450px;
+  width: 1020px;
+  padding: 40px 0;
+  &__content{
+    float: right;
+    width: 700px;
+    &-user-icon{
+      background-image: url("https://www.mercari.com/jp/assets/img/mypage/user-bg.jpg?52408201");
+      box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+      height: 200px;
+      padding: 20px;
+      box-sizing: border-box;
+      position: relative;
+      a{
+        color: $font_color;
+        text-decoration: none;
+        position: absolute;
+        width: 700px;
+        top: 50px;
+        left: 0;
+        figure{
+          width: 60px;
+          margin: 0 auto;
+          img{
+            height: 60px;
+            border-radius: 30px;
+          }
+        }
+        h2{
+          text-align: center;
+          margin-top: 8px;
+          font-size: 14px;
+        }
+        .mypage-number{
+          margin-top: 8px;
+          font-size: 14px;
+          text-align: center;
+          &-detail{
+            display: inline-block;
+            span{
+              display: inline-block;
+              margin-left: 8px;
+              font-size: 16px;
+            }
+          }
+          &-detail:not(:first-child){
+            margin-left: 16px;
+          }
+        }
+      }
+      a:hover{
+        opacity: 0.7;
+        h2{
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  
+  &__tradings{
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+    margin-top: 40px;
+    &-head{
+      width: 700px;
+      padding:0 16px;
+      box-sizing: border-box;
+      background: #f8f8f8;
+      font-size: 16px;
+      line-height: 72px;
+    }
+    &-tabs{
+      height: 72px;
+      width:700px;
+      box-sizing: border-box;
+      display: flex;
+      li{
+        width: 50%;
+        background-color: rgb(238, 238, 238);
+        display: inline-block;
+        a{
+          font-size: 16px;
+          line-height: 72px;
+          display: block;
+          color: $font_color;
+          text-align: center;
+          text-decoration: none;
+          background-color: #f8f8f8;
+          height: 74px;
+        }
+      }
+      .trading-tabs.active{
+        border-top: 2px solid #ea352d;
+        background-color: #fff;
+        box-sizing: border-box;
+        a{
+          height: 74px;
+          background-color: #fff;
+        }
+      }
+      li:hover{
+        opacity: 0.7;
+      }
+    }
+    &-contents{
+      ul#trading-tab-list-now{
+        display: none;
+      }
+      ul#trading-tab-list-now.active{
+        display: block;
+      }
+      ul#trading-tab-list-after.active{
+        display: block;
+      }
+      ul#trading-tab-list-after{
+        display: none;
+        li.list-contents{
+          list-style: none;
+          border-bottom: 1px solid #eee;
+          position: relative;
+          background-color: #fff;
+          a{
+            display: block;
+            min-height: 80px;
+            padding: 16px;
+            box-sizing: border-box;
+            width: 700px;
+            figure{
+              float: left;
+              position: relative;
+              img{
+                width: 48px;
+                height: 48px;
+                position: absolute;
+                top: 0;
+                left: 0;
+              }
+            }
+            .mypage-item-body{
+              margin: 0 40px 0 68px;
+              &__text{
+                max-height: 4.4em;
+                line-height: 1.5em;
+                font-weight: 400;
+                font-size: 14px;
+              }
+              &__status{
+                margin-top: 8px;
+                padding: 5px 6px;
+                background: #888;
+                border-radius: 2px;
+                font-size: 12px;
+                color: #fff;
+                width: 48px;
+                display: inline-block;
+              }
+            }
+            i.fa-angle-right{
+              position: absolute;
+              top: 41.5px;
+              right: 16px;
+            }
+          }
+        }
+        li#gotoAllList{
+          background-color: #fff;
+          list-style: none;
+          box-sizing: border-box;
+          display: list-item;
+          text-align: -webkit-match-parent;
+          padding: 16px;
+          a#gotoAllList-inner{
+            display: block;
+            height: 56px;
+            margin: 0 auto;
+            background: #eee;
+            color: $font_color;
+            line-height: 56px;
+            text-align: center;
+          }
+          a#gotoAllList-inner:hover{
+            background-color: $bg_color;
+            opacity: 0.7;
+          }
+        }
+      }
+    }
+  }
+  &__side{
+    float: left;
+    width: 280px;
+    margin-right: 40px;
+
+    .mypage-nav{
+      &-list{
+        li{
+          border-top: 1px solid #eee;
+          a.mypage-nav-list-item{
+            box-sizing: border-box;
+            position: relative;
+            display: block;
+            min-height: 48px;
+            padding: 16px;
+            background-color: #fff;
+            color: $font_color;
+            font-size: 14px;
+            text-decoration: none;
+            i{
+              position: absolute;
+              top: 16px;
+              right: 16px;
+              color: #ccc;
+              font-size: 19px;
+            }
+          }
+          a.mypage-nav-list-item.active{
+            background-color: #eee;
+            font-weight: 600;
+            i.fa.fa-angle-right.icon.active{
+              font-weight: 600;
+              color: $font_color;
+            }
+          }
+        }
+        li:hover{
+          a.mypage-nav-list-item{
+            opacity: 0.7;
+            background-color: #eee;
+            i.fa.fa-angle-right.icon{
+              color: $font_color;
+              right: 10px;
+              top: 13px;
+              font-size: 22px;
+            }
+          }
+        }
+      }
+      &-head{
+        margin-top: 40px;
+        font-size: 16px;
+      }
+    }
+  }
+}

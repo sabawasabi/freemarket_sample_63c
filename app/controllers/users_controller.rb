@@ -1,14 +1,7 @@
 class UsersController < ApplicationController
-  def index
-  end
-
+  before_action :authenticate_user!
+  
   def show
+    @user = current_user
   end
-
-  def logout
-  end
-
-  def delete
-  end
-
 end

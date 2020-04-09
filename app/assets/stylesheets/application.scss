@@ -1,13 +1,23 @@
-@import "reset";
-@import "modules/users";
-@import "header";
-@import "top/main";
-@import "top/banner";
-@import "credits";
-@import "top/exhibition";
-@import "footer";
-@import "modules/products";
-@import "userspage";
-@import "logout";
+// base
+@import "base/reset";
+@import "base/mixins";
+@import "base/variables";
+
+// layout
+@import "layout/header";
+@import "layout/footer";
+
+// modules
+@import "modules/products/banner";
+@import "modules/products/main";
+@import "modules/products/exhibition";
+@import "modules/products/products";
+@import "modules/users/registrations";
+@import "modules/users/userspage";
+@import "modules/users/logout";
+@import "modules/credits";
+@import "modules/addresses";
+
+// font
 @import "font-awesome-sprockets";
 @import "font-awesome";
