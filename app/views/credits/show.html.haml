@@ -1,12 +1,29 @@
-.credit-group
-  .credit-group__title
-    %label 登録クレジットカード情報
-    %br
-    = "**** **** **** " + @default_card_information.last4
-    %br
-    - exp_month = @default_card_information.exp_month.to_s
-    - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
-    = exp_month + " / " + exp_year
-    = form_tag(credit_path, method: :delete, id: 'charge-form',  name: "inputForm") do
-      %input{ type: "hidden", name: "card_id", value: "" }
-      %button 削除する
+= render 'layouts/header'
+
+.mypage-container.clearfix
+  -# サイドバー
+  = render "layouts/sidebar"
+
+  .credit-group
+    .credit-group__title
+      %label 登録クレジットカード情報
+      %br
+      = "**** **** **** " + @default_card_information.last4
+      %br
+      - exp_month = @default_card_information.exp_month.to_s
+      - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+      = exp_month + " / " + exp_year
+      = form_tag(credit_path, method: :delete, id: 'charge-form',  name: "inputForm") do
+        %input{ type: "hidden", name: "card_id", value: "" }
+        %button 削除する
+    .back-to-top
+      = link_to "マイページ", user_path(current_user.id), class:"back_btn"
+
+-# バナー
+= render "products/banner"
+
+-# エキシビジョン
+= render "products/exhibition"
+
+-# フッター
+= render "layouts/footer"

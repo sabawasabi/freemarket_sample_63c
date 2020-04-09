@@ -113,4 +113,17 @@
     max-width: 343px;
     margin: auto;
   }
+  .back_btn{
+    display: block;
+    background-color: #ea352d;
+    width: 100%;
+    line-height: 48px;
+    font-size: 14px;
+    border: 1px solid transparent;
+    -webkit-transition: all ease-out .3s;
+    transition: all ease-out .3s;
+    cursor: pointer;
+    text-align: center;
+    margin: 20px 0 0 0 ;
+  }
 }
