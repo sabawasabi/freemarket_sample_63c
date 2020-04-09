@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 
   root 'products#index'
 
-  resources :users
+  resources :users do
+    resources :addresses, only: [:new, :create, :edit, :update]
+  end
   resources :categories, only: [:index, :show]
   resources :products,  only: [:new, :create,  :show] do
     collection do
@@ -21,8 +23,6 @@ Rails.application.routes.draw do
       get 'get_size', defaults: { format: 'json' }
     end
   end
-  resources :credits,   only: [:index, :new, :create]
-  resources :addresses, only: [:new, :create, :edit, :update]
   resources :credits, only: [:new, :show, :destroy] do
     collection do
       post 'pay_show', to: 'credits#pay_show'

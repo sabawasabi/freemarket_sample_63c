@@ -25,7 +25,7 @@ class User < ApplicationRecord
   # Associations
   # has_many :credit_cards
   # has_many :transactions
-  # has_one :address
+  has_one :address
   # has_many :likes
   # has_many :comments
   has_many :products

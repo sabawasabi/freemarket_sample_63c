@@ -10,17 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200405133454) do
+ActiveRecord::Schema.define(version: 20200408090802) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "postal_code",  null: false
-    t.string   "prefectures",  null: false
-    t.string   "city",         null: false
-    t.integer  "house_number", null: false
+    t.integer  "user_id"
+    t.string   "last_name",               null: false
+    t.string   "first_name",              null: false
+    t.string   "last_name_jp",            null: false
+    t.string   "first_name_jp",           null: false
+    t.string   "postal_code",   limit: 7, null: false
+    t.string   "prefectures",             null: false
+    t.string   "city",                    null: false
+    t.string   "house_number",            null: false
     t.string   "building"
     t.string   "phone_number"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
   end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -28,6 +34,7 @@ ActiveRecord::Schema.define(version: 20200405133454) do
     t.string   "category_name", null: false, comment: "カテゴリー名"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.index ["ancestry"], name: "index_categories_on_ancestry", using: :btree
   end
 
   create_table "category_sizes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -110,6 +117,7 @@ ActiveRecord::Schema.define(version: 20200405133454) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
+  add_foreign_key "addresses", "users"
   add_foreign_key "category_sizes", "categories"
   add_foreign_key "category_sizes", "products_sizes"
   add_foreign_key "product_images", "products"
