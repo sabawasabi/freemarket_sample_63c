@@ -10,17 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200405133454) do
+ActiveRecord::Schema.define(version: 20200408090802) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "postal_code",  null: false
-    t.string   "prefectures",  null: false
-    t.string   "city",         null: false
-    t.integer  "house_number", null: false
+    t.integer  "user_id"
+    t.string   "last_name",               null: false
+    t.string   "first_name",              null: false
+    t.string   "last_name_jp",            null: false
+    t.string   "first_name_jp",           null: false
+    t.string   "postal_code",   limit: 7, null: false
+    t.string   "prefectures",             null: false
+    t.string   "city",                    null: false
+    t.string   "house_number",            null: false
     t.string   "building"
     t.string   "phone_number"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
   end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -28,6 +34,7 @@ ActiveRecord::Schema.define(version: 20200405133454) do
     t.string   "category_name", null: false, comment: "カテゴリー名"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.index ["ancestry"], name: "index_categories_on_ancestry", using: :btree
   end
 
   create_table "category_sizes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -37,6 +44,14 @@ ActiveRecord::Schema.define(version: 20200405133454) do
     t.datetime "updated_at",       null: false
     t.index ["category_id"], name: "index_category_sizes_on_category_id", using: :btree
     t.index ["products_size_id"], name: "index_category_sizes_on_products_size_id", using: :btree
+  end
+
+  create_table "credits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id",     null: false
+    t.string   "customer_id", null: false
+    t.string   "card_id",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "product_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -75,6 +90,15 @@ ActiveRecord::Schema.define(version: 20200405133454) do
     t.index ["ancestry"], name: "index_products_sizes_on_ancestry", using: :btree
   end
 
+  create_table "transactions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "product_id", null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_transactions_on_product_id", using: :btree
+    t.index ["user_id"], name: "index_transactions_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "nickname",                                       null: false, comment: "ニックネーム"
     t.string   "email",                                          null: false, comment: "メールアドレス"
@@ -93,10 +117,13 @@ ActiveRecord::Schema.define(version: 20200405133454) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
+  add_foreign_key "addresses", "users"
   add_foreign_key "category_sizes", "categories"
   add_foreign_key "category_sizes", "products_sizes"
   add_foreign_key "product_images", "products"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "products_sizes"
   add_foreign_key "products", "users"
+  add_foreign_key "transactions", "products"
+  add_foreign_key "transactions", "users"
 end

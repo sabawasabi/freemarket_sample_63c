@@ -2,6 +2,8 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_many :credits
+  # バリデーション
 
   # Validations
   # TODO ユーザー名を全角で入力させるためのバリデーション追加
@@ -24,7 +26,7 @@ class User < ApplicationRecord
   # Associations
   # has_many :credit_cards
   # has_many :transactions
-  # has_one :address
+  has_one :address
   # has_many :likes
   # has_many :comments
   has_many :products
