@@ -1,0 +1,22 @@
+= render "layouts/header"
+
+.mypage-container.clearfix
+  -# サイドバー
+  = render "layouts/sidebar"
+
+  -# メイン
+  .mypage-container__main
+    .mypage-container__main__box
+      .mypage-container__main__box__title
+        %form.mypage-container__main__box__title__inner
+          .mypage-container__main__box__title__inner__content
+            = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "mypage-container__main__box__title__inner__content__btn submit-btn submit-btn-red"
+
+-# バナー
+= render "products/banner"
+
+-# エキシビジョン
+= render "products/exhibition"
+
+-# フッター
+= render "layouts/footer"
