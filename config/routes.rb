@@ -12,7 +12,11 @@ Rails.application.routes.draw do
 
   root 'products#index'
 
-  resources :users
+  resources :users, except: :index do
+    collection do
+      get 'logout', to: 'users#destroy'
+    end
+  end
   resources :categories, only: [:index, :show]
   resources :products,  only: [:new, :create,  :show] do
     collection do
