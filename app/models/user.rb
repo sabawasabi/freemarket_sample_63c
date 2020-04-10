@@ -7,6 +7,7 @@ class User < ApplicationRecord
   # TODO ユーザー名を全角で入力させるためのバリデーション追加
   EMAIL_REGEXP = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/
   PASSWORD_REGEXP = /\A[a-zA-Z0-9]+\z/
+  PHONE_REGEXP = /\A(|0[0-9]{9,10})\z/
   with_options presence: true do
     validates :nickname
     validates :email
@@ -18,7 +19,7 @@ class User < ApplicationRecord
   end
   validates :email, format: { with: EMAIL_REGEXP }, uniqueness: true
   validates :password, format: { with: PASSWORD_REGEXP }, length: { minimum: 7 }
-  validates :phone_number, uniqueness: true, allow_nil: true
+  validates :phone_number, uniqueness: true, allow_nil: true, format: { with: PHONE_REGEXP }
 
   # Associations
   # has_many :credit_cards

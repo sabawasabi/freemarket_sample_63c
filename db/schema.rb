@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 20200405133454) do
     t.string   "last_name_jp",                                   null: false, comment: "姓カナ"
     t.string   "first_name_jp",                                  null: false, comment: "名カナ"
     t.date     "birth_date",                                     null: false, comment: "生年月日"
-    t.integer  "phone_number",                                                comment: "電話番号"
+    t.string   "phone_number",                                                comment: "電話番号"
     t.text     "profile",             limit: 65535,                           comment: "自己紹介文"
     t.text     "icon",                limit: 65535,                           comment: "アイコン"
     t.datetime "remember_created_at",                                         comment: "ログイン情報の保持用"
