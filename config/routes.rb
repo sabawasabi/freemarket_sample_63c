@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :users, except: :index do
     collection do
-      get 'logout', to: 'users#destroy'
+      get 'logout'
     end
     resources :addresses, only: [:new, :create, :edit, :update]
   end

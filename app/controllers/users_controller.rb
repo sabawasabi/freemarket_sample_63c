@@ -5,6 +5,6 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
-  def destroy
+  def logout
   end
 end
