@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.status = "出品中"
-    if @product.save!
+    if @product.save
       redirect_to root_path, notice: '商品を出品しました'
     else
       @product.product_images.build
