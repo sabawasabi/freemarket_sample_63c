@@ -107,6 +107,7 @@
       - @product_no1.each do |product|
         .products__list 
           .products__list--pic
+            -# 商品詳細ページに飛ぶ
             -# = link_to show_product_path(product.id) do
             = image_tag "#{product.product_images[0].image_url}",size: '220x150'
           .products__list__discription
@@ -120,7 +121,8 @@
                 ★１
             .products__list__discription--tax
               (税込)
-  
+
+  -# 時間があれば追加実装
   -# .pickupcontainer
   -#   .head
   -#     ピックピックアップブランド
