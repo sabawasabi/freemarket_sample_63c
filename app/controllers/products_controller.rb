@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
   def get_category_children
     #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
     @category_children = Category.find("#{params[:parent_id]}").children
- end
+  end
 
   # 子カテゴリーが選択された後に動くアクション
   def get_category_grandchildren
@@ -48,7 +48,7 @@ class ProductsController < ApplicationController
         @sizes = related_size_parent.children #紐づいたサイズ（親）の子供の配列を取得
       end
     end
- end
+  end
 
   private
   def product_params
