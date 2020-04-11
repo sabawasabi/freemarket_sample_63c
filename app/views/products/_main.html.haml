@@ -104,10 +104,11 @@
     .subtitle
       = link_to "新規投稿商品", '#'
     .products
-      - @product.each do |product|
-        .products__list
+      - @product_no1.each do |product|
+        .products__list 
           .products__list--pic
-            = image_tag 'curry.png', class: 'productpic_left',size: '220x150'
+            = link_to show_product_path(product.id) do
+            -#   = image_tag "#{product.product_image[0].image.url}"
           .products__list__discription
             .products__list__discription--name
               = product.name

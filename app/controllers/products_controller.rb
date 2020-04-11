@@ -2,7 +2,16 @@ class ProductsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   
   def index
-    @product = Product.order("created_at DESC").limit 3
+    array = [1, 2, 3, 4]
+      for num in array do
+        search_anc = Category.where('ancestry LIKE(?)', "#{num}/%")
+        ids = []
+        search_anc.each do |i|
+          ids << i[:id]
+        end
+        products = Product.where(category_id: ids).order("id DESC").limit(10)
+        instance_variable_set("@product_no#{num}", products)
+      end
   end
 
   def new
@@ -13,7 +22,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.status = "出品中"
-    if @product.save
+    if @product.save!
       redirect_to root_path, notice: '商品を出品しました'
     else
       @product.product_images.build
@@ -25,7 +34,7 @@ class ProductsController < ApplicationController
   def get_category_children
     #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
     @category_children = Category.find("#{params[:parent_id]}").children
- end
+  end
 
   # 子カテゴリーが選択された後に動くアクション
   def get_category_grandchildren
@@ -48,7 +57,7 @@ class ProductsController < ApplicationController
         @sizes = related_size_parent.children #紐づいたサイズ（親）の子供の配列を取得
       end
     end
- end
+  end
 
   private
   def product_params
