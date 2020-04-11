@@ -2,10 +2,7 @@ class ProductsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   
   def index
-    (1..3).each do |num|
-      products = Product.order("id DESC").limit(3)
-      instance_variable_set("@product_no#{num}", products)
-    end
+    @product = Product.order("created_at DESC").limit 3
   end
 
   def new
