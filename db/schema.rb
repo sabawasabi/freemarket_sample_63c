@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 20200405133454) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id",      null: false
     t.integer  "postal_code",  null: false
     t.string   "prefectures",  null: false
     t.string   "city",         null: false
@@ -21,6 +22,7 @@ ActiveRecord::Schema.define(version: 20200405133454) do
     t.string   "phone_number"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
   end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -45,6 +47,7 @@ ActiveRecord::Schema.define(version: 20200405133454) do
     t.string   "card_id",     null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_credits_on_user_id", using: :btree
   end
 
   create_table "product_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -110,8 +113,10 @@ ActiveRecord::Schema.define(version: 20200405133454) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
+  add_foreign_key "addresses", "users"
   add_foreign_key "category_sizes", "categories"
   add_foreign_key "category_sizes", "products_sizes"
+  add_foreign_key "credits", "users"
   add_foreign_key "product_images", "products"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "products_sizes"
