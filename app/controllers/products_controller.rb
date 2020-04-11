@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   before_action :set_product, only: [:show, :edit, :update]
+  before_action :set_category, only: [:show, :edit, :update]
   
   def index
     @product = Product.order("created_at DESC").limit 3
@@ -25,6 +26,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @category = @product.category
   end
 
   def update
@@ -62,11 +64,17 @@ class ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:name, :description, :brand, :condition, :shipping_charges, :shipping_area, :category_id, :products_size_id, :days_to_delivery, :price, [product_images_attributes: [:image]]).merge(user_id: current_user.id)
+    params.require(:product).permit(:name, :description, :brand, :condition, :shipping_charges, :shipping_area, :category_id, :products_size_id, :days_to_delivery, :price, [product_images_attributes: [:id, :image]]).merge(user_id: current_user.id)
   end
 
   def set_product
     @product = Product.find(params[:id])
+  end
+
+  def set_category
+    @category = @product.category
+    @child_categories = Category.where('ancestry = ?', "#{@category.parent.ancestry}")
+    @grand_child = Category.where('ancestry = ?', "#{@category.ancestry}")
   end
 
   def move_to_index

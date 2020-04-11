@@ -14,19 +14,19 @@
   %tr
     %th 商品の状態
     %td
-      = @product.condition
+      = Conditiontag.find(@product.condition).name
   %tr
     %th 配送料の負担
     %td
-      = @product.shipping_charges
+      = Chargetag.find(@product.shipping_charges).name
   %tr
     %th 配送元地域
     %td
-      = @product.shipping_area
+      = Areatag.find(@product.shipping_area).name
   %tr
     %th 発送日の目安
     %td
-      = @product.days_to_delivery
+      = Daystag.find(@product.days_to_delivery).name
   %tr
     %th 価格
     %td
