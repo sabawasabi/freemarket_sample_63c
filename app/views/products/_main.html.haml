@@ -107,8 +107,8 @@
       - @product_no1.each do |product|
         .products__list 
           .products__list--pic
-            = link_to show_product_path(product.id) do
-            -#   = image_tag "#{product.product_image[0].image.url}"
+            -# = link_to show_product_path(product.id) do
+            = image_tag "#{product.product_images[0].image_url}",size: '220x150'
           .products__list__discription
             .products__list__discription--name
               = product.name
@@ -121,48 +121,48 @@
             .products__list__discription--tax
               (税込)
   
-  .pickupcontainer
-    .head
-      ピックピックアップブランド
-    .subtitle
-      = link_to "アーカイブ", '#'
-    .products
-      .products__list
-        .products__list--pic
-        = image_tag 'fish.png', class: 'archivepic_left',size: '220x150'
-        .products__list__discription
-          .products__list__discription--name
-            prodeuct41
-          .products__list__discription__core
-            .products__list__discription__core--price
-              20000円
-            .products__list__discription__core--good
-              ★１
-          .products__list__discription--tax
-            (税込)
-      .products__list
-        .products__list--pic
-        = image_tag 'fish.png', class: 'archivepic_center',size: '220x150'
-        .products__list__discription
-          .products__list__discription--name
-            prodeuct55
-          .products__list__discription__core
-            .products__list__discription__core--price
-              20000円
-            .products__list__discription__core--good
-              ★１
-          .products__list__discription--tax
-            (税込)
-      .products__list
-        .products__list--pic
-        = image_tag 'fish.png', class: 'archivepic_right',size: '220x150'
-        .products__list__discription
-          .products__list__discription--name
-            prodeuct18
-          .products__list__discription__core
-            .products__list__discription__core--price
-              20000円
-            .products__list__discription__core--good
-              ★１
-          .products__list__discription--tax
-            (税込)
+  -# .pickupcontainer
+  -#   .head
+  -#     ピックピックアップブランド
+  -#   .subtitle
+  -#     = link_to "アーカイブ", '#'
+  -#   .products
+  -#     .products__list
+  -#       .products__list--pic
+  -#       = image_tag 'fish.png', class: 'archivepic_left',size: '220x150'
+  -#       .products__list__discription
+  -#         .products__list__discription--name
+  -#           prodeuct41
+  -#         .products__list__discription__core
+  -#           .products__list__discription__core--price
+  -#             20000円
+  -#           .products__list__discription__core--good
+  -#             ★１
+  -#         .products__list__discription--tax
+  -#           (税込)
+  -#     .products__list
+  -#       .products__list--pic
+  -#       = image_tag 'fish.png', class: 'archivepic_center',size: '220x150'
+  -#       .products__list__discription
+  -#         .products__list__discription--name
+  -#           prodeuct55
+  -#         .products__list__discription__core
+  -#           .products__list__discription__core--price
+  -#             20000円
+  -#           .products__list__discription__core--good
+  -#             ★１
+  -#         .products__list__discription--tax
+  -#           (税込)
+  -#     .products__list
+  -#       .products__list--pic
+  -#       = image_tag 'fish.png', class: 'archivepic_right',size: '220x150'
+  -#       .products__list__discription
+  -#         .products__list__discription--name
+  -#           prodeuct18
+  -#         .products__list__discription__core
+  -#           .products__list__discription__core--price
+  -#             20000円
+  -#           .products__list__discription__core--good
+  -#             ★１
+  -#         .products__list__discription--tax
+  -#           (税込)

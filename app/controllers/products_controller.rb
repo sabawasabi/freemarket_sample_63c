@@ -2,16 +2,10 @@ class ProductsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   
   def index
-    array = [1, 2, 3, 4]
-      for num in array do
-        search_anc = Category.where('ancestry LIKE(?)', "#{num}/%")
-        ids = []
-        search_anc.each do |i|
-          ids << i[:id]
-        end
-        products = Product.where(category_id: ids).order("id DESC").limit(10)
-        instance_variable_set("@product_no#{num}", products)
-      end
+    (1..3).each do |num|
+      products = Product.order("id DESC").limit(3)
+      instance_variable_set("@product_no#{num}", products)
+    end
   end
 
   def new
