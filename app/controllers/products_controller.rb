@@ -1,6 +1,5 @@
 class ProductsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
-  
   def index
     @product = Product.order("created_at DESC").limit 3
   end

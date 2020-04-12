@@ -36,5 +36,5 @@
   = link_to "商品の編集画面に進む"
   = link_to "出品商品を取り下げる"
 -else
-  = link_to "購入画面に進む"
+  = link_to "購入画面に進む", pay_index_transactions_path(product_id: @product), class: "product-transaction-btn"
 = render "layouts/footer"
