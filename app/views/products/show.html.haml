@@ -4,15 +4,11 @@
 %br/
 %ul
   %li
-    = image_tag 'curry.png', alt: '', height: '300', width: '400', class: 'img'
+    = image_tag "#{@product.product_images[0].image_url}", alt: '', height: '300', width: '400', class: 'img'
     %ul
-      %li
-        = image_tag 'curry.png', alt: '', height: '120', width: '160', class: 'sub-img'
-      %li
-        = image_tag 'curry.png', alt: '', height: '120', width: '160', class: 'sub-img'
-      %li
-        = image_tag 'curry.png', alt: '', height: '120', width: '160', class: 'sub-img'
-%br/
+      - @product.product_images[1..3].each do |image|
+        %li
+          = image_tag "#{image.image_url}", alt: '', height: '120', width: '160', class: 'sub-img'
 %h1 ¥#{@product.price}
 %br/
 %h2 #{@product.description}
@@ -21,11 +17,15 @@
   %tr
     %th 出品者
     %td 
-      = @product.user_id
+      = @product.user.nickname
   %tr
     %th カテゴリー
     %td
-      = @product.category_id
+      = Category.find(@product.category_id).parent.parent.category_name
+      %br/
+      = Category.find(@product.category_id).parent.category_name
+      %br/
+      = @product.category.category_name
   %tr
     %th ブランド
     %td
@@ -33,23 +33,23 @@
   %tr
     %th 商品のサイズ
     %td
-      = @product.products_size_id
+      = @product.products_size.size_name
   %tr
     %th 商品の状態
     %td
-      = @product.condition
+      = Conditiontag.find(@product.condition).name
   %tr
     %th 配送料の負担
     %td
-      = @product.shipping_charges
+      = Chargetag.find(@product.shipping_charges).name
   %tr
     %th 発送元の地域
     %td
-      = @product.shipping_area
+      = Areatag.find(@product.shipping_area).name
   %tr
     %th 発送日の目安
     %td
-      = @product.days_to_delivery
+      = Daystag.find(@product.days_to_delivery).name
 %br/
 -if user_signed_in? && current_user.id == @product.user_id
   = link_to "商品の編集画面に進む"
