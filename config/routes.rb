@@ -12,9 +12,14 @@ Rails.application.routes.draw do
 
   root 'products#index'
 
-  resources :users
+  #ユーザー情報のルーティング
+  resources :users, except: :index do
+    collection do
+      get 'logout'
+    end
+  end
   resources :categories, only: [:index, :show]
-  resources :products,  only: [:new, :create,  :show] do
+  resources :products,  only: [:new, :create, :show, :edit, :update] do
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
@@ -37,6 +42,3 @@ Rails.application.routes.draw do
     end
   end
 end
-
-
-

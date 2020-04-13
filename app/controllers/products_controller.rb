@@ -33,6 +33,18 @@ class ProductsController < ApplicationController
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
 
+  def edit
+    @product = Product.find(params[:id])
+  end
+
+  def update
+    if @product.user_id == current_user.id && @product.update(product_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
   def show
     @product = Product.find(params[:id])
   end
