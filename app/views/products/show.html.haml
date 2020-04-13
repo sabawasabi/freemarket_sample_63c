@@ -39,7 +39,7 @@
   .product-show__transaction
     .product-show__transaction-box
       -# 商品購入済みであればSOLD OUT
-      - if @product_id.present?
+      - if @product_transaction.present?
         .product-transaction-btn
           SOLD OUT
       - else

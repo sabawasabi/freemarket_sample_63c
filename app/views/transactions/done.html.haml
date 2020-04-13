@@ -1,4 +1,6 @@
-= render "layouts/header"
+.transaction-header
+  = link_to root_path do
+    = image_tag 'logo.png', class: '.products-header__logo', size: '185x49'
 
 .transaction-done
   .transaction-done__content
@@ -13,3 +15,13 @@
         = @product.price
       .transaction-done__price--info
         (送料込み)
+        
+.transaction-footer
+  .transaction-footer--box
+    =link_to "プライバシーポリシー", '#' , class: 'products-footer__box-text'
+    =link_to "FURIMA利用規約", '#' , class: 'products-footer__box-text'
+    =link_to "特定商取引に関する表記", '#' , class: 'products-footer__box-text'
+  .transaction-footer--image
+    = image_tag 'logo.png', class: 'header_log', size: '185x49'
+  .transaction-footer--chara
+    © FURIMA, Inc.

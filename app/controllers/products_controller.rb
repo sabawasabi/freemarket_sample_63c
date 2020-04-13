@@ -34,6 +34,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @product_transaction = Transaction.where(product_id: @product.id)
   end
 
   # 孫カテゴリーが選択された後に動くアクション
