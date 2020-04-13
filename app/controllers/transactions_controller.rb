@@ -4,7 +4,7 @@ class TransactionsController < ApplicationController
   before_action :set_product
 
   def pay_index
-    @top_image = @product.images.first
+    @product = Product.find(params[:product_id])
     @card = @set_card.first
     if @card.blank?
       redirect_to controller: "credits", action: "new"
@@ -27,7 +27,7 @@ class TransactionsController < ApplicationController
   end
 
   def done
-    @top_image = @product.images.first
+    @product = Product.find(params[:product_id])
     Transaction.create(product_id: @product.id, user_id: current_user.id)
   end
 

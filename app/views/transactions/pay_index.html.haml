@@ -1,9 +1,10 @@
 .transaction-pay
   .transaction-pay__content
-    %h2.transaction-pay__title 購入内容の確認
+    %h2.transaction-pay__title 
+      購入内容の確認
     .transaction-pay__item
       .transaction-pay__item-box
-        = image_tag @top_image.image.url, alt:"商品画像", class: "transaction-pay__item-image"
+        = image_tag "#{@product.product_images[0].image_url}",size: '220x150'
       .transaction-pay__item-detail
         %p.transaction-pay__item-detail--name
           = @product.name
