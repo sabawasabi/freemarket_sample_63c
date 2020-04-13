@@ -1,47 +1,29 @@
-$(function(){
+$(function() {
+  // 画像用のinputを生成する関数
+  const buildFileField = (index)=> {
+    const html = `<div data-index="${index}" class="js-file_group">
+                    <input class="js-file" type="file"
+                    name="product[product_images_attributes][${index}][image]"
+                    id="product_images_attributes_${index}_image"><br>
+                    <div class="js-remove">削除</div>
+                  </div>`;
+    return html;
+  }
 
-  $('.file_field1').on('change', function(e){
-    var file = e.target.files[0];
-    var reader = new FileReader();
-    reader.onload = (function(e){
-      var ar = new Uint8Array(reader.result);  
-      $(".img_box1").append($("<img class = photo_img>").attr("src", e.target.result));
-  })
-  reader.readAsDataURL(file);
-})
+  // file_fieldのnameに動的なindexをつける為の配列
+  let fileIndex = [1,2,3];
 
-  $('.file_field2').on('change', function(e){
-    var file = e.target.files[0];
-    var reader = new FileReader();
-    reader.onload = (function(e){
-      var ar = new Uint8Array(reader.result);  
-      $(".img_box2").append($("<img class = photo_img>").attr("src", e.target.result));
-  })
-  reader.readAsDataURL(file);
-  })
+  $('#image-box').on('change', '.js-file', function(e) {
+    // fileIndexの先頭の数字を使ってinputを作る
+    $('#image-box').append(buildFileField(fileIndex[0]));
+    fileIndex.shift();
+    // 末尾の数に1足した数を追加する
+    fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
+  });
 
-  $('.file_field3').on('change', function(e){
-    var file = e.target.files[0];
-    var reader = new FileReader();
-    reader.onload = (function(e){
-      var ar = new Uint8Array(reader.result);  
-      $(".img_box3").append($("<img class = photo_img>").attr("src", e.target.result));
-  })
-  reader.readAsDataURL(file);
-  })
-
-  $('.remove_btn1').on('click', function(){
-    $('#image').val('');
-    $('.img_box1').html('');
-  })
-
-  $('.remove_btn2').on('click', function(){
-    $('#image2').val('');
-    $('.img_box2').html('');
-  })
-
-  $('.remove_btn3').on('click', function(){
-    $('#image3').val('');
-    $('.img_box3').html('');
-  })
+  $('#image-box').on('click', '.js-remove', function() {
+    $(this).parent().remove();
+    // 画像入力欄が0個にならないようにしておく
+    if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
+  });
 })

@@ -1,7 +1,6 @@
 class ProductsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   before_action :set_product, only: [:show, :edit, :update]
-  before_action :set_category, only: [:show, :edit, :update]
   
   def index
     @product = Product.order("created_at DESC").limit 3
@@ -27,6 +26,8 @@ class ProductsController < ApplicationController
 
   def edit
     @category = @product.category
+    @child_categories = Category.where('ancestry = ?', "#{@category.parent.ancestry}")
+    @grand_child = Category.where('ancestry = ?', "#{@category.ancestry}")
   end
 
   def update
@@ -69,12 +70,6 @@ class ProductsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:id])
-  end
-
-  def set_category
-    @category = @product.category
-    @child_categories = Category.where('ancestry = ?', "#{@category.parent.ancestry}")
-    @grand_child = Category.where('ancestry = ?', "#{@category.ancestry}")
   end
 
   def move_to_index
