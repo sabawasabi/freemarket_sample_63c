@@ -74,14 +74,9 @@
           プロフィール
           %i.fa.fa-angle-right.icon
       %li
-        - if @user.address == nil
-          = link_to new_user_address_path(@user.id), class:"mypage-nav-list-item" do
-            住所変更
-            %i.fa.fa-angle-right.icon
-        - else
-          = link_to edit_user_address_path(@user.id, @user.address.id), class:"mypage-nav-list-item" do
-            住所変更
-            %i.fa.fa-angle-right.icon
+        = link_to new_user_address_path(@user), class:"mypage-nav-list-item" do
+          住所変更
+          %i.fa.fa-angle-right.icon
       %li
         = link_to new_credit_path, class: "mypage-nav-list-item" do
           支払い方法
