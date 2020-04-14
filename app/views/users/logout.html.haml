@@ -1,24 +1,18 @@
-%body
-  = render "layouts/header"
+= render 'layouts/header'
 
-  -# メイン
-  %main
-    .mypage-container.clearfix
-      .mypage-container__main
-        .mypage-container__main__box
-          .mypage-container__main__box__title
-            %form.mypage-container__main__box__title__inner
-              .mypage-container__main__box__title__inner__content
-                -# あとでcurrent_user_destroy_path? に変更する
-                = link_to 'ログアウト', user_session_path, method: :delete, class: "mypage-container__main__box__title__inner__content__btn submit-btn submit-btn-red"
-      -# サイドバー
-      = render "layouts/sideber"
+.mypage-container.clearfix
+  -# サイドバー
+  = render "layouts/sidebar"
+  
+  .mypage-right
+    .mypage-right_logout
+    = link_to 'ログアウト', users_sign_out_path, class: logout
 
-  -# バナー
-  = render "products/banner"
+-# バナー
+= render "products/banner"
 
-  -# エキシビジョン
-  = render "products/exhibition"
+-# エキシビジョン
+= render "products/exhibition"
 
-  -# フッター
-  = render "layouts/footer"
+-# フッター
+= render "layouts/footer"

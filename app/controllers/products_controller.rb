@@ -52,6 +52,11 @@ class ProductsController < ApplicationController
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
 
+  def show
+    @product = Product.find(params[:id])
+    @product_transaction = Transaction.where(product_id: @product.id)
+  end
+
   # 孫カテゴリーが選択された後に動くアクション
   def get_size
     selected_grandchild = Category.find("#{params[:grandchild_id]}") #孫カテゴリーを取得
@@ -63,7 +68,7 @@ class ProductsController < ApplicationController
         @sizes = related_size_parent.children #紐づいたサイズ（親）の子供の配列を取得
       end
     end
- end
+  end
 
   private
   def product_params
@@ -78,4 +83,3 @@ class ProductsController < ApplicationController
     redirect_to action: :index unless user_signed_in?
   end
 end
-
