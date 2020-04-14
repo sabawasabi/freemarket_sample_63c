@@ -1,3 +1,10 @@
 = render "layouts/header"
-= render "form"
+
+.mypage-container.clearfix
+  -# サイドバー
+  = render "layouts/sidebar"
+  -# メイン
+  .mypage-container__content
+    = render "form"
+  
 = render "layouts/footer"
