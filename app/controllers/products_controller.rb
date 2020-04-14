@@ -1,7 +1,6 @@
 class ProductsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   before_action :set_product, only: [:show, :edit, :update]
-  before_action :set_category, only: [:show, :edit, :update]
   
   def index
     @product = Product.order("created_at DESC").limit 3
@@ -18,7 +17,8 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to root_path, notice: '商品を出品しました'
     else
-      render :new
+      redirect_to new_product_path(@product)
+      return
     end
   end
 
@@ -27,13 +27,15 @@ class ProductsController < ApplicationController
 
   def edit
     @category = @product.category
+    @child_categories = Category.where('ancestry = ?', "#{@category.parent.ancestry}")
+    @grand_child = Category.where('ancestry = ?', "#{@category.ancestry}")
   end
 
   def update
     if @product.update(product_params)
       redirect_to root_path
     else
-      render :edit
+      redirect_to edit_product_path
     end
   end
 
@@ -69,12 +71,6 @@ class ProductsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:id])
-  end
-
-  def set_category
-    @category = @product.category
-    @child_categories = Category.where('ancestry = ?', "#{@category.parent.ancestry}")
-    @grand_child = Category.where('ancestry = ?', "#{@category.ancestry}")
   end
 
   def move_to_index

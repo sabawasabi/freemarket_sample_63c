@@ -1,26 +1,28 @@
 $(function(){
-
   $('.file_field1').on('change', function(e){
+    $('.img_box1').html('');
     var file = e.target.files[0];
     var reader = new FileReader();
     reader.onload = (function(e){
-      var ar = new Uint8Array(reader.result);  
+      var ar = new Uint8Array(reader.result);
       $(".img_box1").append($("<img class = photo_img>").attr("src", e.target.result));
   })
   reader.readAsDataURL(file);
 })
 
   $('.file_field2').on('change', function(e){
+    $('.img_box2').html('');
     var file = e.target.files[0];
     var reader = new FileReader();
     reader.onload = (function(e){
-      var ar = new Uint8Array(reader.result);  
+      var ar = new Uint8Array(reader.result);
       $(".img_box2").append($("<img class = photo_img>").attr("src", e.target.result));
   })
   reader.readAsDataURL(file);
   })
 
   $('.file_field3').on('change', function(e){
+    $('.img_box3').html('');
     var file = e.target.files[0];
     var reader = new FileReader();
     reader.onload = (function(e){
@@ -30,8 +32,9 @@ $(function(){
   reader.readAsDataURL(file);
   })
 
+
   $('.remove_btn1').on('click', function(){
-    $('#image').val('');
+    $('#image1').val('');
     $('.img_box1').html('');
   })
 

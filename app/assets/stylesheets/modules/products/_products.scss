@@ -49,6 +49,128 @@
           &__text {
             margin-top: 16px;
           }
+          .photo_form {
+            margin-top: 40px;
+            .img_box_boxs {
+              display: flex;
+              justify-content: space-between;
+              .img_box1 {
+                display: flex;
+                justify-content:center;
+                align-items: center;
+                background-color: rgb(245, 245, 245);;
+                width: 150px;
+                height: 150px;
+                .photo_img {
+                  width: 150px;
+                  height: 150px;
+                  object-fit: cover;
+                }
+              }
+              .img_box2 {
+                display: flex;
+                justify-content:center;
+                align-items: center;
+                background-color: rgb(245, 245, 245);;
+                width: 150px;
+                height: 150px;
+                .photo_img {
+                  width: 150px;
+                  height: 150px;
+                  object-fit: cover;
+                }
+              }
+              .img_box3 {
+                display: flex;
+                justify-content:center;
+                align-items: center;
+                background-color: rgb(245, 245, 245);;
+                width: 150px;
+                height: 150px;
+                .photo_img {
+                  width: 150px;
+                  height: 150px;
+                  object-fit: cover;
+                }
+              }
+            }
+            .photo_form_box {
+              display: flex;
+              justify-content: space-between;
+              .photo_display1 {
+                display: flex;
+                justify-content: space-between;
+                width: 150px;
+                .image_label1 {
+                  width: 75px;
+                  height: 50px;
+                  background-color: skyblue;
+                  color: white;
+                  text-align: center;
+                  line-height: 50px;
+                  .file_field1 {
+                    display: none;
+                  }
+                }
+                .remove_btn1 {
+                  width: 75px;
+                  height: 50px;
+                  background-color: red;
+                  color: white;
+                  text-align: center;
+                  line-height: 50px;
+                }
+              }
+              .photo_display2 {
+                display: flex;
+                justify-content: space-between;
+                width: 150px;
+                .image_label2 {
+                  width: 75px;
+                  height: 50px;
+                  background-color: skyblue;
+                  color: white;
+                  text-align: center;
+                  line-height: 50px;
+                  .file_field2 {
+                    display: none;
+                  }
+                }
+                .remove_btn2 {
+                  width: 75px;
+                  height: 50px;
+                  background-color: red;
+                  color: white;
+                  text-align: center;
+                  line-height: 50px;
+                }
+              }
+              .photo_display3 {
+                display: flex;
+                justify-content: space-between;
+                width: 150px;
+                .image_label3 {
+                  width: 75px;
+                  height: 50px;
+                  background-color: skyblue;
+                  color: white;
+                  text-align: center;
+                  line-height: 50px;
+                  .file_field3 {
+                    display: none;
+                  }
+                }
+                .remove_btn3 {
+                  width: 75px;
+                  height: 50px;
+                  background-color: red;
+                  color: white;
+                  text-align: center;
+                  line-height: 50px;
+                }
+              }
+            }
+          }
         }
 
       &-border {
