@@ -13,15 +13,16 @@
     .transaction-done__price
       .transaction-done__price--text
         = @product.price
-      .transaction-done__price--info
+      .transaction-done__price--tax
         (送料込み)
-        
+
 .transaction-footer
-  .transaction-footer--box
-    =link_to "プライバシーポリシー", '#' , class: 'products-footer__box-text'
-    =link_to "FURIMA利用規約", '#' , class: 'products-footer__box-text'
-    =link_to "特定商取引に関する表記", '#' , class: 'products-footer__box-text'
-  .transaction-footer--image
-    = image_tag 'logo.png', class: 'header_log', size: '185x49'
-  .transaction-footer--chara
-    © FURIMA, Inc.
+  .transaction-footer__box
+    =link_to "プライバシーポリシー", '#' , class: 'transaction-footer__box-text'
+    =link_to "FURIMA利用規約", '#' , class: 'transaction-footer__box-text'
+    =link_to "特定商取引に関する表記", '#' , class: 'transaction-footer__box-text'
+    .transaction-footer__box__image
+      = link_to root_path do
+        = image_tag 'logo.png', class: 'header_log', size: '185x49'
+      .transaction-footer__box__image--inc
+        © FURIMA, Inc.
