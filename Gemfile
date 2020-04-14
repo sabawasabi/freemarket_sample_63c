@@ -6,6 +6,12 @@ group :production do
   gem 'unicorn', '5.4.1'
 end
 
+
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  "https://github.com/#{repo_name}.git"
+end
+  
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.0.5'
@@ -33,8 +39,8 @@ end
 
 # gem 'turbolinks', '~> 5'
   # git_source(:github) do |repo_name|
-  #   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-  #   "https://github.com/#{repo_name}.git"
+  #  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  #  "https://github.com/#{repo_name}.git"
 # end
 gem 'rails', '~> 5.0.7', '>= 5.0.7.2'
 gem 'mysql2', '>= 0.3.18', '< 0.6.0'
@@ -51,6 +57,14 @@ gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
+
+gem 'pry-rails'
+
+gem 'payjp'
+
+gem 'dotenv-rails'
+gem 'gon'
+
 gem 'jp_prefecture'
 gem 'ancestry'
 gem 'active_hash'
