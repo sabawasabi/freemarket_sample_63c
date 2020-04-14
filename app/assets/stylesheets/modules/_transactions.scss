@@ -1,0 +1,124 @@
+
+.transaction-header {
+  height: 128px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.transaction-pay {
+  background-color: #FFF;
+  text-align: center;
+  margin: 0 20%;
+  padding: 32px;
+  &__title {
+    font-size: 22px;
+    padding: 32px;
+    font-weight: 600;
+  }
+  &__item {
+    padding: 32px;
+    display: flex;
+    border-top: 1px solid #f5f5f5;
+    &--box {
+      text-align: left;
+      margin: 0 48px 0 20%;
+    }
+    &-detail {
+      text-align: left;
+      padding: 48px 0 0 0;
+    }
+  }
+  &__table {
+    border-top: 1px solid #f5f5f5;
+    margin: 0 10%;
+    &__content {
+      font-size: 20px;
+      font-weight: 400;
+      vertical-align: bottom;
+      padding: 32px;
+      &--pay {
+        margin: 0 10% 0 0;
+        text-align: left;
+      }
+      &--price {
+        text-align: right;
+      }
+    }
+    &__measure {
+      border-top: 1px solid #f5f5f5;
+      text-align: left;
+      font-weight: 600px;
+      padding: 32px;
+      &--register {
+        color: rgb(14, 190, 196);
+      }
+    }
+    &__buy {
+      border-top: 1px solid #f5f5f5;
+      width: 100%;
+      &--button {
+        background-color: rgb(0, 247, 255);
+        color: rgb(4, 56, 99);
+        width: 200px;
+        line-height: 48px;
+        font-size: 16px;
+        border: 1px solid transparent;
+        text-align: center;
+        margin: 20px 0 0 0 ;
+      }
+    }
+  }
+  
+}
+
+.transaction-done{
+  background-color: #FFF;
+  text-align: center;
+  margin: 0 20%;
+  padding: 32px;
+
+  &__text {
+    font-size: 22px;
+    padding: 0 20px 20px 20px;
+    font-weight: 600;
+  }
+  &__image {
+    padding: 32px;
+    border-top: 2px solid #f5f5f5;
+  }
+  &__title {
+    padding: 0 20px 20px 20px;
+    font-size: 18px;
+    font-weight: 550;
+  }
+  &__price {
+    border-top: 1px solid #f5f5f5;
+    padding: 32px 0 0 0 ;
+
+  }
+}
+
+.transaction-footer {
+  width: 100%;
+  text-align: center;
+  padding: 40px 0px 41px;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  &__box {
+    margin: 15px 0 15px 0;
+    .transaction-footer__box-text {
+      margin: 0 15px 0 15px;
+    }
+    &__image {
+      align-items: center;
+      margin: 25px 0 15px 0;
+      &--inc {
+        margin: 15px 0 15px 0;
+      }
+    }  
+  }
+}
