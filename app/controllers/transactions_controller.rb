@@ -27,7 +27,6 @@ class TransactionsController < ApplicationController
   end
 
   def done
-    @product = Product.find(params[:product_id])
     Transaction.create(product_id: @product.id, user_id: current_user.id)
   end
 
