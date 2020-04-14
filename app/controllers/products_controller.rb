@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   before_action :set_product, only: [:show, :edit, :update]
-  
+
   def index
     @product = Product.order("created_at DESC").limit 3
   end
@@ -17,12 +17,8 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to root_path, notice: '商品を出品しました'
     else
-      redirect_to new_product_path(@product)
-      return
+      redirect_to new_product_path
     end
-  end
-
-  def show
   end
 
   def edit
@@ -39,7 +35,12 @@ class ProductsController < ApplicationController
     end
   end
 
-  # 親カテゴリーが選択された後に動くアクション
+  def show
+    @product = Product.find(params[:id])
+    @product_transaction = Transaction.where(product_id: @product.id)
+  end
+
+   # 親カテゴリーが選択された後に動くアクション
   def get_category_children
     #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
     @category_children = Category.find("#{params[:parent_id]}").children
@@ -77,3 +78,4 @@ class ProductsController < ApplicationController
     redirect_to action: :index unless user_signed_in?
   end
 end
+
