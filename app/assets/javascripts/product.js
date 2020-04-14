@@ -26,7 +26,7 @@ $(function(){
     var file = e.target.files[0];
     var reader = new FileReader();
     reader.onload = (function(e){
-      var ar = new Uint8Array(reader.result);  
+      var ar = new Uint8Array(reader.result);
       $(".img_box3").append($("<img class = photo_img>").attr("src", e.target.result));
   })
   reader.readAsDataURL(file);
