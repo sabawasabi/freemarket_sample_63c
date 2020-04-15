@@ -1,12 +1,14 @@
 class ProductsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
+  before_action :set_product, only: [:show, :edit, :update]
+
   def index
     @product = Product.order("created_at DESC").limit 3
   end
 
   def new
     @product = Product.new
-    @product_images = @product.product_images.build
+    @product.product_images.build
   end
 
   def create
@@ -15,9 +17,27 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to root_path, notice: '商品を出品しました'
     else
-      @product.product_images.build
-      render :new
+      redirect_to new_product_path
     end
+  end
+
+  def edit
+    @category = @product.category
+    @child_categories = Category.where('ancestry = ?', "#{@category.parent.ancestry}")
+    @grand_child = Category.where('ancestry = ?', "#{@category.ancestry}")
+  end
+
+  def update
+    if @product.update(product_params)
+      redirect_to root_path
+    else
+      redirect_to edit_product_path
+    end
+  end
+
+  def show
+    @product = Product.find(params[:id])
+    @product_transaction = Transaction.where(product_id: @product.id)
   end
 
    # 親カテゴリーが選択された後に動くアクション
@@ -52,10 +72,14 @@ class ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:name, :description, :brand, :condition, :shipping_charges, :shipping_area, :category_id, :products_size_id, :days_to_delivery, :price, [product_images_attributes: [:image]]).merge(user_id: current_user.id)
+    params.require(:product).permit(:name, :description, :brand, :condition, :shipping_charges, :shipping_area, :category_id, :products_size_id, :days_to_delivery, :price, [product_images_attributes: [:id, :image, :_destroy]]).merge(user_id: current_user.id)
   end
-end
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
 
   def move_to_index
     redirect_to action: :index unless user_signed_in?
   end
+end

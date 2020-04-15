@@ -12,30 +12,21 @@
           .products-contents__main-image__text
             最大3枚までアップロードできます
           .photo_form
-            = f.fields_for :product_images do |i|
-              .img_box_boxs
-                .img_box1
-                .img_box2
-                .img_box3
-              .photo_form_box
-                .photo_display1
-                  = i.label :image, class: "image_label1", for: "image1", id: "photo1"  do
-                    = i.file_field :image, multipart: true, name: "product[product_images_attributes][0][image]", class: "file_field1", id: "image1", style: "color: red"
+            .img_box_boxs
+              - @product.product_images.each.with_index do |image,i|
+                %div{class: "img_box#{i + 1}"}
+                  = image_tag "#{image.image_url}", class: "photo_img" 
+            .photo_form_box
+              - count = 0;
+              = f.fields_for :product_images do |image|
+                %div{class: "photo_display#{count + 1}"}
+                  = image.label :image, class: "image_label#{count + 1}", for: "image#{count + 1}", id: "photo#{count + 1}"  do
+                    = image.file_field :image, multipart: true, class: "file_field#{count + 1}", id: "image#{count + 1}", style: "color: red"
                     選択
-                  .remove_btn1
+                  = image.label :_destroy, class: "remove_btn#{count + 1}" do
+                    = image.check_box :_destroy
                     削除
-                .photo_display2
-                  = i.label :image, class: "image_label2", for: "image2", id: "photo2"  do
-                    = i.file_field :image, multipart: true, name: "product[product_images_attributes][1][image]", class: "file_field2", id: "image2", style: "color: blue"
-                    選択
-                  .remove_btn2
-                    削除
-                .photo_display3
-                  = i.label :image, class: "image_label3", for: "image3", id: "photo3"  do
-                    = i.file_field :image, multipart: true, name: "product[product_images_attributes][2][image]", class: "file_field3", id: "image3", style: "color: gray"
-                    選択
-                  .remove_btn3
-                    削除
+                - count += 1;
         .products-contents__main-border
 
         .products-contents__main-overview
@@ -64,8 +55,33 @@
               .products-contents__main-details__category__title-required
                 必須
             .products-contents__main-details__category-wrapper
+              %select{class:"products-contents__main-details__category-box", id: "parent-form"}
+                %option{value: "@category.root.id"} #{@category.root.category_name}
+                %option{value: ""} ---
+                - Category.all.order("id ASC").limit(13).each do |cat|
+                  %option{value: "#{cat.id}"} #{cat.category_name}
+            .products-contents__main-details__category-wrapper__added
+            #children-wrapper
               .products-contents__main-details__category-wrapper__box
-                = f.collection_select :category_id, Category.all.order("id ASC").limit(13), :id, :category_name,{prompt: "---"}, class: "products-contents__main-details__category-box", id: "parent-form"
+                %select{class:"products-contents__main-details__category-box", id: "child-form"}
+                  %option{value: "@category.parent.id"} #{@category.parent.category_name}
+                  %option{value: ""} ---
+                  - @child_categories.each do |cat|
+                    %option{value: "#{cat.id}"} #{cat.category_name}
+            .products-contents__main-details__category-wrapper__added
+            #grandchildren-wrapper
+              .products-contents__main-details__category-wrapper__box
+                = f.collection_select :category_id, @grand_child, :id, :category_name, {prompt: "---"}, class: "products-contents__main-details__category-box", id: "grandchild-form"
+          - if :products_size_id != nil
+            .products-contents__main-details__category-wrapper__added
+            #size-wrapper
+              .products-contents__main-details__category__title
+                サイズ
+                .products-contents__main-details__category__title-required
+                  必須
+              .products-contents__main-details__category-wrapper
+                .products-contents__main-details__category-wrapper__box
+                  = f.collection_select :products_size_id, ProductsSize.all, :id, :size_name,{prompt: "---"}, class: "products-contents__main-details__category-box", id: "size"
           .products-contents__main-details__brand
             .products-contents__main-details__brand__title
               ブランド
@@ -130,7 +146,7 @@
               .products-contents__main-sale__profit__box-price
                 —
         .products-contents__main-button
-          = f.submit "出品する", class: "products-contents__main-button-exhibition"
+          = f.submit "変更する", class: "products-contents__main-button-exhibition"
           =link_to "もどる", '/' , class: 'products-contents__main-button-back'
         .products-contents__main-button__foot
           禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。

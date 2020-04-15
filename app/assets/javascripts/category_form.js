@@ -39,7 +39,7 @@ $(function() {
   // サイズ入力欄の表示作成
   function appendSizeBox(insertHTML){
     var sizeSelectHtml = '';
-    sizeSelectHtml = `<div class='.products-contents__main-details__category' id= 'size-wrapper'>
+    sizeSelectHtml = `<div class='products-contents__main-details__category-wrapper__added' id= 'size-wrapper'>
                         <label class="products-contents__main-details__category__title" for="サイズ">サイズ</label>
                           <span class='products-contents__main-details__category__title-required'>必須</span>
                         <div class='products-contents__main-details__category-wrapper'>
@@ -97,6 +97,7 @@ $(function() {
       .done(function(grandchildren){
         if (grandchildren.length != 0) {
           $('#grandchildren-wrapper').remove(); //子が変更された時、孫以下を削除するする
+          $('#size-wrapper').remove();
           var insertHTML = '';
           grandchildren.forEach(function(grandchild){
             insertHTML += appendOption(grandchild);
@@ -109,6 +110,7 @@ $(function() {
       })
     }else{
       $('#grandchildren-wrapper').remove(); //子カテゴリーが初期値になった時、孫以下を削除する
+      $('#size-wrapper').remove();
     }
   })
   // 孫カテゴリー選択後のイベント
