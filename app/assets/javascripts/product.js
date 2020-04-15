@@ -6,7 +6,7 @@ $(function(){
     reader.onload = (function(e){
       var ar = new Uint8Array(reader.result);
       $(".img_box1").append($("<img class = photo_img>").attr("src", e.target.result));
-  })
+    })
   reader.readAsDataURL(file);
 })
 
@@ -17,7 +17,7 @@ $(function(){
     reader.onload = (function(e){
       var ar = new Uint8Array(reader.result);
       $(".img_box2").append($("<img class = photo_img>").attr("src", e.target.result));
-  })
+    })
   reader.readAsDataURL(file);
   })
 
@@ -28,7 +28,7 @@ $(function(){
     reader.onload = (function(e){
       var ar = new Uint8Array(reader.result);
       $(".img_box3").append($("<img class = photo_img>").attr("src", e.target.result));
-  })
+    })
   reader.readAsDataURL(file);
   })
 

@@ -15,7 +15,7 @@
             .img_box_boxs
               - @product.product_images.each.with_index do |image,i|
                 %div{class: "img_box#{i + 1}"}
-                  = image_tag "#{image.image_url}", class: "photo_img"
+                  = image_tag "#{image.image_url}", class: "photo_img" 
             .photo_form_box
               - count = 0;
               = f.fields_for :product_images do |image|
@@ -43,7 +43,6 @@
               必須
           = f.text_area :description, class: "products-contents__main-overview__description__text", placeholder: "商品の説明（必須 1,000文字以内）\n（色、素材、重さ、定価、注意点など）\n\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "7"
           .products-contents__main-overview__description__count
-            0/1000
 
         .products-contents__main-border
 
