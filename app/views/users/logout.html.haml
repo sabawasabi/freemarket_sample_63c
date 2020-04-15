@@ -1,12 +1,16 @@
-= render 'layouts/header'
+= render "layouts/header"
 
 .mypage-container.clearfix
   -# サイドバー
   = render "layouts/sidebar"
-  
-  .mypage-right
-    .mypage-right_logout
-    = link_to 'ログアウト', users_sign_out_path, class: logout
+
+  -# メイン
+  .mypage-container__main
+    .mypage-container__main__box
+      .mypage-container__main__box__title
+        %form.mypage-container__main__box__title__inner
+          .mypage-container__main__box__title__inner__content
+            = link_to 'ログアウト', destroy_user_session_path, class: "mypage-container__main__box__title__inner__content__btn"
 
 -# バナー
 = render "products/banner"

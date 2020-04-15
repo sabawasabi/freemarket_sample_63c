@@ -3,7 +3,11 @@ class AddressesController < ApplicationController
   before_action :set_user_id, only: [:new, :create, :edit, :update]
   
   def new
-    @address = Address.new
+    if @user.address == nil
+      @address = Address.new
+    else
+      redirect_to edit_user_address_path(@user, @user.address.id)
+    end
   end
 
   def create
@@ -36,7 +40,6 @@ class AddressesController < ApplicationController
   end
 
   def set_user_id
-    @user = User.find(params[:user_id])
+    @user = current_user
   end
-
 end
