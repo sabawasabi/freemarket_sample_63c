@@ -77,8 +77,8 @@
 
       %ul.navigation__right
         -if user_signed_in?
-          %li.navigation__right--login
-            = link_to "ログアウト", users_sign_out_path, method: :delete
+          -# %li.navigation__right--login
+          -#   = link_to "ログアウト", destroy_user_session_path, method: :delete
           %li.navigation__right--new
             = link_to "マイページ", user_path(current_user.id), method: :get
         -else

@@ -1,28 +1,30 @@
 .address-container
   - if @address.new_record?
-    -shaped_postal_code = ""
+    - shaped_postal_code = ""
   - elsif @address.postal_code == ""
-    -shaped_postal_code = ""
+    - shaped_postal_code = ""
   - else
-    -shaped_postal_code = @address.postal_code.insert(3, "-")
+    - shaped_postal_code = @address.postal_code.insert(3, "-")
+    
   = form_for [@user, @address] do |f|
     %h3 発送元・お届け先住所変更
     .field
       = f.label :name, "お名前"
       %span.form-require 必須
       %br/
-      = f.text_field :last_name, placeholder: "例）山田", class: "input-form"
-      = f.text_field :first_name, placeholder: "例）太郎", class: "input-form"
+      = text_field :last_name, placeholder: "例）山田", class: "input-form"
+      = text_field :first_name, placeholder: "例）太郎", class: "input-form"
     = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "last_name"}
     = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "first_name"}
     .field
       = f.label :name, "お名前カナ"
       %span.form-require 必須
       %br/
-      = f.text_field :last_name_jp, placeholder: "例）ヤマダ", class: "input-form"
-      = f.text_field :first_name_jp, placeholder: "例）タロウ", class: "input-form"
+      = text_field :last_name_jp, placeholder: "例）ヤマダ", class: "input-form"
+      = text_field :first_name_jp, placeholder: "例）タロウ", class: "input-form"
     = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "last_name_jp"}
     = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "first_name_jp"}
+
     .field
       = f.label :postal_code, "郵便番号"
       %span.form-require 必須
@@ -56,7 +58,7 @@
       = f.label :phone_number, "電話番号"
       %span.form-require 任意
       %br/
-      = f.text_field :phone_number, placeholder: "例) 090-1234-5678", class: "input-form"
+      = text_field :phone_number, placeholder: "例) 090-1234-5678", class: "input-form"
     = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "phone_number"}
     .field
       = f.submit "変更する"
