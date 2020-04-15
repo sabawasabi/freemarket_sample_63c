@@ -23,7 +23,8 @@
                   = image.label :image, class: "image_label#{count + 1}", for: "image#{count + 1}", id: "photo#{count + 1}"  do
                     = image.file_field :image, multipart: true, class: "file_field#{count + 1}", id: "image#{count + 1}", style: "color: red"
                     選択
-                  %div{class: "remove_btn#{count + 1}"}
+                  = image.label :_destroy, class: "remove_btn#{count + 1}" do
+                    = image.check_box :_destroy
                     削除
                 - count += 1;
         .products-contents__main-border

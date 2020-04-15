@@ -32,7 +32,6 @@ $(function(){
   reader.readAsDataURL(file);
   })
 
-
   $('.remove_btn1').on('click', function(){
     $('#image1').val('');
     $('.img_box1').html('');

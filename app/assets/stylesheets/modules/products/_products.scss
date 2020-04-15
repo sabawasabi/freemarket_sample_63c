@@ -119,6 +119,9 @@
                   color: white;
                   text-align: center;
                   line-height: 50px;
+                  [type=checkbox] {
+                    display: none;
+                  }
                 }
               }
               .photo_display2 {
@@ -143,6 +146,9 @@
                   color: white;
                   text-align: center;
                   line-height: 50px;
+                  [type=checkbox] {
+                    display: none;
+                  }
                 }
               }
               .photo_display3 {
@@ -167,6 +173,9 @@
                   color: white;
                   text-align: center;
                   line-height: 50px;
+                  [type=checkbox] {
+                    display: none;
+                  }
                 }
               }
             }
