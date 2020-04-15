@@ -5,6 +5,7 @@ class CreditsController < ApplicationController
   def new
     gon.payjp_key = ENV['PAYJP_KEY']
     redirect_to action: "pay_show" if @set_card.exists?
+    @user = current_user
   end
 
   def pay #payjpとCardのデータベース作成を実施
