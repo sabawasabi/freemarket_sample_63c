@@ -41,6 +41,7 @@ class CreditsController < ApplicationController
 
   def show #Cardのデータpayjpに送り情報を取り出す
     @card = @set_card.first
+    @user = current_user
     if @card.blank?
       redirect_to action: "new" 
     else
