@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20200405133454) do
     t.string   "postal_code",  null: false
     t.string   "prefectures",  null: false
     t.string   "city",         null: false
-    t.string  "house_number", null: false
+    t.integer  "house_number", null: false
     t.string   "building"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
@@ -112,6 +112,7 @@ ActiveRecord::Schema.define(version: 20200405133454) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
+  add_foreign_key "addresses", "users"
   add_foreign_key "category_sizes", "categories"
   add_foreign_key "category_sizes", "products_sizes"
   add_foreign_key "credits", "users"

@@ -6,6 +6,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
+    super
   end
 
   def edit
