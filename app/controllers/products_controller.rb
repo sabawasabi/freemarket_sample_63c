@@ -15,13 +15,11 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.status = "出品中"
     if @product.product_images.empty?
-      binding.pry
       redirect_to new_product_path, notice:"画像を投稿してください"
       return
     elsif @product.save
       redirect_to root_path
     else
-      Product_image.destroy
       render :new
     end
   end
