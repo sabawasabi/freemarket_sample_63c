@@ -5,60 +5,74 @@
     - shaped_postal_code = ""
   - else
     - shaped_postal_code = @address.postal_code.insert(3, "-")
-    
-  = form_for [@user, @address] do |f|
-    %h3 発送元・お届け先住所変更
-    .field
-      = f.label :name, "お名前"
-      %span.form-require 必須
-      %br/
-      = text_field :last_name, placeholder: "例）山田", class: "input-form"
-      = text_field :first_name, placeholder: "例）太郎", class: "input-form"
-    = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "last_name"}
-    = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "first_name"}
-    .field
-      = f.label :name, "お名前カナ"
-      %span.form-require 必須
-      %br/
-      = text_field :last_name_jp, placeholder: "例）ヤマダ", class: "input-form"
-      = text_field :first_name_jp, placeholder: "例）タロウ", class: "input-form"
-    = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "last_name_jp"}
-    = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "first_name_jp"}
-
-    .field
-      = f.label :postal_code, "郵便番号"
-      %span.form-require 必須
-      %br/
-      = f.text_field :postal_code, placeholder: "例) 123-4567", value: "#{shaped_postal_code}", class: "input-form"
-    = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "postal_code"}
-    .field
-      = f.label :prefectures, "都道府県"
-      %span.form-require 必須
-      %br/
-      = f.collection_select :prefectures, JpPrefecture::Prefecture.all, :code, :name
-    = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "prefectures"}
-    .field
-      = f.label :city, "市区町村"
-      %span.form-require 必須
-      %br/
-      = f.text_field :city, placeholder: "例) 横浜市緑区", class: "input-form"
-    = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "city"}
-    .field
-      = f.label :house_number, "番地"
-      %span.form-require 必須
-      %br/
-      = f.text_field :house_number, placeholder: "例) 青山1-1-1", class: "input-form"
-    = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "house_number"}
-    .field
-      = f.label :building, "建物名"
-      %span.form-require 任意
-      %br/
-      = f.text_field :building, placeholder: "例) 柳ビル103", class: "input-form"
-    .field
-      = f.label :phone_number, "電話番号"
-      %span.form-require 任意
-      %br/
-      = text_field :phone_number, placeholder: "例) 090-1234-5678", class: "input-form"
-    = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "phone_number"}
-    .field
-      = f.submit "変更する"
+  
+  %h2.address-container__head
+    発送元・お届け先住所変更
+  .address-container__form-box
+    .address-container__form
+      = form_for [@user, @address] do |f|
+        .address-container__form--field
+          = f.label :name, "お名前（全角）"
+          %span<>
+          %span.form-require 必須
+          %br/
+          = text_field :last_name, placeholder: "例）山田", class: "input-form name-form"
+          = text_field :first_name, placeholder: "例）太郎", class: "input-form name-form"
+        = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "last_name"}
+        = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "first_name"}
+        
+        .address-container__form--field
+          = f.label :name, "お名前カナ（全角）"
+          %span<>
+          %span.form-require 必須
+          %br/
+          = text_field :last_name_jp, placeholder: "例）ヤマダ", class: "input-form name-form"
+          = text_field :first_name_jp, placeholder: "例）タロウ", class: "input-form name-form"
+        = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "last_name_jp"}
+        = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "first_name_jp"}
+        
+        .address-container__form--field
+          = f.label :postal_code, "郵便番号"
+          %span<>
+          %span.form-require 必須
+          = f.text_field :postal_code, placeholder: "例) 123-4567", value: "#{shaped_postal_code}", class: "input-form"
+        = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "postal_code"}
+        
+        .address-container__form--field
+          = f.label :prefectures, "都道府県"
+          %span<>
+          %span.form-require 必須
+          %br/
+          = f.collection_select(:prefectures, JpPrefecture::Prefecture.all, :code, :name, {prompt: false}, {class: "input-form"})
+        = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "prefectures"}
+        
+        .address-container__form--field
+          = f.label :city, "市区町村"
+          %span<>
+          %span.form-require 必須
+          = f.text_field :city, placeholder: "例) 横浜市緑区", class: "input-form"
+        = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "city"}
+        
+        .address-container__form--field
+          = f.label :house_number, "番地"
+          %span<>
+          %span.form-require 必須
+          = f.text_field :house_number, placeholder: "例) 青山1-1-1", class: "input-form"
+        = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "house_number"}
+        
+        .address-container__form--field
+          = f.label :building, "建物名"
+          %span<>
+          %span.form-require-gray 任意
+          = f.text_field :building, placeholder: "例) 柳ビル103", class: "input-form"
+        
+        .address-container__form--field
+          = f.label :phone_number, "電話番号"
+          %span<>
+          %span.form-require-gray 任意
+          %br/
+          = text_field :phone_number, placeholder: "例) 090-1234-5678", class: "input-form"
+        = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "phone_number"}
+        
+        .address-container__form--field
+          = f.submit "変更する", class: "submit-btn"

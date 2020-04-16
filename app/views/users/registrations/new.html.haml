@@ -75,6 +75,8 @@
         // TODO 電話番号のバリデーション（正規表現）を入れる
         .container__signup-panel__main__form__item
           %p 電話番号
+          %span<>
+          %span.form-require-gray 任意
           .form-block
             = f.text_field :phone_number, autocomplete: "tel-national", class: "input-form", placeholder: "電話番号を入力"
           = render partial: 'users/shared/error_messages', locals: {user: @user, column: "phone_number"}

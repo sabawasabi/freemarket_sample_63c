@@ -38,7 +38,11 @@ class User < ApplicationRecord
   has_many :products
 
   private
-  def shaping_data
-   self.phone_number = phone_number.delete("-")
+  if phone_number.include?("-")
+    def shaping_data
+    self.phone_number = phone_number.delete("-")
+    end
+  else
+    true
   end
 end
