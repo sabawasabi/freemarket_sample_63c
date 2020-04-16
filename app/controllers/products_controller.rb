@@ -14,10 +14,15 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.status = "出品中"
-    if @product.save
-      redirect_to root_path, notice: '商品を出品しました'
+    if @product.product_images.empty?
+      binding.pry
+      redirect_to new_product_path, notice:"画像を投稿してください"
+      return
+    elsif @product.save
+      redirect_to root_path
     else
-      redirect_to new_product_path
+      Product_image.destroy
+      render :new
     end
   end
 
@@ -28,7 +33,10 @@ class ProductsController < ApplicationController
   end
 
   def update
-    if @product.update(product_params)
+    if @product.product_images.empty?
+      redirect_to new_product_path, notice:"画像を投稿してください"
+      return
+    elsif @product.update(product_params)
       redirect_to root_path
     else
       redirect_to edit_product_path

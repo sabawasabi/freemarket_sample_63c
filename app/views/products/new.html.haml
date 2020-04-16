@@ -4,6 +4,9 @@
   .products-contents
     .products-contents__main
       = form_for @product do |f|
+        - flash.each do |key, value|
+          = content_tag(:div, value, class: "#{key}")
+        = render 'layouts/error_messages', model: f.object
         .products-contents__main-image
           .products-contents__main-image__title
             出品画像
