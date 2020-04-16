@@ -2,39 +2,65 @@
 %h1 プロダクト#{@product.id}のページです
 %h2 Userid:#{@product.user_id}の商品です
 %br/
+%ul
+  %li
+    = image_tag "#{@product.product_images[0].image_url}", alt: '', height: '300', width: '400', class: 'img'
+    %ul
+      - @product.product_images[1..3].each do |image|
+        %li
+          = image_tag "#{image.image_url}", alt: '', height: '120', width: '160', class: 'sub-img'
+%h1 ¥#{@product.price}
+%br/
+%h2 #{@product.description}
+%br/
 %table
   %tr
-    %th 商品名
+    %th 出品者
     %td 
-      = @product.name
+      = @product.user.nickname
   %tr
-    %th 商品説明
+    %th カテゴリー
     %td
-      = @product.description
+      = Category.find(@product.category_id).parent.parent.category_name
+      %br/
+      = Category.find(@product.category_id).parent.category_name
+      %br/
+      = @product.category.category_name
+  %tr
+    %th ブランド
+    %td
+      = @product.brand
+  %tr
+    %th 商品のサイズ
+    %td
+      = @product.products_size.size_name
   %tr
     %th 商品の状態
     %td
-      = @product.condition
+      = Conditiontag.find(@product.condition).name
   %tr
     %th 配送料の負担
     %td
-      = @product.shipping_charges
+      = Chargetag.find(@product.shipping_charges).name
   %tr
-    %th 配送元地域
+    %th 発送元の地域
     %td
-      = @product.shipping_area
+      = Areatag.find(@product.shipping_area).name
   %tr
     %th 発送日の目安
     %td
-      = @product.days_to_delivery
-  %tr
-    %th 価格
-    %td
-      = @product.price
+      = Daystag.find(@product.days_to_delivery).name
 %br/
 -if user_signed_in? && current_user.id == @product.user_id
-  = link_to "商品の編集画面に進む"
+  = link_to "商品の編集画面に進む", edit_product_path(product_id: @product)
   = link_to "出品商品を取り下げる"
--else
-  = link_to "購入画面に進む"
+- else
+  .product-show__transaction
+    .product-show__transaction-box
+      -# 商品購入済みであればSOLD OUT
+      - if @product_transaction.present?
+        .product-transaction-btn
+          SOLD OUT
+      - else
+        = link_to "購入画面に進む", pay_index_transactions_path(product_id: @product), class: "product-transaction-btn"
 = render "layouts/footer"
