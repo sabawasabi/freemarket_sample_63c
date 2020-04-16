@@ -67,11 +67,11 @@
           = f.text_field :building, placeholder: "例) 柳ビル103", class: "input-form"
         
         .address-container__form--field
-          = f.label :phone_number, "電話番号"
+          = f.label :phone_number, "電話番号（半角数字のみ）"
           %span<>
           %span.form-require-gray 任意
           %br/
-          = text_field :phone_number, placeholder: "例) 090-1234-5678", class: "input-form"
+          = text_field :phone_number, placeholder: "電話番号を入力", class: "input-form"
         = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "phone_number"}
         
         .address-container__form--field
