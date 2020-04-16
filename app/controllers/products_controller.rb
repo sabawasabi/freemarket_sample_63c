@@ -35,14 +35,17 @@ class ProductsController < ApplicationController
     end
   end
 
-  def destroy
-    product = Product.find(params[:id])
-    product.destroy
-  end
-
   def show
     @product = Product.find(params[:id])
     @product_transaction = Transaction.where(product_id: @product.id)
+  end
+
+  def destroy
+    product = Product.find(params[:id])
+    if product.destroy
+    else
+      redirect_to product_path
+    end
   end
 
    # 親カテゴリーが選択された後に動くアクション
