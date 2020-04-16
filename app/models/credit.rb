@@ -4,8 +4,7 @@ class Credit < ApplicationRecord
   belongs_to :user
   
   # Validations
-  # validates :costomer, presence: true
-  # validates :card, presence: true
-
-
+  validates :customer_id, presence: true
+  validates :card_id, presence: true
+  
 end

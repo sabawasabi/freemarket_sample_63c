@@ -1,21 +1,21 @@
 require 'rails_helper'
-# describe Credit do
-#   describe "#createアクションのテスト" do
-#     describe '各項目が空では登録できないこと' do
-#       it "is invalid without a costomer" do
-#         credit = build(:credit, costomer: "")
-#         credit.valid?
-#         expect(credit.errors[:costomer]).to include("can't be blank")
-#       end
+describe Credit do
+  describe '#createアクションのテスト' do
+    describe 'not nullのテスト' do
+      it "is invalid without a customer_id" do
+        credit = build(:credit, customer_id: "")
+        credit.valid?
+        expect(credit.errors[:customer_id]).to include("can't be blank")
+      end
 
-#       it "is invalid without a card" do
-#         credit = build(:card, exp_month: "")
-#         credit.valid?
-#         expect(credit.errors[:card]).to include("can't be blank")
-#       end
-#     end
-#   end
-# end
+      it "is invalid without a card_id" do
+        credit = build(:card, card_id: "")
+        credit.valid?
+        expect(credit.errors[:card_id]).to include("can't be blank")
+      end
+    end
+  end
+end
 
 
 # RSpec.describe Credit, type: :model do
