@@ -5,13 +5,13 @@ describe Credit do
       it "is invalid without a customer_id" do
         credit = build(:credit, customer_id: "")
         credit.valid?
-        expect(credit.errors[:customer_id]).to include("can't be blank")
+        expect(credit.errors[:customer_id]).to include("を入力してください")
       end
 
       it "is invalid without a card_id" do
-        credit = build(:card, card_id: "")
+        credit = build(:credit, card_id: "")
         credit.valid?
-        expect(credit.errors[:card_id]).to include("can't be blank")
+        expect(credit.errors[:card_id]).to include("を入力してください")
       end
     end
   end
