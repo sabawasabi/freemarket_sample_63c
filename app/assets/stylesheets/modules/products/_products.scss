@@ -25,6 +25,16 @@
       margin: 0 auto;
       background-color: #fff;
 
+      .error {
+        max-width: 700px;
+        margin: 0 auto;
+        color:#262626; 
+        background:#FFEBE8;
+        border:2px solid #990000;
+        padding:12px; font-weight:850;
+      }
+
+
         &-image {
           padding: 40px;
           &__title {
@@ -304,10 +314,45 @@
             font-family: inherit;
             font-size: inherit;
             height: 48px;
-            margin: 0;
+            margin-bottom: 16px;
             outline: none;
             padding: 0 16px;
             width: 100%;
+          }
+
+          .size {
+            &-title {
+              margin-bottom: 16px;
+              display: flex;
+              align-items: center;
+              &__required {
+                background-color: #bfbfbf;
+                color: #fff;
+                font-size: 12px;
+                margin-left: 8px;
+                padding: 0 4px;
+                width: 36px;
+                height: 16px;
+                border: 1px solid transparent;
+                font-weight: 600;
+                line-height: 16px;
+                overflow: hidden;
+                text-align: center;
+                text-decoration: none;
+              }
+            }
+            &-box {
+              line-height: 48px;
+              border: 1px solid #ccc;
+              border-radius: 4px;
+              font-family: inherit;
+              font-size: inherit;
+              height: 48px;
+              margin-bottom: 16px;
+              outline: none;
+              padding: 0 16px;
+              width: 100%;
+            }
           }
         }
         &__brand {

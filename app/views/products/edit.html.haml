@@ -72,16 +72,13 @@
             #grandchildren-wrapper
               .products-contents__main-details__category-wrapper__box
                 = f.collection_select :category_id, @grand_child, :id, :category_name, {prompt: "---"}, class: "products-contents__main-details__category-box", id: "grandchild-form"
-          - if :products_size_id != nil
-            .products-contents__main-details__category-wrapper__added
-            #size-wrapper
-              .products-contents__main-details__category__title
-                サイズ
-                .products-contents__main-details__category__title-required
-                  必須
-              .products-contents__main-details__category-wrapper
-                .products-contents__main-details__category-wrapper__box
-                  = f.collection_select :products_size_id, ProductsSize.all, :id, :size_name,{prompt: "---"}, class: "products-contents__main-details__category-box", id: "size"
+            - if :products_size_id != nil
+              %div{class:"size",id:"size-wrapper"}
+                .size-title
+                  サイズ
+                  .size-title__required
+                    任意
+                = f.collection_select :products_size_id, ProductsSize.all, :id, :size_name,{prompt: "---"}, class: "size-box", id: "size"
           .products-contents__main-details__brand
             .products-contents__main-details__brand__title
               ブランド

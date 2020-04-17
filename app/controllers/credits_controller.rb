@@ -1,6 +1,7 @@
 class CreditsController < ApplicationController
   require "payjp"
   before_action :set_card, only: [:new, :show, :pay_show, :destroy]
+  before_action :set_user, only: [:new, :show]
 
   def new
     gon.payjp_key = ENV['PAYJP_KEY']
@@ -56,6 +57,9 @@ class CreditsController < ApplicationController
     params.require(:credit).permit(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
   end
 
+  def set_user
+    @user = current_user
+  end
 
   def set_card
     @set_card = Credit.where(user_id: current_user.id)

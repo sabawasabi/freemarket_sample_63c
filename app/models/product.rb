@@ -12,7 +12,7 @@ class Product < ApplicationRecord
   # Associations
   belongs_to :user
   belongs_to :category
-  belongs_to :products_size
+  belongs_to :products_size, optional: true
   # has_many :transactions
   # has_many :likes
   # has_many :comments

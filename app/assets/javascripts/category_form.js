@@ -39,17 +39,14 @@ $(function() {
   // サイズ入力欄の表示作成
   function appendSizeBox(insertHTML){
     var sizeSelectHtml = '';
-    sizeSelectHtml = `<div class='products-contents__main-details__category-wrapper__added' id= 'size-wrapper'>
-                        <label class="products-contents__main-details__category__title" for="サイズ">サイズ</label>
-                          <span class='products-contents__main-details__category__title-required'>必須</span>
-                        <div class='products-contents__main-details__category-wrapper'>
-                          <div class='products-contents__main-details__category-wrapper__box'>
-                            <select class="products-contents__main-details__category-box" id="size" name="product[products_size_id]">
-                              <option value="---">---</option>
-                              ${insertHTML}
-                            </select>
-                          </div>
+    sizeSelectHtml = `<div class='size' id= 'size-wrapper'>
+                        <div class='size-title'>サイズ
+                          <div class='size-title__required'>任意</div>
                         </div>
+                        <select class="size-box" id="size" name="product[products_size_id]">
+                          <option value="---">---</option>
+                          ${insertHTML}
+                        </select>
                       </div>`;
     $('.products-contents__main-details__category').append(sizeSelectHtml);
   }
