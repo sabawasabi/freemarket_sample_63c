@@ -39,7 +39,7 @@
 - belongs_to :user
 
 
-## credit_cardsテーブル
+## creditsテーブル
 |Column|type|Option|
 |------|----|------|
 |id|integer|null: false, unique: true|
