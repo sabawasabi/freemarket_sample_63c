@@ -4,9 +4,10 @@
   .products-contents
     .products-contents__main
       = form_for @product do |f|
-        - flash.each do |key, value|
-          = content_tag(:div, value, class: "#{key}")
-        = render 'layouts/error_messages', model: f.object
+        - if flash.now[:error].present?
+          .error
+            = flash.now[:error]
+        = render 'products/error_messages', model: f.object
         .products-contents__main-image
           .products-contents__main-image__title
             出品画像
@@ -69,6 +70,14 @@
             .products-contents__main-details__category-wrapper
               .products-contents__main-details__category-wrapper__box
                 = f.collection_select :category_id, Category.all.order("id ASC").limit(13), :id, :category_name,{prompt: "---"}, class: "products-contents__main-details__category-box", id: "parent-form"
+          - if @children.present?
+            .products-contents__main-details__category-wrapper__added
+            #children-wrapper
+              .products-contents__main-details__category-wrapper__box
+                = f.collection_select :category_id, :id, :category_name,{prompt: "---"}, class: "products-contents__main-details__category-box", id: "parent-form"
+              .products-contents__main-details__category-wrapper
+                .products-contents__main-details__category-wrapper__box
+                  = f.collection_select :products_size_id, ProductsSize.all, :id, :size_name,{prompt: "---"}, class: "products-contents__main-details__category-box", id: "size"
           .products-contents__main-details__brand
             .products-contents__main-details__brand__title
               ブランド
@@ -118,20 +127,21 @@
               .products-contents__main-sale__box-price__mark
                 ¥
               = f.text_field :price, class: "products-contents__main-sale__box-price__input", placeholder: "0"
-          .products-contents__main-sale__comission
-            .products-contents__main-sale__comission__box
-              .products-contents__main-sale__comission__box-title
-                販売手数料 (10%)
-              .products-contents__main-sale__comission__box-price
-                —
-          .products-contents__main-sale__border
+          -# 未実装のため、コメントアウト
+          -# .products-contents__main-sale__comission
+          -#   .products-contents__main-sale__comission__box
+          -#     .products-contents__main-sale__comission__box-title
+          -#       販売手数料 (10%)
+          -#     .products-contents__main-sale__comission__box-price
+          -#       —
+          -# .products-contents__main-sale__border
 
-          .products-contents__main-sale__profit
-            .products-contents__main-sale__profit__box
-              .products-contents__main-sale__profit__box-title
-                販売利益
-              .products-contents__main-sale__profit__box-price
-                —
+          -# .products-contents__main-sale__profit
+          -#   .products-contents__main-sale__profit__box
+          -#     .products-contents__main-sale__profit__box-title
+          -#       販売利益
+          -#     .products-contents__main-sale__profit__box-price
+          -#       —
         .products-contents__main-button
           = f.submit "出品する", class: "products-contents__main-button-exhibition"
           =link_to "もどる", '/' , class: 'products-contents__main-button-back'

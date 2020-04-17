@@ -6,13 +6,13 @@
 // layout
 @import "layout/header";
 @import "layout/footer";
-@import "layout/error_messages";
 
 // modules
 @import "modules/products/banner";
 @import "modules/products/main";
 @import "modules/products/exhibition";
 @import "modules/products/products";
+@import "modules/products/error_messages";
 @import "modules/users/registrations";
 @import "modules/users/userspage";
 @import "modules/credits";

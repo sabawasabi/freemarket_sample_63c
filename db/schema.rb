@@ -13,19 +13,14 @@
 ActiveRecord::Schema.define(version: 20200405133454) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id"
-    t.string   "last_name",               null: false
-    t.string   "first_name",              null: false
-    t.string   "last_name_jp",            null: false
-    t.string   "first_name_jp",           null: false
-    t.string   "postal_code",   limit: 7, null: false
-    t.string   "prefectures",             null: false
-    t.string   "city",                    null: false
-    t.string   "house_number",            null: false
+    t.integer  "user_id",      null: false
+    t.string   "postal_code",  null: false
+    t.string   "prefectures",  null: false
+    t.string   "city",         null: false
+    t.integer  "house_number", null: false
     t.string   "building"
-    t.string   "phone_number"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
   end
 
@@ -34,7 +29,6 @@ ActiveRecord::Schema.define(version: 20200405133454) do
     t.string   "category_name", null: false, comment: "カテゴリー名"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.index ["ancestry"], name: "index_categories_on_ancestry", using: :btree
   end
 
   create_table "category_sizes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

@@ -1,0 +1,7 @@
+-if model.errors.any? 
+  .alert
+    %ul
+      -model.errors.full_messages.each do |message| 
+        %li= message
+      %li= "画像を再投稿してください"
+      %li= "カテゴリーを再設定してください"

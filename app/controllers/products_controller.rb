@@ -15,11 +15,19 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.status = "出品中"
     if @product.product_images.empty?
-      redirect_to new_product_path, notice:"画像を投稿してください"
+      @product.category_id = ""
+      @product.product_images.build
+      flash.now[:error] = "画像を投稿してください"
+      render :new
       return
     elsif @product.save
       redirect_to root_path
     else
+      @product.product_images.each do |image|
+        @product.product_images.delete(image)
+      end
+      @product.category_id = ""
+      @product.product_images.build
       render :new
     end
   end
@@ -31,10 +39,7 @@ class ProductsController < ApplicationController
   end
 
   def update
-    if @product.product_images.empty?
-      redirect_to new_product_path, notice:"画像を投稿してください"
-      return
-    elsif @product.update(product_params)
+    if @product.update(product_params)
       redirect_to root_path
     else
       redirect_to edit_product_path
@@ -87,5 +92,11 @@ class ProductsController < ApplicationController
 
   def move_to_index
     redirect_to action: :index unless user_signed_in?
+  end
+
+  def set_category
+    @category = @product.category
+    @child_categories = Category.where('ancestry = ?', "#{@category.parent.ancestry}")
+    @grand_child = Category.where('ancestry = ?', "#{@category.ancestry}")
   end
 end
