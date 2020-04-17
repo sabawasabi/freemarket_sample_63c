@@ -1,6 +1,4 @@
 class User < ApplicationRecord
-  before_validation :shaping_data
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :credits
@@ -36,9 +34,4 @@ class User < ApplicationRecord
   # has_many :likes
   # has_many :comments
   has_many :products
-
-  private
-  def shaping_data
-   self.phone_number = phone_number.delete("-")
-  end
 end

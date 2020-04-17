@@ -1,4 +1,4 @@
-lock '3.12.0'
+lock '3.12.1'
 
 set :application, 'freemarket_sample_63c'
 

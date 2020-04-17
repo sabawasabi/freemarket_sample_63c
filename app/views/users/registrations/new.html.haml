@@ -60,8 +60,14 @@
           .form-block.name-forms
             = f.text_field :last_name_jp, autocomplete: "family-name", class: "input-form name-form", placeholder: "例）ヤマダ"
             = f.text_field :first_name_jp, autocomplete: "given-name", class: "input-form name-form", placeholder: "例）タロウ"
-          = render partial: 'users/shared/error_messages', locals: {user: @user, column: "last_name_jp"}
-          = render partial: 'users/shared/error_messages', locals: {user: @user, column: "first_name_jp"}
+          - if @user.errors.full_messages_for(:last_name_jp).any?
+            - unless @user.valid?
+              %ul
+                %li.error_message 姓カナを入力してください
+          - if @user.errors.full_messages_for(:first_name_jp).any?
+            - unless @user.valid?
+              %ul
+                %li.error_message 名カナを入力してください
 
         // TODO 日付を閏年に対応させる
         .container__signup-panel__main__form__item
@@ -74,7 +80,9 @@
 
         // TODO 電話番号のバリデーション（正規表現）を入れる
         .container__signup-panel__main__form__item
-          %p 電話番号
+          %p 電話番号（半角数字のみ）
+          %span<>
+          %span.form-require-gray 任意
           .form-block
             = f.text_field :phone_number, autocomplete: "tel-national", class: "input-form", placeholder: "電話番号を入力"
           = render partial: 'users/shared/error_messages', locals: {user: @user, column: "phone_number"}
