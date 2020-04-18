@@ -50,6 +50,14 @@ class ProductsController < ApplicationController
     @product_transaction = Transaction.where(product_id: @product.id)
   end
 
+  def destroy
+    product = Product.find(params[:id])
+    if product.destroy
+    else
+      redirect_to product_path
+    end
+  end
+
    # 親カテゴリーが選択された後に動くアクション
   def get_category_children
     #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
@@ -60,11 +68,6 @@ class ProductsController < ApplicationController
   def get_category_grandchildren
     #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
     @category_grandchildren = Category.find("#{params[:child_id]}").children
-  end
-
-  def show
-    @product = Product.find(params[:id])
-    @product_transaction = Transaction.where(product_id: @product.id)
   end
 
   # 孫カテゴリーが選択された後に動くアクション
