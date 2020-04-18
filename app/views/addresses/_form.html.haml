@@ -16,27 +16,30 @@
           %span<>
           %span.form-require 必須
           %br/
-          = text_field :last_name, placeholder: "例）山田", class: "input-form name-form"
-          = text_field :first_name, placeholder: "例）太郎", class: "input-form name-form"
-        = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "last_name"}
-        = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "first_name"}
+          = f.text_field :last_name, placeholder: "例）山田", class: "input-form name-form"
+          = f.text_field :first_name, placeholder: "例）太郎", class: "input-form name-form"
+          = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "last_name"}
+          = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "first_name"}
         
         .address-container__form--field
           = f.label :name, "お名前カナ（全角）"
           %span<>
           %span.form-require 必須
           %br/
-          = text_field :last_name_jp, placeholder: "例）ヤマダ", class: "input-form name-form"
-          = text_field :first_name_jp, placeholder: "例）タロウ", class: "input-form name-form"
-        = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "last_name_jp"}
-        = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "first_name_jp"}
+          = f.text_field :last_name_jp, placeholder: "例）ヤマダ", class: "input-form name-form"
+          = f.text_field :first_name_jp, placeholder: "例）タロウ", class: "input-form name-form"
+          = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "last_name_jp"}
+          = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "first_name_jp"}
         
         .address-container__form--field
           = f.label :postal_code, "郵便番号"
           %span<>
           %span.form-require 必須
-          = f.text_field :postal_code, placeholder: "例) 123-4567", value: "#{shaped_postal_code}", class: "input-form"
-        = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "postal_code"}
+          = f.text_field :postal_code, placeholder: "郵便番号を入力", value: "#{shaped_postal_code}", class: "input-form"
+          - if @address.errors.full_messages_for(:postal_code).any?
+            - unless @address.valid?
+              %ul
+                %li.error_message 郵便番号を入力してください
         
         .address-container__form--field
           = f.label :prefectures, "都道府県"
@@ -44,21 +47,21 @@
           %span.form-require 必須
           %br/
           = f.collection_select(:prefectures, JpPrefecture::Prefecture.all, :code, :name, {prompt: false}, {class: "input-form"})
-        = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "prefectures"}
+          = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "prefectures"}
         
         .address-container__form--field
           = f.label :city, "市区町村"
           %span<>
           %span.form-require 必須
           = f.text_field :city, placeholder: "例) 横浜市緑区", class: "input-form"
-        = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "city"}
+          = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "city"}
         
         .address-container__form--field
           = f.label :house_number, "番地"
           %span<>
           %span.form-require 必須
           = f.text_field :house_number, placeholder: "例) 青山1-1-1", class: "input-form"
-        = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "house_number"}
+          = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "house_number"}
         
         .address-container__form--field
           = f.label :building, "建物名"
@@ -71,8 +74,8 @@
           %span<>
           %span.form-require-gray 任意
           %br/
-          = text_field :phone_number, placeholder: "電話番号を入力", class: "input-form"
-        = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "phone_number"}
+          = f.text_field :phone_number, placeholder: "電話番号を入力", class: "input-form"
+          = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "phone_number"}
         
         .address-container__form--field
           = f.submit "変更する", class: "submit-btn"
