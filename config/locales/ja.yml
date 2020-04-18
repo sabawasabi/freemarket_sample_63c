@@ -9,6 +9,7 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
     models:
       address: 住所
+      product: 商品
     attributes:
       address:
         last_name: 苗字
@@ -21,9 +22,6 @@ ja:
         house_number: 番地
         building: 建物名
         phone_number: 電話番号
-    models:
-      product: 商品
-    attributes:
       product:
         name: 商品名
         description: 商品の説明
