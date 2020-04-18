@@ -27,6 +27,7 @@ class ProductsController < ApplicationController
         @product.product_images.delete(image)
       end
       @product.category_id = ""
+      @product.product_images.build
       render :new
     end
   end
