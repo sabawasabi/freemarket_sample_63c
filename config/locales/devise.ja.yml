@@ -8,6 +8,7 @@ ja:
         last_name_jp: 姓カナ
         first_name_jp: 名カナ
         birth_date: 生年月日
+        phone_number: 電話番号
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン
         confirmed_at: パスワード確認時刻
