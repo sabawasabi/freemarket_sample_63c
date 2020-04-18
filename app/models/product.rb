@@ -6,7 +6,10 @@ class Product < ApplicationRecord
   validates :shipping_charges, presence: true
   validates :shipping_area, presence: true
   validates :days_to_delivery, presence: true
-  validates :price, presence: true
+  validates :price, presence: true,
+  numericality: { only_integer: true,
+  greater_than: 49, less_than: 9999999
+  }
   validates :status, presence: true
 
   # Associations

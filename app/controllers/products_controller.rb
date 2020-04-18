@@ -23,8 +23,13 @@ class ProductsController < ApplicationController
     elsif @product.save
       redirect_to root_path
     else
+      num = 0;
       @product.product_images.each do |image|
         @product.product_images.delete(image)
+        num += 1;
+      end
+      if num == 1
+        @product.product_images.build
       end
       @product.category_id = ""
       render :new
