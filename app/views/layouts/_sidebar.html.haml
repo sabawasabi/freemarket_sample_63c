@@ -74,7 +74,7 @@
           プロフィール
           %i.fa.fa-angle-right.icon
       %li
-        = link_to new_user_address_path(@user), class:"mypage-nav-list-item" do
+        = link_to new_user_address_path(current_user.id), class:"mypage-nav-list-item" do
           住所変更
           %i.fa.fa-angle-right.icon
       %li
