@@ -3,6 +3,10 @@ class Address < ApplicationRecord
 
   # Validations
   with_options presence: true do
+    validates :last_name 
+    validates :first_name
+    validates :last_name_jp
+    validates :first_name_jp
     validates :postal_code
     validates :prefectures
     validates :city

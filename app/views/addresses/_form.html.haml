@@ -28,8 +28,14 @@
           %br/
           = f.text_field :last_name_jp, placeholder: "例）ヤマダ", class: "input-form name-form"
           = f.text_field :first_name_jp, placeholder: "例）タロウ", class: "input-form name-form"
-          = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "last_name_jp"}
-          = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "first_name_jp"}
+          - if @address.errors.full_messages_for(:last_name_jp).any?
+            - unless @address.valid?
+              %ul
+                %li.error_message 姓カナを入力してください
+          - if @address.errors.full_messages_for(:first_name_jp).any?
+            - unless @address.valid?
+              %ul
+                %li.error_message 名カナを入力してください
         
         .address-container__form--field
           = f.label :postal_code, "郵便番号"
