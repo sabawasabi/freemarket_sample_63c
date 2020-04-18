@@ -16,8 +16,8 @@
           %span<>
           %span.form-require 必須
           %br/
-          = text_field :last_name, placeholder: "例）山田", class: "input-form name-form"
-          = text_field :first_name, placeholder: "例）太郎", class: "input-form name-form"
+          = f.text_field :last_name, placeholder: "例）山田", class: "input-form name-form"
+          = f.text_field :first_name, placeholder: "例）太郎", class: "input-form name-form"
           = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "last_name"}
           = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "first_name"}
         
@@ -26,8 +26,8 @@
           %span<>
           %span.form-require 必須
           %br/
-          = text_field :last_name_jp, placeholder: "例）ヤマダ", class: "input-form name-form"
-          = text_field :first_name_jp, placeholder: "例）タロウ", class: "input-form name-form"
+          = f.text_field :last_name_jp, placeholder: "例）ヤマダ", class: "input-form name-form"
+          = f.text_field :first_name_jp, placeholder: "例）タロウ", class: "input-form name-form"
           = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "last_name_jp"}
           = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "first_name_jp"}
         
@@ -74,7 +74,7 @@
           %span<>
           %span.form-require-gray 任意
           %br/
-          = text_field :phone_number, placeholder: "電話番号を入力", class: "input-form"
+          = f.text_field :phone_number, placeholder: "電話番号を入力", class: "input-form"
           = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "phone_number"}
         
         .address-container__form--field
