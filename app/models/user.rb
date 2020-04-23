@@ -27,7 +27,7 @@ class User < ApplicationRecord
 
   validates :email, format: { with: EMAIL_REGEXP }, uniqueness: true
   validates :password, format: { with: PASSWORD_REGEXP }, length: { minimum: 7 }
-  validates :phone_number, uniqueness: true, allow_nil: true, format: { with: PHONE_REGEXP }
+  validates :phone_number, uniqueness: true, allow_blank: true, format: { with: PHONE_REGEXP }
 
   # Associations
   # has_many :credit_cards
