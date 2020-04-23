@@ -44,7 +44,7 @@ $(function() {
                           <div class='size-title__required'>任意</div>
                         </div>
                         <select class="size-box" id="size" name="product[products_size_id]">
-                          <option value="---">---</option>
+                          <option value="">---</option>
                           ${insertHTML}
                         </select>
                       </div>`;
