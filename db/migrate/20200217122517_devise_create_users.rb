@@ -14,6 +14,11 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string :phone_number,         unique: true, comment: "電話番号"
       t.text :profile,                              comment: "自己紹介文"
       t.text :icon,                                 comment: "アイコン"
+      t.string  :postal_code,                       comment: "郵便番号"
+      t.string  :prefectures,                       comment: "都道府県"
+      t.string  :city,                              comment: "市町村"
+      t.string  :house_number,                      comment: "番地"
+      t.string  :building,                          comment: "建物名"
       t.datetime :remember_created_at,              comment: "ログイン情報の保持用"
       t.timestamps                     null: false
     end

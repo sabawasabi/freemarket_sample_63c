@@ -1,0 +1,87 @@
+.address-container
+  - if @address.new_record?
+    - shaped_postal_code = ""
+  - elsif @address.postal_code == ""
+    - shaped_postal_code = ""
+  - else
+    - shaped_postal_code = @address.postal_code.insert(3, "-")
+  
+  %h2.address-container__head
+    発送元・お届け先住所変更
+  .address-container__form-box
+    .address-container__form
+      = form_for [@user, @address] do |f|
+        .address-container__form--field
+          = f.label :name, "お名前（全角）"
+          %span<>
+          %span.form-require 必須
+          %br/
+          = f.text_field :last_name, placeholder: "例）山田", class: "input-form name-form"
+          = f.text_field :first_name, placeholder: "例）太郎", class: "input-form name-form"
+          = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "last_name"}
+          = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "first_name"}
+        
+        .address-container__form--field
+          = f.label :name, "お名前カナ（全角）"
+          %span<>
+          %span.form-require 必須
+          %br/
+          = f.text_field :last_name_jp, placeholder: "例）ヤマダ", class: "input-form name-form"
+          = f.text_field :first_name_jp, placeholder: "例）タロウ", class: "input-form name-form"
+          - if @address.errors.full_messages_for(:last_name_jp).any?
+            - unless @address.valid?
+              %ul
+                %li.error_message 姓カナを入力してください
+          - if @address.errors.full_messages_for(:first_name_jp).any?
+            - unless @address.valid?
+              %ul
+                %li.error_message 名カナを入力してください
+        
+        .address-container__form--field
+          = f.label :postal_code, "郵便番号"
+          %span<>
+          %span.form-require 必須
+          = f.text_field :postal_code, placeholder: "郵便番号を入力", value: "#{shaped_postal_code}", class: "input-form"
+          - if @address.errors.full_messages_for(:postal_code).any?
+            - unless @address.valid?
+              %ul
+                %li.error_message 郵便番号を入力してください
+        
+        .address-container__form--field
+          = f.label :prefectures, "都道府県"
+          %span<>
+          %span.form-require 必須
+          %br/
+          = f.collection_select(:prefectures, JpPrefecture::Prefecture.all, :code, :name, {prompt: false}, {class: "input-form"})
+          = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "prefectures"}
+        
+        .address-container__form--field
+          = f.label :city, "市区町村"
+          %span<>
+          %span.form-require 必須
+          = f.text_field :city, placeholder: "例) 横浜市緑区", class: "input-form"
+          = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "city"}
+        
+        .address-container__form--field
+          = f.label :house_number, "番地"
+          %span<>
+          %span.form-require 必須
+          = f.text_field :house_number, placeholder: "例) 青山1-1-1", class: "input-form"
+          = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "house_number"}
+        
+        .address-container__form--field
+          = f.label :building, "建物名"
+          %span<>
+          %span.form-require-gray 任意
+          = f.text_field :building, placeholder: "例) 柳ビル103", class: "input-form"
+        
+        .address-container__form--field
+          = f.label :phone_number, "電話番号（半角数字のみ）"
+          %span<>
+          %span.form-require-gray 任意
+          %br/
+          = f.text_field :phone_number, placeholder: "電話番号を入力", class: "input-form"
+          = render partial: 'addresses/shared/error_messages', locals: {address: @address, column: "phone_number"}
+        
+        .address-container__form--field
+          = f.submit "変更する", class: "submit-btn"

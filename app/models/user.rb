@@ -19,6 +19,7 @@ class User < ApplicationRecord
   EMAIL_REGEXP = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/
   PASSWORD_REGEXP = /\A[a-zA-Z0-9]+\z/
   PHONE_REGEXP = /\A(|0[0-9]{9,10})\z/
+  POSTAL_CODE_REGEXP = /\A[0-9]+\z/
 
   with_options format: { with: /\A[ァ-ヶー－]+\z/ } do
     validates :last_name_jp
@@ -27,7 +28,8 @@ class User < ApplicationRecord
 
   validates :email, format: { with: EMAIL_REGEXP }, uniqueness: true
   validates :password, format: { with: PASSWORD_REGEXP }, length: { minimum: 7 }
-  validates :phone_number, uniqueness: true, allow_nil: true, format: { with: PHONE_REGEXP }
+  validates :phone_number, uniqueness: true, allow_blank: true, format: { with: PHONE_REGEXP }
+  validates :postal_code, format: { with: POSTAL_CODE_REGEXP }, length: { is: 7 }
 
   # Associations
   # has_many :credit_cards
@@ -39,5 +41,6 @@ class User < ApplicationRecord
 
   def shaping_data
     self.phone_number = phone_number.delete("-")
+    self.postal_code = postal_code.delete("-")
  end
 end

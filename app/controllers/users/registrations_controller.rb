@@ -7,7 +7,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
-  def edit
+  def edit_address
   end
 
   def update

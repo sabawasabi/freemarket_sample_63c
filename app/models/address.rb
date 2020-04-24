@@ -13,15 +13,13 @@ class Address < ApplicationRecord
     validates :house_number
   end
 
-  PHONE_REGEXP = /\A(|0[0-9]{9,10})\z/
-
   with_options format: { with: /\A[ァ-ヶー－]+\z/ } do
     validates :last_name_jp
     validates :first_name_jp
   end
 
   validates :postal_code, format: { with: /\A[0-9]+\z/ }, length: { is: 7 }
-  validates :phone_number, uniqueness: true, allow_nil: true, format: { with: PHONE_REGEXP }
+  validates :phone_number, uniqueness: true, allow_nil: true, format: { with: /\A(|0[0-9]{9,10})\z/ }
 
   # Association
   belongs_to :user
