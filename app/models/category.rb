@@ -1,4 +1,5 @@
 class Category < ApplicationRecord
+  #test
   has_ancestry
 
   # Validations
